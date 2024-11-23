@@ -31,11 +31,11 @@ export const productsApi = createApi({
     }),
 
     getProductBySlug: builder.query({
-      query: (productSlug) => `products/${productSlug}`,
+      query: (productSlug) => `products/slug/${productSlug}`,
       providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
         getProductByCategorySlug: builder.query({
-      query: (productSlug) => `products/category/${productSlug}`,
+      query: (productSlug) => `products/category/slug/${productSlug}`,
       providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
     

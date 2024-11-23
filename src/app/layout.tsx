@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import {Provider,store} from "@/components/index"
-import NavMain from "@/components/NavMain";
+import TopMain from "@/components/TopMain";
 import { Toaster } from "sonner";
+import Header from "@/components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,13 +34,12 @@ export default function RootLayout({
       >
         <div> 
         <Provider store={store}> 
-          <div className="sticky top-0">
-          <NavMain  />
-          </div>
+          <Header />
       
         {children}
         </Provider>
         <Toaster richColors duration={1200}  position="top-right"/>
+        <TopMain  />
         </div>
         
       </body>

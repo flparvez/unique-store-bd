@@ -28,7 +28,7 @@ const CategorySlider: React.FC = () => {
   return (
     <div>
       <Swiper
-        // spaceBetween={30}
+        spaceBetween={30}
         centeredSlides={true}
         parallax={true}
         autoplay={{

@@ -12,11 +12,14 @@ const HomePage = () => {
 
       {/* Special Product Bannar/ Product */}
 <h1>Special Product Bannar Static</h1>
-{/* CategorySlider */}
 <CategorySlider />
 
 {/* Latest Product 16 Product With Pagination */}
-<LatestProduct />
+<div className='flex justify-center'>
+        <button className='py-3 px-6 mt-14 text-white bg-black rounded-md'>Latest Products</button>
+  
+    </div>
+<LatestProduct   />
 
 {/* Top Selling Product */}
 <TopSellingProduct />
