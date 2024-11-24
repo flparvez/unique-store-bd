@@ -8,7 +8,7 @@ type Props = {
 type Prorops = {
   slug: string;
   name: string
-  image: string
+  images: string
 };
 
 export async function generateMetadata(
