@@ -32,7 +32,7 @@ export const categoryApi = createApi({
  editCategory: builder.mutation({
   query: ({ slug, updatedCategory }) => ({
     url: `categories/${slug}`,
-    method: 'PATCH',
+    method: 'PUT',
     body: updatedCategory,
   }),
   invalidatesTags: [{ type: 'Category', id: 'LIST' }],

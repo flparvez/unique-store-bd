@@ -11,7 +11,7 @@ const HomePage = () => {
       <TopProductSLider />
 
       {/* Special Product Bannar/ Product */}
-<h1>Special Product Bannar Static</h1>
+
 <CategorySlider />
 
 {/* Latest Product 16 Product With Pagination */}

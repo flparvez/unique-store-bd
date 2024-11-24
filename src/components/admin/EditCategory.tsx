@@ -44,7 +44,7 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
   const [editCategory, { isLoading }] = useEditCategoryMutation();
 
   const onSubmit = async (data: Category) => {
-    const categoryUpdate = await editCategory({ slug, updatedCategory: data }).unwrap();
+    const categoryUpdate = await editCategory({ slug:slug, updatedCategory: data }).unwrap();
     if (categoryUpdate) {
       toast.success("Category Updated");
       router.push('/admin/category');
