@@ -39,7 +39,10 @@ export default function RootLayout({
         {children}
         </Provider>
         <Toaster richColors duration={1200}  position="top-right"/>
-        <TopMain  />
+        <div className="mb-12">
+        <TopMain   />
+        </div>
+       
         </div>
         
       </body>

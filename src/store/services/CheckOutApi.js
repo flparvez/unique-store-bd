@@ -10,7 +10,7 @@ export const checkoutApi = createApi({
     // Mutation for adding an order
     addOrder: builder.mutation({
       query: (body) => ({
-        url: 'order',
+        url: 'orders',
         method: 'POST',
         body,
       }),
@@ -21,7 +21,7 @@ export const checkoutApi = createApi({
 
     editOrder: builder.mutation({
       query: ({ id, updatedOrder }) => ({
-        url: `/order/${id}`,
+        url: `/orders/${id}`,
         method: 'PATCH',
         body: updatedOrder,
       }),
@@ -29,23 +29,23 @@ export const checkoutApi = createApi({
     }),
     // Query for getting orders
     getOrders: builder.query({
-      query: (id) => ({
-        url: `order?userId=${id}`,
+      query: () => ({
+        url: `orders`,
       }),
       providesTags: [{ type: 'Order', id: 'LIST' }],
     }),
         // Query for getting single order
     getOrderById: builder.query({
       query: (id) => ({
-        url: `order/${id}`,
+        url: `orders/${id}`,
       }),
       providesTags: [{ type: 'Order', id: 'LIST' }],
     }),
     // delete order by id and userId
     deleteOrder: builder.mutation({
-      query: ({id,userId}) => ({
+      query: ({id}) => ({
         // url: `order/${id}`,
-        url: `order/${id}?userId=${userId}`,
+        url: `orders/${id}`,
        
         method: 'DELETE',
       }),
