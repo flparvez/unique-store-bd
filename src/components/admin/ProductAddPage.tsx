@@ -18,6 +18,7 @@ type Category = {
   name: string;
 };
 
+
 type Inputs = {
   name: string;
   description: string; // Updated to string type
@@ -33,6 +34,7 @@ type Inputs = {
 };
 
 export default function AddProductForm () {
+
   const router = useRouter();
 
   const { data } = useGetCategoriesQuery("");
@@ -95,7 +97,15 @@ export default function AddProductForm () {
             ))}
           </select>
         </LabelInputContainer>
-
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="tags">Tags</Label>
+          <select {...register("tags", { required: true })} className="select">
+          
+              <option  value={"all"}> All</option>
+              <option  value={"best-sell"}>Best Sell</option>
+        
+          </select>
+        </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="images">Image Link</Label>
           <Input
