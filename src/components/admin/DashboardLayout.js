@@ -1,11 +1,19 @@
 // components/DashboardLayout.tsx
+import { auth } from '@/auth';
 import Sidebar from './Sidebar';
+import { redirect } from 'next/navigation';
 
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
 
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+
+const DashboardLayout = async ({ children }) => {
+
+  const session = await auth()
+const user = session?.user
+const admin = user?.role==='admin'
+
+
+if(!admin) redirect('/')
+
   return (
     <div className="flex">
       <Sidebar />

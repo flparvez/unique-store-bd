@@ -17,7 +17,7 @@ import { redirect } from "next/navigation"
 
 const Page = async () => {
 const session = await auth()
-console.log(session)
+
 if(session?.user) redirect('/')
   return (
     <div className='flex justify-center '>

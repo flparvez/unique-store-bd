@@ -1,7 +1,7 @@
 import { auth } from '@/auth';
 import { handleSignOut } from '@/lib/logout';
 import OrderTable from '@/components/OrderTable';
-
+import { redirect } from "next/navigation"
 import React from 'react';
 
 export const metadata = {
@@ -17,9 +17,9 @@ const Profile = async () => {
   const orders = await response.json();
 
   // Fetch user session
-  const session = await auth();
-  const user = session?.user;
-
+  const session = await auth()
+const user = session?.user
+  if(!session?.user) redirect('/auth/login')
   // Filter orders by user ID
   const userOrders = orders.filter((order) => order.user === user?.id);
 

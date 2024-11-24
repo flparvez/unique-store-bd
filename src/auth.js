@@ -4,7 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { compare } from 'bcryptjs';
 import { connectDb } from "./lib/DbConnect";
-import { User } from "./models/userSchema";
+import {User}  from "./models/userSchema";
 
 
 

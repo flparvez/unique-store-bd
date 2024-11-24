@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import {hash} from 'bcryptjs'
 import { redirect } from "next/navigation"
 import { connectDb } from "../../../lib/DbConnect"
-import { User } from "../../../models/userSchema"
+import {User} from "../../../models/userSchema"
 
 
 
