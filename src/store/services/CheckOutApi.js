@@ -22,7 +22,7 @@ export const checkoutApi = createApi({
     editOrder: builder.mutation({
       query: ({ id, updatedOrder }) => ({
         url: `/orders/${id}`,
-        method: 'PATCH',
+        method: 'PUT',
         body: updatedOrder,
       }),
       invalidatesTags: [{ type: 'Order', id: 'LIST' }],

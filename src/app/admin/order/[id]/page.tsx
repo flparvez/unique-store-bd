@@ -1,11 +1,19 @@
+import DashboardLayout from '@/components/admin/DashboardLayout'
+import OrderInfoPage from '@/components/admin/OrderInfoPage'
 import React from 'react'
-import DashboardLayout from '@/components/admin/DashboardLayout';
-const OrderInfo = () => {
+
+const OrderInfo = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) => {
+  const id = (await params).id
+
   return (
   <DashboardLayout>
-
+ <h1 className="text-2xl font-bold">Order Details </h1>
     <div>
-      <h2>Order Info</h2>
+     <OrderInfoPage id={id} />
     </div>
   </DashboardLayout>
   )

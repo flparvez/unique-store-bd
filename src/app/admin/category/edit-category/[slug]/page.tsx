@@ -8,7 +8,7 @@ const EditCategory =async ({
 }) => {
 
   const slug = (await params).slug
- console.log(slug)
+
   return (
   <DashboardLayout>
  <h1 className="text-2xl font-bold">Edit Category</h1>
