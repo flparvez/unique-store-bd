@@ -106,6 +106,9 @@ export default function AddProductForm () {
         
           </select>
         </LabelInputContainer>
+
+
+
         <LabelInputContainer className="mb-4">
           <Label htmlFor="images">Image Link</Label>
           <Input

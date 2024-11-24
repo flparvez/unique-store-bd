@@ -54,6 +54,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ slug }) => {
         setValue("category", data.category?._id);
         setValue("images", data.images);
         setValue("price", data.price);
+        setValue("tags", data.tags);
         setValue("stock", data.stock);
         setValue("sold", data.sold);
         setValue("video", data.video);
@@ -121,6 +122,16 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ slug }) => {
             ))}
           </select>
         </LabelInputContainer>
+        <LabelInputContainer className="mb-4">
+          <Label htmlFor="tags">Tags</Label>
+          <select {...register("tags", { required: true })} className="select">
+          
+              <option  value={"all"}> All</option>
+              <option  value={"best-sell"}>Best Sell</option>
+        
+          </select>
+        </LabelInputContainer>
+
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="images">Image Link</Label>
