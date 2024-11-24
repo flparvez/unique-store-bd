@@ -1,10 +1,12 @@
 import AllProducts from '@/components/AllProducts'
+import CategorySlider from '@/components/CategorySlider'
 import React from 'react'
 
 const Products = () => {
   return (
     <div>
-      <h2>All Products</h2>
+  
+      <CategorySlider />
       <AllProducts />
     </div>
   )

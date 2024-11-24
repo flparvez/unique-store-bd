@@ -87,7 +87,7 @@ const CartPage = () => {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">৳{item.price.toFixed(2)* item.quantity}</div>
+                          <div className="text-sm text-gray-900">৳{(item.price * item.quantity).toFixed(2)}</div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <button
@@ -104,31 +104,21 @@ const CartPage = () => {
               </div>
             </div>
           </div>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-4 flex justify-between">
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleClearCart}
             >
               Clear Cart
             </button>
-            <br />
-            <br />
-            <h2
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              
-            >
-              <Link href='/checkout'>Order Now</Link>
-              
-            </h2>
+            <Link href="/checkout" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Order Now
+             
+            </Link>
           </div>
-
         </div>
-        
       )}
-
-
-</div>
-    
+    </div>
   );
 };
 

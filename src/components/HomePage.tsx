@@ -16,12 +16,16 @@ const HomePage = () => {
 
 {/* Latest Product 16 Product With Pagination */}
 <div className='flex justify-center'>
-        <button className='py-3 px-6 mt-14 text-white bg-black rounded-md'>Latest Products</button>
+        <button className='py-3 px-6 mt-8 text-white bg-black rounded-md'>Latest Products</button>
   
     </div>
 <LatestProduct   />
 
 {/* Top Selling Product */}
+<div className='flex justify-center'>
+        <button className='py-3 px-6  text-white bg-black rounded-md'>Top Selling Products</button>
+  
+    </div>
 <TopSellingProduct />
     </div>
   )

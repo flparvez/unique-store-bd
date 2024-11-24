@@ -7,15 +7,14 @@ import Image from 'next/image';
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-// import LiveChatButton from '@/components/custom/LiveChatButton';
-// import LatestProductList from '@/components/custom/LatestProductList';
+import LiveChatButton from '@/components/LiveChatButton';
+import LatestProductList from '@/components/LatestProductList';
 
 const ProductPage = ({ slug }: { slug: string }) => {
   
   const { data:product } = useGetProductBySlugQuery(slug);
   const router = useRouter();
- 
-console.log(product)
+
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -53,7 +52,7 @@ console.log(product)
             {/* only lg */}
             <div className='hidden lg:block'>
            {/* Latest Product Section */}
-           {/* <LatestProductList   /> */}
+           <LatestProductList   />
             </div>
   
   
@@ -137,12 +136,12 @@ console.log(product)
         </div>
   
         {/* Live Chat Button */}
-        {/* <LiveChatButton /> */}
+        <LiveChatButton />
   
           {/* only lg */}
           <div className='lg:hidden block'>
            {/* Latest Product Section */}
-           {/* <LatestProductList   /> */}
+           <LatestProductList   />
             </div>
       </div>
     );

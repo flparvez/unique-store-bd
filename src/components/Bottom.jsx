@@ -2,9 +2,10 @@
 
 
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 const Topbar = () => {
-
+  const cart = useSelector((state) => state?.cart);
   return (
     <>
      
@@ -68,7 +69,12 @@ const Topbar = () => {
             Cart
             {/* {cartItemCount > 0 && ( */}
               <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-1">
-                {/* {cartItemCount} */} 4
+              (
+                  {cart.items.reduce(
+                    (acc, item) => acc + item.quantity,
+                    0
+                  )}
+                  )
               </span>
             {/* )} */}
           </Link>

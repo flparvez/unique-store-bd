@@ -5,12 +5,15 @@ import {Provider,store} from "@/components/index"
 import TopMain from "@/components/TopMain";
 import { Toaster } from "sonner";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
+// Importing fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -29,22 +32,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div> 
-        <Provider store={store}> 
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Provider store={store}>
           <Header />
-      
-        {children}
+          <main>{children}</main>
+          <Toaster richColors duration={1500} position="top-right" />
+          <div className="mb-8">
+            <TopMain />
+          </div>
+          <Footer />
         </Provider>
-        <Toaster richColors duration={1200}  position="top-right"/>
-        <div className="mb-12">
-        <TopMain   />
-        </div>
-       
-        </div>
-        
       </body>
     </html>
   );

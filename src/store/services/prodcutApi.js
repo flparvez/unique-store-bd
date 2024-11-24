@@ -4,6 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
+  // baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:4000/api/' }),
   baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/' }),
   tagTypes: ['Product', 'Cart'],
   endpoints: (builder) => ({
@@ -47,7 +48,13 @@ export const productsApi = createApi({
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }, { type: 'Cart' }],
     }),
+// fetch product from search query
 
+
+  fetchProductsFromSearchQuery: builder.query({
+    query: (query) => `products/search?query=${query}`,
+    providesTags: (result, error, query) => [{ type: 'Product', id: query }],
+  }),
 
   }),
 });
@@ -58,5 +65,6 @@ export const {
   useAddProductMutation,
   useDeleteProductMutation,
   useEditProductMutation,
-useGetProductByCategorySlugQuery
+useGetProductByCategorySlugQuery,
+useFetchProductsFromSearchQueryQuery
 } = productsApi;
