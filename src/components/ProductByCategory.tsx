@@ -6,6 +6,7 @@ import { useGetProductsQuery } from "@/store/services/prodcutApi";
 import Image from 'next/image';
 import Link from 'next/link';
 import Pagination from './Pagination';
+import Loading from './Loading';
 
 // Define the Product type
 interface Product {
@@ -38,7 +39,7 @@ interface ProductByCategoryProps {
 }
 
 const ProductByCategory: React.FC<ProductByCategoryProps> = ({ slug }) => {
-  const { data } = useGetProductsQuery("");
+  const { data,isLoading } = useGetProductsQuery("");
 
   // Filter products by category slug
   const filterProducts = data?.filter((product: Product) => product?.category?.slug === slug);
@@ -53,7 +54,10 @@ const ProductByCategory: React.FC<ProductByCategoryProps> = ({ slug }) => {
   // Change page
   const paginate = (pageNumber:number) => setCurrentPage(pageNumber)
  
-
+  if (isLoading) {
+    return <Loading />
+  }
+  
 
   return (
     <div className="container mx-auto sm:px-4 px-2 py-8">

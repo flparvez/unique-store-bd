@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useGetProductsQuery } from "@/store/services/prodcutApi";
+import Loading from './Loading';
 
 type Products = {
   _id: string;
@@ -25,7 +26,7 @@ type Products = {
 
 
 const LatestProduct = () => {
-  const {data: products} = useGetProductsQuery("")
+  const {data: products,isLoading} = useGetProductsQuery("")
 // const LatestProduct = ({products}: {products: Products[] }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
@@ -38,7 +39,9 @@ const LatestProduct = () => {
   // Change page
   const paginate = (pageNumber:number) => setCurrentPage(pageNumber)
  
-
+if (isLoading) {
+  return <Loading />
+}
 
   return (
 <div className="container mx-auto sm:px-4 px-2 py-8">

@@ -1,3 +1,4 @@
+
 import ProductDetailsPage from '@/components/ProductDetailsPage'
 import type { Metadata, ResolvingMetadata } from 'next';
 
@@ -26,6 +27,10 @@ export async function generateMetadata(
     const product = products.find((prod:Prorops ) => prod.slug === slug);
 
     if (!product) {
+     
+        
+   
+      
       // Handle case where product is not found
       return {
         title: 'Product Not Found',

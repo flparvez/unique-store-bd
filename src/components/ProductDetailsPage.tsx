@@ -9,10 +9,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import LiveChatButton from '@/components/LiveChatButton';
 import LatestProductList from '@/components/LatestProductList';
+import Loading from './Loading';
 
 const ProductPage = ({ slug }: { slug: string }) => {
   
-  const { data:product } = useGetProductBySlugQuery(slug);
+  const { data:product, isLoading } = useGetProductBySlugQuery(slug);
   const router = useRouter();
 
   const dispatch = useDispatch();
@@ -31,8 +32,10 @@ const ProductPage = ({ slug }: { slug: string }) => {
     toast.success('Product added to cart');
     router.push('/cart');
   };
-
-  // if (!product) return <Loading />;
+  if (isLoading) {
+    return <Loading />
+  }
+  
   if (!product) {
     <h2>Product Not Found</h2>
   }else{
