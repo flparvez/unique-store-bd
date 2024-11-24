@@ -55,4 +55,4 @@ export const checkoutApi = createApi({
   }),
 });
 
-export const { useAddOrderMutation, useGetOrdersQuery,useGetOrderByIdQuery,useEditOrderMutation,useDeleteOrderMutation } = checkoutApi;
+export const { useAddOrderMutation,useGetOrderByIdQuery,useEditOrderMutation,useDeleteOrderMutation,useGetOrdersQuery } = checkoutApi;

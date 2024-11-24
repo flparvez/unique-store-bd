@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
-const CheckoutPage = () => {
+const CheckoutPage = ({user}) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -16,6 +16,7 @@ const CheckoutPage = () => {
   const [addOrder] = useAddOrderMutation();
 
   const [paymentDetails, setPaymentDetails] = useState({
+    
     cname: '',
     email: '',
     phone: '',
@@ -42,6 +43,7 @@ const CheckoutPage = () => {
   const cartTotal = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const ndata = {
+    user: user?.id,
     name: paymentDetails.cname,
     email: paymentDetails.email,
     phone: paymentDetails.phone,
@@ -58,6 +60,7 @@ const CheckoutPage = () => {
     e.preventDefault();
     try {
       await addOrder(ndata).unwrap();
+  
       setIsProcessing(false);
       dispatch(clearCart());
       toast.success('Order placed successfully!');

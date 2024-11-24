@@ -61,7 +61,7 @@ const Navbar = () => {
             className="border p-2 w-full rounded-lg text-gray-800"
           />
           {showResults && (
-            <div className="absolute left-0 right-0 bg-white shadow-md mt-2 rounded-lg z-10">
+            <div className="absolute left-0 right-0 bg-white shadow-md  rounded-lg z-10">
               {isLoading && <p className="p-2">Loading...</p>}
               {error && <p className="p-2">Error: {error.message}</p>}
               <ul className="max-h-72 overflow-y-auto">
@@ -104,14 +104,14 @@ const Navbar = () => {
             />
           </svg>
           Cart
-          <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-1">
+          <span className="absolute top-0 right-0 text-sm bg-red-500 text-white rounded-full px-1">
             {cart.items.reduce((acc, item) => acc + item.quantity, 0)}
           </span>
         </Link>
       </div>
 
       {/* Welcome Text */}
-      <div className="w-full text-center text-gray-800 dark:text-white text-lg font-semibold mt-4">
+      <div className="w-full text-center text-gray-800 dark:text-white text-lg font-semibold ">
         Welcome to Unique Store
       </div>
     </header>

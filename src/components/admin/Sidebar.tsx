@@ -7,7 +7,7 @@ const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={`flex flex-col h-screen p-3 dark:bg-gray-900 dark:text-white bg-white text-black ${isOpen ? 'sm:w-64 w-48' : 'sm:w-20 w-10'} transition-width duration-300`}>
+    <div className={`flex flex-col h-screen p-3 mt-32 dark:bg-gray-900 dark:text-white bg-white text-black ${isOpen ? 'sm:w-64 w-48' : 'sm:w-20 w-10'} transition-width duration-300`}>
       <div className="flex items-center justify-between mb-6">
         <h2 className={`text-xl font-bold ${!isOpen && 'hidden'}`}>Admin</h2>
         <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">

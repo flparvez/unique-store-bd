@@ -28,9 +28,7 @@ export async function generateMetadata(
 
     if (!product) {
      
-        
    
-      
       // Handle case where product is not found
       return {
         title: 'Product Not Found',
@@ -40,13 +38,14 @@ export async function generateMetadata(
       };
     }
 
-    // Optionally access and extend (rather than replace) parent metadata
+
+
     const previousImages = (await parent).openGraph?.images || [];
 
     return {
-      title: product.name,
+      title: product?.name,
       openGraph: {
-        images: [product.image, ...previousImages],
+        images: [product?.images, ...previousImages],
       },
     };
   } catch (error) {

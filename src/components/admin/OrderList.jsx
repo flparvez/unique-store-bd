@@ -32,6 +32,9 @@ const OrderList = () => {
   const handleDelete = async (id) => {
     await deleteOrder({id}).unwrap();
     };
+    if (!orderData) {
+      return <h2 className='mt-32'>No orders found</h2>
+    }
   return (
 
  
