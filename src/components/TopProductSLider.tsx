@@ -8,7 +8,7 @@ import SwiperSlides from './SwiperSlides'
 const TopProductSLider = () => {
   const {data} = useGetProductsQuery("")
   
-  const productsSlider = data?.slice(0, 20);
+  const productsSlider = data?.slice(12, 23);
 
   return (
     <div>

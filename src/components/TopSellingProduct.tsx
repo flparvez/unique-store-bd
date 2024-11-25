@@ -41,9 +41,9 @@ const TopSellingProduct = () => {
       <Image width={300} height={300} src={product.images} alt={product.name} className="object-cover w-full h-full" />
       </div>
       <div className="p-3">
-        <h3 className="text-sm font-medium sm:text-xl  sm:font-semibold">{product.name}</h3>
+      <h3 className=" text-black text-xl sm:text-xl  font-bold">{product.name}</h3>
         <div className="flex items-center justify-between mt-2">
-          <span className="text-indigo-600 font-bold">৳{product.price}</span>
+          <span className="text-red-600 text-xl font-bold">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>
         </div>
       </div>
