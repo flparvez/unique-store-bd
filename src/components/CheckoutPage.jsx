@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '@/store/cartSlice';
 import { useAddOrderMutation } from '@/store/services/CheckOutApi';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
@@ -71,7 +71,7 @@ const CheckoutPage = ({user}) => {
     }
   };
 
-  if (cart.items.length === 0) return <h2>Your Cart is Empty</h2>;
+  if (cart.items.length === 0) return redirect('/products');
 
   return (
     <div>
@@ -144,7 +144,7 @@ const CheckoutPage = ({user}) => {
               </div>
             ))}
             <div className="mb-4 flex justify-center">
-              <label className="block text-sm font-medium py-8 px-4 text-gray-700">Shipping <span className='text-red-600'>*</span></label>
+              <label className="block text-xl font-bold py-2 px-4 text-gray-700">Shipping <span className='text-red-600'>*</span></label>
               <div className="flex items-center">
                 <input
                   type="radio"
@@ -169,19 +169,19 @@ const CheckoutPage = ({user}) => {
               </div>
             </div>
             {paymentDetails.ShippingType === 'dhakao' && (
-              <div className="mb-4">
+              <div className="">
                 <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳120</h2>
               </div>
             )}
             {paymentDetails.ShippingType === 'dhaka' && (
-              <div className="mb-4">
+              <div className="">
                 <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳60</h2>
               </div>
             )}
           </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700">Payment Type <span className='text-red-600'>*</span></label>
+        <div className="py-2">
+          <label className="block text-xl mb-3 font-bold text-gray-700">Payment Type <span className='text-red-600'>*</span></label>
           <div className="flex items-center">
             <input
               type="radio"
@@ -205,22 +205,40 @@ const CheckoutPage = ({user}) => {
             <label htmlFor="partialPayment">Partial Payment</label>
           </div>
         </div>
-        {paymentDetails.paymentType === 'partial' && (
-          <div className="mb-4">
-            <label htmlFor="partialAmount" className="block text-sm font-medium text-gray-700">Transaction ID <span className='text-red-600'>*</span></label>
-            <input
-              type="text"
-              id="partialAmount"
-              name="transaction"
-              value={paymentDetails.transaction}
-              onChange={handleCardInput}
-              placeholder="Bkash Transaction Id"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              required
-            />
+           {paymentDetails.paymentType === 'full' && (
+          <div className="my-2">
+
+            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'>Pay Full Payment ৳{dhaka? ndata.total: dhakaO && ndata.total}</h2>
+           
           </div>
         )}
-        {paymentDetails.paymentType === 'full' && (
+
+             {paymentDetails.paymentType === 'partial' && (
+          <div className="mb-4">
+            
+            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'> Pay ৳100 online & ৳{dhaka? ndata.total -100: dhakaO && ndata.total -100}  with Cash on Delivery</h2>
+           
+          </div>
+        )}
+
+        
+<h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700 border'>Bkash(personal): 01608257876</h2>
+<br />
+        {/* Transaction ID */}
+        <div className="mb-4">
+          <label htmlFor="transaction" className="block text-sm font-medium text-gray-700">Transaction ID <span className='text-red-600'>*</span></label>
+          <input
+            type="text"
+            id="transaction"
+            name="transaction"
+            value={paymentDetails.transaction}
+            onChange={handleCardInput}
+            placeholder="Enter Transaction ID"
+            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required
+          />
+        </div>
+     
           <div className="mb-4">
             <label htmlFor="transactionId" className="block text-sm font-medium text-gray-700">Transaction ID <span className='text-red-600'>*</span></label>
             <input
@@ -234,7 +252,7 @@ const CheckoutPage = ({user}) => {
               required
             />
           </div>
-        )}
+       
         <div className="flex items-center justify-between">
           <button
             type="submit"

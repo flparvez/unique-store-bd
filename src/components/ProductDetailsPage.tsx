@@ -40,17 +40,17 @@ const ProductPage = ({ slug }: { slug: string }) => {
     <h2>Product Not Found</h2>
   }else{
     return (
-      <div className="container mx-auto p-4">
+      <div className="container sm:mt-24 mt-[65px] mx-auto p-2">
         {/* Product Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}
-          <div className="relative">
+          <div className="overflow-hidden justify-center ">
             <Image
-              width={300}
-              height={300}
+              width={500}
+              height={500}
               src={product.images}
               alt="Product Image"
-              className="w-full h-96   object-cover rounded-md"
+              className="   object-cover rounded-md"
             />
             {/* only lg */}
             <div className='hidden lg:block'>
@@ -68,13 +68,18 @@ const ProductPage = ({ slug }: { slug: string }) => {
               {/* Product Title */}
               <h1 className="sm:text-3xl text-xl font-bold mb-4">{product.name}</h1>
   
-              {/* Product Price */}
-              <p className="text-xl sm:text-2xl text-[#f30] font-semibold mb-4">
-                ৳{product.price}
+          <div className='flex gap-8'>
+    {/* Product Price */}
+    <p className='text-xl text-black'>    Price: ৳<span className="text-xl sm:text-2xl text-[#f30] font-semibold ">
+             {product.price} </span>
               </p>
+        <p className='text-x text-blackl '> Market Price:  <span className="text-xl  text-[#f30] line-through">
+            ৳{product.mprice}
+              </span></p>
   
+          </div>
               {/* Product Stock */}
-              <p className="text-md text-gray-700 mb-4">Stock: {product.stock}</p>
+              <p className="text-xl text-gray-800 mb-2">Stock: {product.stock}</p>
   
               {/* Product Category */}
               <p className="flex flex-wrap gap-2 mb-6">

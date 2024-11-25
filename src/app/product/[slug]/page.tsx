@@ -67,15 +67,6 @@ export async function generateMetadata(
 
 
 
-
-
-
-
-
-
-
-
-
 const ProductDetails  = async ({
   params,
 }: {
