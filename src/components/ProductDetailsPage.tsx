@@ -47,10 +47,10 @@ const ProductPage = ({ slug }: { slug: string }) => {
           <div className="overflow-hidden justify-center ">
             <Image
               width={500}
-              height={500}
+              height={250}
               src={product.images}
               alt="Product Image"
-              className="   object-cover rounded-md"
+              className=" h-[350px] w-[500px]   object-cover rounded-md"
             />
             {/* only lg */}
             <div className='hidden lg:block'>
