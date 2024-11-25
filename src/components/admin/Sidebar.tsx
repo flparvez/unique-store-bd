@@ -33,10 +33,10 @@ const Sidebar = () => {
             </Link>
           </li>
            <li>
-            <Link href="/admin/users">
+            <Link href="/admin/orders">
               <h2 className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700">
                 <FaUserAlt />
-                <span className={`${!isOpen && 'hidden'}`}>Users</span>
+                <span className={`${!isOpen && 'hidden'}`}>Orders</span>
               </h2>
             </Link>
           </li>

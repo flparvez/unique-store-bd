@@ -37,7 +37,9 @@ const TopSellingProduct = () => {
 
 <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden">
   <Link href={`/product/${product.slug}`} className="block">
-      <Image width={300} height={300} src={product.images} alt={product.name} className="w-full h-48 object-cover" />
+  <div className="  overflow-hidden">
+      <Image width={300} height={300} src={product.images} alt={product.name} className="object-cover w-full h-full" />
+      </div>
       <div className="p-3">
         <h3 className="text-sm font-medium sm:text-xl  sm:font-semibold">{product.name}</h3>
         <div className="flex items-center justify-between mt-2">
