@@ -73,14 +73,25 @@ const ProductPage = ({ slug }: { slug: string }) => {
     <p className='text-xl text-black'>    Price: ৳<span className="text-xl sm:text-2xl text-[#f30] font-semibold ">
              {product.price} </span>
               </p>
-        <p className='text-x text-blackl '> Market Price:  <span className="text-xl  text-[#f30] line-through">
-            ৳{product.mprice}
+        <p className='text-xl text-blackl '> Market Price:   ৳<span className="text-xl  text-[#f30] line-through">
+          {product.mprice}
               </span></p>
   
           </div>
-              {/* Product Stock */}
-              <p className="text-xl text-gray-800 mb-2">Stock: {product.stock}</p>
+          <br />
+      <div className='flex gap-8'>
+    {/* Product Price */}
+    <p className="text-xl text-green-600 mb-2">Stock: {product.stock}</p>
   
+        <p className="text-xl  text-black"> * 
+            ({product.warrenty})
+           </p>
+  
+          </div>
+
+
+              {/* Product Stock */}
+             
               {/* Product Category */}
               <p className="flex flex-wrap gap-2 mb-6">
                 Category: <span className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md">

@@ -24,7 +24,7 @@ export async function generateMetadata(
     const products = await response.json();
 
     // Find the specific product by slug from the list of products
-    const product = products.find((prod:Prorops ) => prod.slug === slug);
+    const product = products?.find((prod:Prorops ) => prod.slug === slug);
 
     if (!product) {
      
