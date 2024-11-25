@@ -56,7 +56,7 @@ if (isLoading) {
         <h3 className="text-sm font-medium sm:text-xl  sm:font-semibold">{product.name}</h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-indigo-600 font-bold">৳{product.price}</span>
-          <span className="text-gray-500 line-through">৳{product.price +220}</span>
+          <span className="text-gray-500 line-through">৳{product.mprice}</span>
         </div>
       </div>
       </Link>

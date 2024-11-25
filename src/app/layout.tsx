@@ -21,13 +21,14 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://uniquestoreb.vercel.app/"),
+  metadataBase: new URL("https://uniquestorebd.vercel.app/"),
   keywords:["unique store","Unique Store Bd","quality is here"],
   title: "Unique Store Bd- Quality Is Here",
   description: "Unique Store Bd | Ecommerce Application - by parvez",
   verification: {
     other: {
-      // "google-site-verification": "0qTCYg37Xn4zPyJD_ECxvtKhF8S7Nfi_VfzBfVb0fBo",
+      "google-site-verification": "K23a8jBRyLQ0qv2vghHcC2eX-myx3WIDq-0IDwFukpY",
+   
     },
   }
 }
