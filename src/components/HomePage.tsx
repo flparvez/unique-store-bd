@@ -26,7 +26,7 @@ const DynamicTopSellingProduct = dynamic(() => import('./TopSellingProduct'), {
 
 const HomePage = () => {
   return (
-    <div>
+    <div className='mt-[75px]'>
       {/* Slider */}
       <DynamicTopProductSlider />
 

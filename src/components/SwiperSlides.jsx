@@ -31,7 +31,7 @@ const SwiperSlides = ({ products }) => {
         }}
         breakpoints={{
           0: { slidesPerView: 1 }, // For very small screens
-          450: { slidesPerView: 2 }, // For small screens
+          400: { slidesPerView: 2 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
           1024: { slidesPerView: 4 }, // For desktops
         }}
@@ -41,7 +41,7 @@ const SwiperSlides = ({ products }) => {
       >
         {products && products.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="w-[220px] h-[360px] sm:w-[250px] sm:h-[350px] mx-auto my-2">
+            <div className="w-[200px] h-[360px] sm:w-[250px] sm:h-[350px] mx-auto my-2">
               <Link href={`/product/${product.slug}`}>
                 <div className="overflow-hidden">
                   <Image
@@ -53,7 +53,7 @@ const SwiperSlides = ({ products }) => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm font-bold text-center">{product.name}</h3>
+                <h3 className="text-sm font-extrabold text-center">{product.name}</h3>
                 <p className="text-gray-500 font-bold text-center">{product.category.name}</p>
                 <p className="text-lg font-extrabold text-center">৳{product.price}</p>
               </Link>

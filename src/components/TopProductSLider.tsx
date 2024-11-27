@@ -3,6 +3,7 @@
 // import SwiperSlides from '@/components/SwiperSlide'
 import { useGetProductsQuery } from '@/store/services/prodcutApi'
 import SwiperSlides from './SwiperSlides'
+import { Button } from './ui/button'
 // import Loading from '@/components/Loading'
 
 const TopProductSLider = () => {
@@ -11,10 +12,10 @@ const TopProductSLider = () => {
   const productsSlider = data?.slice(12, 23);
 
   return (
-    <div>
+    <div >
       
-      <h2 className="text-3xl font-bold text-center mb-8">
-            Feature Products
+      <h2 className="text-xl font-bold text-center ">
+          <Button>Featured Product</Button>
           </h2>
  
  {/* Featured Products And Category With Link */}
