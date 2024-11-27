@@ -26,7 +26,7 @@ const Footer = () => {
           </Link>
           <Link href="/policy/after-sales-support" passHref>
             <h2 className=" text-white font-semibold rounded transition duration-300">
-              After-Sales Support
+              After Sales Support
             </h2>
           </Link>
         </div>
