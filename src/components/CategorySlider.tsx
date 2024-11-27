@@ -52,7 +52,7 @@ const CategorySlider: React.FC = () => {
           <div className="flex overflow-x-scroll scrollbar-hide">
             {data?.map((category: Category) => (
               <SwiperSlide key={category._id}>
-                <div className="flex-shrink-0 w-[150px] h-[200px] bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="flex-shrink-0 w-[150px] h-[220px] bg-white rounded-lg shadow-md overflow-hidden">
                   <Link href={`/products/${category.slug}`}>
                     <Image
                       width={150}
