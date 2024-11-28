@@ -1,35 +1,22 @@
+import { Product } from '@/models/product.models';
+import { connectDb } from '@/lib/DbConnect';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://uniquestorebd-api.vercel.app/";
-  const Url = "https://uniquestorebd.vercel.app/";
+  const baseUrl = "https://uniquestorebd.vercel.app/";
 
   try {
-    const response = await fetch(`${baseUrl}api/products`);
+    await connectDb(); // Ensure the database is connected
+    const products = await Product.find().lean(); // Fetch products from the database
 
-    // Check if the response is JSON
-    const contentType = response.headers.get('content-type');
-    if (!contentType || !contentType.includes('application/json')) {
-      console.error('Expected JSON response, but got:', contentType);
-      return [
-        {
-          url: Url,
-          lastModified: new Date().toISOString(),
-        }
-      ];
-    }
-
-    const data = await response.json();
-    const products = data;
-
-    const allProducts = products?.map((product: { slug: string; createdAt: string }) => ({
-      url: `${Url}product/${product.slug}`,
+    const allProducts = products.map((product) => ({
+      url: `${baseUrl}product/${product.slug}`,
       lastModified: new Date(product.createdAt).toISOString(),
     }));
 
     return [
       {
-        url: Url,
+        url: baseUrl,
         lastModified: new Date().toISOString(),
       },
       ...allProducts,
@@ -38,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Failed to fetch products:', error);
     return [
       {
-        url: Url,
+        url: baseUrl,
         lastModified: new Date().toISOString(),
       }
     ];
