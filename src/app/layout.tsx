@@ -22,9 +22,38 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://uniquestorebd.vercel.app/"),
-  keywords:["unique store","Unique Store Bd","quality is here"],
-  title: "Unique Store Bd- Quality Is Here",
-  description: "Unique Store Bd | Ecommerce Application - by parvez",
+  keywords: [
+    "unique store",
+    "Unique Store Bd",
+    "quality is here",
+    "Online Shopping BD",
+    "Authentic Products BD",
+    "Fast Delivery BD",
+    "Original Xiaomi Products BD",
+    "Xiaomi BD",
+    "Smartwatch BD",
+    "Watches BD",
+    "Microphones BD",
+    "WiFi Smart Switches BD",
+    "Home Automation BD",
+    "Headphones BD",
+    "YouTube Products BD",
+    "Quality Products BD",
+    "Online Shopping Bangladesh",
+    "Ecommerce BD",
+    "Buy Original Products BD",
+    "Bangladesh Shopping",
+    "Tech Gadgets BD",
+    "Electronics BD",
+    "Smart Devices BD",
+    "Affordable Shopping BD"
+  ],
+  title: "Unique Store Bd | Quality Is Here",
+  description: "Online Shopping BD. Unique Store Bd. Authentic পণ্য কিনুন এবং দ্রুত ডেলিভারি পান। Authentic Xiaomi পণ্য, ঘড়ি, Smartwatch, Microphones, WiFi Smart Switches, Home Automation পণ্য, Headphones, YouTube পণ্য কিনুন।বাংলাদেশের অনলাইন শপিংয়ের জন্য Unique Store BD Authentic পণ্য এবং দ্রুত ডেলিভারির নিশ্চয়তা। এখনই কিনুন এবং উপভোগ করুন।.",
+  
+
+
+
   verification: {
     other: {
       "google-site-verification": "K23a8jBRyLQ0qv2vghHcC2eX-myx3WIDq-0IDwFukpY",
