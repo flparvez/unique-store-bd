@@ -7,6 +7,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from './ui/button';
 
 const SwiperSlides = ({ products }) => {
   const [mounted, setMounted] = useState(false);
@@ -19,8 +20,9 @@ const SwiperSlides = ({ products }) => {
 
   return (
     <div className="swiper-container">
+      
       <Swiper
-        centeredSlides={true}
+       
         parallax={true}
         autoplay={{
           delay: 2500,
@@ -46,7 +48,7 @@ const SwiperSlides = ({ products }) => {
                 <div className="overflow-hidden">
                   <Image
                     width={220}
-                    height={220}
+                    height={200}
                     src={product.images}
                     alt={product.name}
                     className="object-cover rounded-t-lg"

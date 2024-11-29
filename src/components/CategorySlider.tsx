@@ -13,6 +13,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useGetCategoriesQuery } from '@/store/services/CategoryApi';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from './ui/button';
 
 // Define the Category type
 interface Category {
@@ -26,12 +27,16 @@ const CategorySlider: React.FC = () => {
   const { data } = useGetCategoriesQuery("");
 
   return (
-    <div className='w-full sm:w-[60%] justify-center mx-auto mt-4'>
+    <div className='w-full sm:w-[60%] justify-center mx-auto mt-2'>
+
+<div className='justify-center text-center'>
+<Button variant={'secondary'} className='mb-2 '>Category</Button>
+</div>
        <Swiper
-        centeredSlides={true}
+        
         parallax={true}
         autoplay={{
-          delay: 2500,
+          delay: 2900,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -52,11 +57,11 @@ const CategorySlider: React.FC = () => {
           <div className="flex overflow-x-scroll scrollbar-hide">
             {data?.map((category: Category) => (
               <SwiperSlide key={category._id}>
-                <div className="flex-shrink-0 w-[150px] h-[220px] bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="flex-shrink-0 w-[150px] h-[200px] bg-white rounded-lg  overflow-hidden">
                   <Link href={`/products/${category.slug}`}>
                     <Image
                       width={150}
-                      height={150}
+                      height={140}
                       src={category.image}
                       alt={category.name}
                       className=" object-cover rounded"

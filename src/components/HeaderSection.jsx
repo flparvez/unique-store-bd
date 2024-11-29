@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-black shadow-md  sm:py-2 z-50">
-      <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
+      <div className="container mx-auto flex items-center justify-between px-2 md:px-8">
         {/* Logo */}
         <div className="w-auto">
           <Link href="/">
@@ -111,8 +111,8 @@ const Navbar = () => {
       </div>
 
       {/* Welcome Text */}
-      <div className="w-full text-center text-gray-800 dark:text-white text-lg font-semibold ">
-        <marquee>আসসালামু আলাইকুম সম্মানিত সদস্য আপনাকে অভিনন্দন ওয়েবসাইটে প্রবেশ করার
+      <div className="w-full text-center text-gray-800 dark:text-white text-lg font-bold ">
+        <marquee >আসসালামু আলাইকুম সম্মানিত সদস্য আপনাকে অভিনন্দন ওয়েবসাইটে প্রবেশ করার
           জন্য। আমাদের কাছে পেয়ে যাবেন টেকসই নিত্য প্রয়োজনীয় ইলেকট্রনিক
           মালামাল। আপনার পছন্দের প্রোডাক্ট এড কার্ড করে এখনই অর্ডার করুন।</marquee>
       </div>
