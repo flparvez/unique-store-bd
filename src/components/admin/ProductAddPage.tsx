@@ -58,7 +58,7 @@ export default function AddProductForm () {
   };
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data)
+    
     const product = await addProduct({ body: { ...data, description: data.description } }).unwrap();
     if (product) {
       toast.success("Product Created Successfully");
