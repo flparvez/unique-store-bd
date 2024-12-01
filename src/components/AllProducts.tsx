@@ -27,7 +27,11 @@ type Products = {
 const AllProducts = () => {
   const {data: products,isLoading} = useGetProductsQuery("")
 // const LatestProduct = ({products}: {products: Products[] }) => {
- 
+  const truncateText = (text:string, maxLength:number) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "";
+    }
+  }
 if (isLoading) {
   return <Loading />
 }
@@ -51,7 +55,7 @@ if (isLoading) {
   />
 </div>
       <div className="p-3">
-        <h3 className="text-sm text-black sm:text-xl  font-bold">{product.name}</h3>
+      <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-indigo-600 font-bold">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice }</span>

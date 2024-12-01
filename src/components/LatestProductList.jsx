@@ -7,7 +7,11 @@ import React from 'react'
 const LatestProductList = () => {
   const {data} = useGetProductsQuery()
   const latestProducts = data?.slice(0, 10);
-  
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "";
+    }
+  }
   return (
     <div>
       <h2 className='text-2xl font-bold text-center mt-4'>Latest Products</h2>
@@ -23,12 +27,12 @@ const LatestProductList = () => {
     height={300}
     src={product.images}
     alt={product.name}
-    className="object-cover w-full h-full"
+    className="object-cover "
     loading="lazy"
   />
 </div>
       <div className="p-3">
-      <h3 className="text-sm text-black sm:text-xl  font-bold">{product.name}</h3>
+      <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-indigo-600 font-bold">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>

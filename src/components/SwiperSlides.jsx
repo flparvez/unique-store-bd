@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from './ui/button';
+
 
 const SwiperSlides = ({ products }) => {
   const [mounted, setMounted] = useState(false);
@@ -17,7 +17,12 @@ const SwiperSlides = ({ products }) => {
   }, []);
 
   if (!mounted) return null;
-
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "";
+    }
+  }
+  
   return (
     <div className="swiper-container">
       
@@ -33,7 +38,8 @@ const SwiperSlides = ({ products }) => {
         }}
         breakpoints={{
           0: { slidesPerView: 1 }, // For very small screens
-          400: { slidesPerView: 2 }, // For small screens
+          360: { slidesPerView: 2 }, // For small screens
+          580: { slidesPerView: 3 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
           1024: { slidesPerView: 4 }, // For desktops
         }}
@@ -43,7 +49,7 @@ const SwiperSlides = ({ products }) => {
       >
         {products && products.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="w-[200px] h-[360px] sm:w-[250px] sm:h-[350px] mx-auto my-2">
+            <div className="w-[180px] h-[360px] sm:w-[250px] sm:h-[350px] mx-auto my-2">
               <Link href={`/product/${product.slug}`}>
                 <div className="overflow-hidden">
                   <Image
@@ -55,8 +61,8 @@ const SwiperSlides = ({ products }) => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm font-extrabold text-center">{product.name}</h3>
-                <p className="text-gray-500 font-bold text-center">{product.category.name}</p>
+                <h3 className="text-sm font-extrabold text-center">{truncateText(product.name, 38)}..</h3>
+                <p className="text-blue-700 font-bold text-center">{product.category.name}</p>
                 <p className="text-lg font-extrabold text-center">৳{product.price}</p>
               </Link>
             </div>
