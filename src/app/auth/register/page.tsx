@@ -14,6 +14,7 @@ import Link from "next/link"
 
 // import { toast } from "sonner"
 import RegisterC from "./RegisterC"
+import { signIn } from "@/auth"
 
 
 
@@ -32,10 +33,13 @@ const Page = () => {
       </CardContent>
   <CardFooter className="flex flex-col gap-4">
     <span>Or</span>
-    <form action="">
+    <form action={async ()=>{
+      "use server"
+      await signIn("google")
+    }}>
         <Button type="submit">Register With Google</Button>
     </form>
-    <Link href='/login'>
+    <Link href='/auth/login'>
     Already have an account?  Login</Link>
   </CardFooter>
     </Card>

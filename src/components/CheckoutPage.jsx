@@ -226,14 +226,14 @@ const CheckoutPage = ({user}) => {
 <br />
         {/* Transaction ID */}
         <div className="mb-4">
-          <label htmlFor="transaction" className="block text-sm font-medium text-gray-700">Transaction ID <span className='text-red-600'>*</span></label>
+          <label htmlFor="transaction" className="block text-sm font-medium text-gray-700">Last 4 Digits of Transaction<span className='text-red-600'>*</span></label>
           <input
             type="text"
             id="transaction"
             name="transaction"
             value={paymentDetails.transaction}
             onChange={handleCardInput}
-            placeholder="Enter Transaction ID"
+            placeholder="7876"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             required
           />
