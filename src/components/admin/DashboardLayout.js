@@ -15,7 +15,7 @@ const admin = user?.role==='admin'
 if(!admin) redirect('/')
 
   return (
-    <div className="flex">
+    <div className="flex mt-[70px]">
       <Sidebar />
       <div className="flex-1 p-6 bg-gray-100 min-h-screen">
         {children}

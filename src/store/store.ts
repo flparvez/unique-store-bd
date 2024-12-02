@@ -14,7 +14,7 @@ export const store = configureStore({
     cart: cartReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
-    // [UserApi.reducerPath]: UserApi.reducer,
+
     [checkoutApi.reducerPath]: checkoutApi.reducer,
   
     

@@ -48,6 +48,15 @@ const Sidebar = () => {
               </h2>
             </Link>
           </li>
+                <li>
+            <Link href="/admin/users">
+              <h2 className="flex items-center space-x-3 p-2 rounded-md hover:bg-gray-700">
+                <FaCog />
+                <span className={`${!isOpen && 'hidden'}`}>Users</span>
+              </h2>
+            </Link>
+          </li>
+          
         </ul>
       </div>
     </div>
