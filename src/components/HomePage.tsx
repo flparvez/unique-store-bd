@@ -32,7 +32,9 @@ const HomePage = () => {
       <DynamicTopProductSlider />
 
       {/* Special Product Bannar/ Product */}
-
+      <div className='justify-center text-center'>
+<Button variant={'secondary'} className='mb-2 '>Category</Button>
+</div>
 <DynamicCategorySlider />
 
 {/* Latest Product 16 Product With Pagination */}
