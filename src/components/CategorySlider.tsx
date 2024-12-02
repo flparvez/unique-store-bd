@@ -27,7 +27,7 @@ const CategorySlider: React.FC = () => {
   const { data } = useGetCategoriesQuery("");
 
   return (
-    <div className='w-full sm:w-[60%] justify-center mx-auto mt-2'>
+    <div className='w-full bg-[#ffe9e7] sm:w-[60%] justify-center h-[250px] mx-auto mt-2'>
 
 <div className='justify-center text-center'>
 <Button variant={'secondary'} className='mb-2 '>Category</Button>
@@ -53,20 +53,22 @@ const CategorySlider: React.FC = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        <div className="container mx-auto px-2">
-          <div className="flex overflow-x-scroll scrollbar-hide">
+        <div className="container mx-auto ">
+          <div className="flex overflow-x-scroll scrollbar-hide bg-[#ffe9e7]">
             {data?.map((category: Category) => (
               <SwiperSlide key={category._id}>
-                <div className="flex-shrink-0 w-[150px] h-[200px] bg-white rounded-lg  overflow-hidden">
+                <div className="flex-shrink-0  bg-[#ffe9e7]   overflow-hidden">
                   <Link href={`/products/${category.slug}`}>
-                    <Image
+                   <div className='sm:ml-14 ml-[22px]'>
+                   <Image
                       width={150}
                       height={140}
                       src={category.image}
                       alt={category.name}
-                      className=" object-cover rounded"
+                      className=" object-cover  rounded"
                     />
-                    <div className="p-2">
+                   </div>
+                    <div className="p-4">
                       <h3 className="text-lg font-semibold text-center">{category.name}</h3>
                     </div>
                   </Link>

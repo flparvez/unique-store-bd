@@ -49,15 +49,15 @@ const SwiperSlides = ({ products }) => {
       >
         {products && products.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="w-[180px] h-[360px] sm:w-[250px] sm:h-[350px] mx-auto my-2">
+            <div className="w-[182px] h-[294px]  sm:w-[280px] md:w-[250px] sm:h-[290px] mx-auto my-2">
               <Link href={`/product/${product.slug}`}>
-                <div className="overflow-hidden">
+                <div className="overflow-hidden justify-center text-center">
                   <Image
                     width={220}
-                    height={200}
+                    height={220}
                     src={product.images}
                     alt={product.name}
-                    className="object-cover rounded-t-lg"
+                    className="object-cover w-full h-[200px]  text-center"
                     loading="lazy"
                   />
                 </div>
