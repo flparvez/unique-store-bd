@@ -24,7 +24,7 @@ if(!category) <Loading />
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: category?.name + "Unique Store Bd",
+    title: category?.name + " | Unique Store Bd",
     openGraph: {
       images: [category?.image, ...previousImages],
     },
