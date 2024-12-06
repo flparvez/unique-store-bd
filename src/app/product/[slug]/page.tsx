@@ -1,7 +1,7 @@
 
 import ProductDetailsPage from '@/components/ProductDetailsPage'
 import type { Metadata, ResolvingMetadata } from 'next';
-
+import { htmlToText } from 'html-to-text';
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -41,12 +41,17 @@ export async function generateMetadata(
 
 
     const previousImages = (await parent).openGraph?.images || [];
-
+    const plainTextDescription = htmlToText(product?.description || '');
     return {
       title: product?.name,
+      keywords: product?.name,
+    
       openGraph: {
         images: [product?.images, ...previousImages],
+        description:plainTextDescription,
+        url: `https://uniquestorebd.vercel.app/product/${slug}`,
       },
+      
     };
   } catch (error) {
     console.error('Error fetching product metadata:', error);
