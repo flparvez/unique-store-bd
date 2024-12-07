@@ -88,19 +88,19 @@ const ProductPage = ({ slug }: { slug: string }) => {
     <p className='text-lg text-green-600'>{product.stock > 0? "In Stock" : "Out of Stock"}</p>
 
 
-    <p className='font-bold'>
+    <li className='font-bold'>
   {product.stock > 0 ? (
     <span>Only {product.stock} Left</span>
   ) : (
     ""
   )}
-</p>
+</li>
 
-        <li className="font-bold text-black">{product.warrenty}
-           </li>
-  
+     
           </div>
-             
+          <li className="font-bold text-black ml-[80px]">{product.warrenty}
+           </li>
+
               {/* Product Category */}
               <p className="flex flex-wrap gap-2 mb-2 mt-2">
                 Category: <span className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md">
