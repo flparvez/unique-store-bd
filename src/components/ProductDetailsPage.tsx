@@ -68,34 +68,41 @@ const ProductPage = ({ slug }: { slug: string }) => {
           <div className="flex flex-col justify-between">
             <div>
               {/* Product Title */}
-              <h1 className="sm:text-3xl text-xl font-bold mb-4">{product.name}</h1>
+              <h1 className="sm:text-3xl text-xl font-bold mb-2">{product.name}</h1>
   
-          <div className='flex gap-8'>
+          <div className='flex gap-4 ml-4'>
     {/* Product Price */}
-    <p className='text-xl text-black'>    Price: ৳<span className="text-xl sm:text-2xl text-[#f30] font-semibold ">
-             {product.price} </span>
+    <p className='text-xl text-black'><span className="text-xl sm:text-2xl text-[#ff3300] font-bold ">
+    ৳{product.price} </span>
               </p>
-        <p className='text-xl text-blackl '> Market Price:   ৳<span className="text-xl  text-[#f30] line-through">
-          {product.mprice}
+        <p className='text-xl text-blackl '> <span className="text-xl  text-black line-through">
+        ৳{product.mprice}
               </span></p>
   
           </div>
-          <br />
-      <div className='flex gap-8'>
+        
+      <div className='flex gap-4 mt-2'>
     {/* Product Price */}
-    <p className="text-xl text-green-600 mb-2">stock:{product.stock}</p>
-  
-        <p className="font-bold text-black"> * 
-            ({product.warrenty})
-           </p>
+    {/* product stock lentgth */}
+
+    <p className='text-lg text-green-600'>{product.stock > 0? "In Stock" : "Out of Stock"}</p>
+
+
+    <p className='font-bold'>
+  {product.stock > 0 ? (
+    <span>Only {product.stock} Left</span>
+  ) : (
+    ""
+  )}
+</p>
+
+        <li className="font-bold text-black">{product.warrenty}
+           </li>
   
           </div>
-
-
-              {/* Product Stock */}
              
               {/* Product Category */}
-              <p className="flex flex-wrap gap-2 mb-6">
+              <p className="flex flex-wrap gap-2 mb-2 mt-2">
                 Category: <span className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md">
                 <Link href={`/products/${product.category.slug}`}>
                     {product.category.name}
