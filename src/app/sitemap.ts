@@ -3,7 +3,7 @@ import { connectDb } from '@/lib/DbConnect';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://uniquestorebd.vercel.app/";
+  const baseUrl = 'https://uniquestorebd.vercel.app/';
 
   try {
     await connectDb(); // Ensure the database is connected
@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const allProducts = products.map((product) => ({
       url: `${baseUrl}product/${product.slug}`,
-      lastModified: new Date(product.createdAt).toISOString(),
+      lastModified: new Date(product.updatedAt).toISOString(), // Use updatedAt for dynamic updates
     }));
 
     return [
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       {
         url: baseUrl,
         lastModified: new Date().toISOString(),
-      }
+      },
     ];
   }
 }
