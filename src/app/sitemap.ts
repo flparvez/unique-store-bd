@@ -1,33 +1,20 @@
-import { Product } from '@/models/product.models';
-import { connectDb } from '@/lib/DbConnect';
-import { MetadataRoute } from 'next';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://uniquestorebd.vercel.app/';
-// c
-  try {
-    await connectDb(); // Ensure the database is connected
-    const products = await Product.find().lean(); // Fetch products from the database
 
-    const allProducts = products.map((product) => ({
-      url: `${baseUrl}product/${product.slug}`,
-      lastModified: new Date(product.updatedAt).toISOString(), // Use updatedAt for dynamic updates
-    }));
+export default async function sitemap() {
+    const response = await fetch(`https://uniquestorebd-api.vercel.app/api/products`).then((res) => res.json())
+const products = response;
+    const baseUrl ="https://uniquestorebd.vercel.app/"
+const allProducts = products?.map((product:any) =>{
+   return {
+    url:`${baseUrl}product/${product?.slug}`,
+    lastModified: product?.createdAt,
+   }
+} )
 
-    return [
-      {
+    return [{
         url: baseUrl,
-        lastModified: new Date().toISOString(),
-      },
-      ...allProducts,
-    ];
-  } catch (error) {
-    console.error('Failed to fetch products:', error);
-    return [
-      {
-        url: baseUrl,
-        lastModified: new Date().toISOString(),
-      },
-    ];
-  }
+        lastModified: new Date(),
+    },
+    ...allProducts
+]
 }

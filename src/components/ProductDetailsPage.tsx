@@ -145,8 +145,12 @@ const ProductPage = ({ slug }: { slug: string }) => {
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
+              <div>
+  <h5 className=" font-bold mb-2">What is the price of {product?.name} in Bangladesh?</h5>
+  <p className=''>The latest price of {product?.name} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.name} in Bangladesh at the best price from our website or any of our stores.</p>
+  </div>
             </div>
-  
+
             {/* Sticky Add to Cart Button */} 
             <div className="sticky sm:bottom-0 bottom-16 sm:w-full w-[50%] flex   bg-white p-2 border-t text-right border-gray-400">
 

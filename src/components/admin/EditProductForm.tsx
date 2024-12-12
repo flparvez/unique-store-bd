@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 type Inputs = {
   _id: string;
   name: string;
+  sname: string;
   description: string;
   category: string;
   images: string;
@@ -50,6 +51,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ slug }) => {
       // Prepopulate form with current product values
       if (data) {
         setValue("name", data.name);
+        setValue("sname", data?.sname);
         setValue("description", data.description);
         setValue("category", data.category?._id);
         setValue("images", data.images);
@@ -99,6 +101,16 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ slug }) => {
           <Input
             {...register("name", { required: true })}
             id="name"
+            placeholder="Product Name"
+            type="text"
+          />
+        </LabelInputContainer>
+
+     <LabelInputContainer className="mb-4">
+          <Label htmlFor="name">Product Short Name</Label>
+          <Input
+            {...register("sname", { required: true })}
+            id="Sname"
             placeholder="Product Name"
             type="text"
           />

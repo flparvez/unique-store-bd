@@ -27,6 +27,8 @@ if(!category) <Loading />
     title: category?.name + " | Unique Store Bd",
     openGraph: {
       images: [category?.image, ...previousImages],
+      tags: [category?.name, ...previousImages],
+      url: `https://uniquestorebd.vercel.app/products/${category?.slug}`,
     },
   };
 }

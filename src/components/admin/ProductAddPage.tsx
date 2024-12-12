@@ -21,6 +21,7 @@ type Category = {
 
 type Inputs = {
   name: string;
+  sname: string;
   description: string; // Updated to string type
   category: string;
   images: string;
@@ -78,6 +79,17 @@ export default function AddProductForm () {
             type="text"
           />
         </LabelInputContainer>
+     <LabelInputContainer className="mb-4">
+          <Label htmlFor="sname">Product Short Name</Label>
+          <Input
+            {...register("sname", { required: true })}
+            id="sname"
+            placeholder="Product Short Name"
+            type="text"
+          />
+        </LabelInputContainer>
+
+
 
         <LabelInputContainer className="mb-4">
           <Label htmlFor="description">Product Description</Label>
