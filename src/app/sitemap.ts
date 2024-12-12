@@ -4,7 +4,7 @@ import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://uniquestorebd.vercel.app/';
-
+// c
   try {
     await connectDb(); // Ensure the database is connected
     const products = await Product.find().lean(); // Fetch products from the database
