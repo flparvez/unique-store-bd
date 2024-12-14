@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },  
       {
-      url: 'https://uniquestorebd.vercel.app/product/sitemap.xml',
+      url: 'https://uniquestorebd.vercel.app/product/psitemap.xml',
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.9,
