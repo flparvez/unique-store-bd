@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/admin/ProductAddPage.tsx", "src/components/SwiperSlides.jsx", "src/components/Bottom.jsx", "src/app/cart/CartPage.jsx", "src/components/CheckoutPage.jsx", "src/app/admin/order/[id]/page.tsx", "src/components/HeaderSection.jsx", "src/components/Footer.jsx", "src/app/auth/login/LoginForm.jsx", "src/components/ProfilePage.jsx", "src/app/profile/page.jsx", "src/components/OrderInformationPage.jsx", "src/components/admin/DashboardLayout.js", "src/app/sitemap1.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/admin/ProductAddPage.tsx", "src/components/SwiperSlides.jsx", "src/components/Bottom.jsx", "src/app/cart/CartPage.jsx", "src/components/CheckoutPage.jsx", "src/app/admin/order/[id]/page.tsx", "src/components/HeaderSection.jsx", "src/components/Footer.jsx", "src/app/auth/login/LoginForm.jsx", "src/components/ProfilePage.jsx", "src/app/profile/page.jsx", "src/components/OrderInformationPage.jsx", "src/components/admin/DashboardLayout.js", "src/app/sitemapm.ts"],
   "exclude": ["node_modules"]
 }
