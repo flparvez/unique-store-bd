@@ -37,12 +37,12 @@ images:["https://i.ibb.co.com/WBVg5rv/image.png"],
 url:"https://uniquestorebd.vercel.app/",
 },
 
-  verification: {
-    other: {
-      "google-site-verification": "0qTCYg37Xn4zPyJD_ECxvtKhF8S7Nfi_VfzBfVb0fBo",
+  // verification: {
+  //   other: {
+  //     "google-site-verification": "0qTCYg37Xn4zPyJD_ECxvtKhF8S7Nfi_VfzBfVb0fBo",
       
-    },
-  }
+  //   },
+  // }
 }
 
 export default function RootLayout({
