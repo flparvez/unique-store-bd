@@ -61,7 +61,7 @@ const SwiperSlides = ({ products }) => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>
+                <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 30 ?  truncateText(product?.name, 30)+"..." : product.name} </h3>
                 <p className="text-blue-700 font-bold text-center">{product.category.name}</p>
                 <p className="text-lg font-extrabold text-center">৳{product.price}</p>
               </Link>
