@@ -38,7 +38,7 @@ url:"https://uniquestorebd.vercel.app/",
 
   verification: {
     other: {
-      "google-site-verification": "ZEjE-cLJCoXI1DyyLXq-ErqHg540Nq9mlZO3cq1A2Bs",
+      "google-site-verification": "0qTCYg37Xn4zPyJD_ECxvtKhF8S7Nfi_VfzBfVb0fBo",
       
     },
   }
