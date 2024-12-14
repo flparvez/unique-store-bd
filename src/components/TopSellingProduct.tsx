@@ -30,14 +30,14 @@ const TopSellingProduct = () => {
   const products = data?.filter((product:Products) => product.tags === "best-sell")
 
   return (
-<div className="container mx-auto sm:px-4 px-2 py-8">
+<div className="container mx-auto sm:px-4 px-2 py-8 ">
   
 <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 md:grid-cols-3 lg:grid-cols-4">
 {products?.map((product:Products) => (
 
-<div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+<div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden ">
   <Link href={`/product/${product.slug}`} className="block">
-  <div className="overflow-hidden">
+  <div className="overflow-hidden ">
   <Image
     width={300}
     height={300}
@@ -50,7 +50,7 @@ const TopSellingProduct = () => {
       <div className="p-3">
       <h3 className=" text-black  sm:text-xl  font-extrabold">{product.name}</h3>
         <div className="flex items-center justify-between mt-2">
-          <span className="text-red-600 text-xl font-bold">৳{product.price}</span>
+          <span className="text-red-600 text-xl font-bold animate-pulse">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>
         </div>
       </div>

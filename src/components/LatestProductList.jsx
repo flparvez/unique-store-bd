@@ -34,7 +34,7 @@ const LatestProductList = () => {
       <div className="p-3">
       <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>
         <div className="flex items-center justify-between mt-2">
-          <span className="text-indigo-600 font-bold">৳{product.price}</span>
+          <span className="text-indigo-600 font-bold animate-pulse">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>
         </div>
       </div>

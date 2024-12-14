@@ -123,10 +123,10 @@ const ProductPage = ({ slug }: { slug: string }) => {
               {/* Product Video (YouTube Embed) */}
               {product.video ? (
                 <div className="mb-6">
-                  <h2 className="text-lg font-semibold mb-2">Product Video</h2>
+                  {/* <h2 className="text-lg font-semibold mb-2">Product Video</h2> */}
                   <div className="aspect-w-16 aspect-h-9">
                   {/* className="w-full lg:h-80 md:h-96 h-56 rounded-md" */}
-                  <YouTubeEmbed videoid={product.video}  params="controls=0" />
+                  <YouTubeEmbed  videoid={product.video}  params="controls=0&color=red" />
                 
                   </div>
                 </div>
@@ -142,9 +142,9 @@ const ProductPage = ({ slug }: { slug: string }) => {
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
-              <div>
+              <div className='border border-gray-400 p-2'>
   <h5 className=" font-bold mb-2">What is the price of {product?.name} in Bangladesh?</h5>
-  <p className=''>The latest price of {product?.name} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.name} in Bangladesh at the best price from our website or any of our stores.</p>
+  <p className='font-medium'>The latest price of {product?.name} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.name} in Bangladesh at the best price from our website or any of our stores.</p>
   </div>
             </div>
 

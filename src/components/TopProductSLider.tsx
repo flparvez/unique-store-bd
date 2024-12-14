@@ -19,7 +19,7 @@ const TopProductSLider = () => {
           </h2>
  
  {/* Featured Products And Category With Link */}
-   <div className="sm:w-[70%] justify-center mx-auto h-full">
+   <div className="sm:w-[70%] justify-center mx-auto h-full ">
 
  
                 <SwiperSlides
