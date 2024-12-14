@@ -1,6 +1,8 @@
 "use client";
 // import Loading from '@/components/Loading';
 import { useDispatch } from 'react-redux';
+import { YouTubeEmbed } from '@next/third-parties/google'
+
 import { addItem } from '@/store/cartSlice';
 import { useGetProductBySlugQuery } from '@/store/services/prodcutApi';
 import Image from 'next/image';
@@ -123,14 +125,9 @@ const ProductPage = ({ slug }: { slug: string }) => {
                 <div className="mb-6">
                   <h2 className="text-lg font-semibold mb-2">Product Video</h2>
                   <div className="aspect-w-16 aspect-h-9">
-                    <iframe
-                      className="w-full lg:h-80 md:h-96 h-56 rounded-md"
-                      src={`https://www.youtube.com/embed/${product.video}?controls=0&showinfo=0&modestbranding=1&rel=0&autohide=1&autoplay=1`}
-                      title="Product Video"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      frameBorder="0"
-                    ></iframe>
+                  {/* className="w-full lg:h-80 md:h-96 h-56 rounded-md" */}
+                  <YouTubeEmbed videoid={product.video}  params="controls=0" />
+                
                   </div>
                 </div>
               ) : (

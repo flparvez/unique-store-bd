@@ -21,6 +21,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  
   metadataBase: new URL("https://uniquestorebd.vercel.app/"),
   title: "Unique Store Bd | Quality Is Here",
   description: " Unique Store Bd. Authentic পণ্য কিনুন এবং দ্রুত ডেলিভারি পান। Authentic Tws, Xiaomi পণ্য, ঘড়ি, Smartwatch, Microphones,Headphone,Earbuds, WiFi Smart Switches, Home Automation পণ্য, Headphones, YouTube পণ্য কিনুন।বাংলাদেশের অনলাইন শপিংয়ের জন্য Unique Store BD Authentic পণ্য এবং দ্রুত ডেলিভারির নিশ্চয়তা। এখনই কিনুন এবং উপভোগ করুন।.",
@@ -43,6 +44,7 @@ url:"https://uniquestorebd.vercel.app/",
     },
   }
 }
+
 export default function RootLayout({
   children,
 }: Readonly<{
