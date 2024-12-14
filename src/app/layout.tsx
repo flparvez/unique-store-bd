@@ -24,15 +24,16 @@ export const metadata: Metadata = {
   
   metadataBase: new URL("https://uniquestorebd.vercel.app/"),
   title: "Unique Store Bd | Quality Is Here",
-  description: " Unique Store Bd. Authentic পণ্য কিনুন এবং দ্রুত ডেলিভারি পান। Authentic Tws, Xiaomi পণ্য, ঘড়ি, Smartwatch, Microphones,Headphone,Earbuds, WiFi Smart Switches, Home Automation পণ্য, Headphones, YouTube পণ্য কিনুন।বাংলাদেশের অনলাইন শপিংয়ের জন্য Unique Store BD Authentic পণ্য এবং দ্রুত ডেলিভারির নিশ্চয়তা। এখনই কিনুন এবং উপভোগ করুন।.",
+  description: "Enjoy hassle-free online shopping from Unique Store Bd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
+  
 robots:{
 index: true,
 follow: true
 },
-keywords:"Unique Store Bd, Quality Is Here, Ecommerce Website, Unique Shop Bd,Next Js",
+keywords:"Online Shopping in Bangladesh, Online Shopping Store, Buy Online, Shop Online, Unique Store BD, Electric Accessories, TWS, Unique Gadgets, Home Appliances, Daily Needs.",
 openGraph:{
 title: "Unique Store Bd | Quality Is Here", 
-description: " Unique Store Bd. Authentic পণ্য কিনুন এবং দ্রুত ডেলিভারি পান। Authentic Tws, Xiaomi পণ্য, ঘড়ি, Smartwatch, Microphones,Headphone,Earbuds, WiFi Smart Switches, Home Automation পণ্য, Headphones, YouTube পণ্য কিনুন।বাংলাদেশের অনলাইন শপিংয়ের জন্য Unique Store BD Authentic পণ্য এবং দ্রুত ডেলিভারির নিশ্চয়তা। এখনই কিনুন এবং উপভোগ করুন।.",
+description: "Enjoy hassle-free online shopping from Unique Store Bd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
 images:["https://i.ibb.co.com/WBVg5rv/image.png"],
 url:"https://uniquestorebd.vercel.app/",
 },
