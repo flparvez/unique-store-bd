@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 }
 const AfterSaleService = () => {
   return (
-    <div className="max-w-4xl mt-8 mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-6">Unique Store BD এর আফটার সেলস এবং টেকনিক্যাল সাপোর্ট</h1>
+    <div className="max-w-4xl mt-12 mx-auto p-4">
+      <h1 className="text-xl font-bold text-center mb-6">Unique Store BD এর আফটার সেলস এবং টেকনিক্যাল সাপোর্ট</h1>
 
       <p className="mb-4">
         Unique Store BD থেকে আপনি কোন প্রোডাক্ট ক্রয় করলে আমরা সেটার টেকনিক্যাল বিষয়ে আপনাকে সাপোর্ট দিয়ে সহযোগীতা করবো। কিছু কিছু প্রোডাক্ট আছে যেগুলো আমরা ক্রয় করার পর কনফিগার করতে ব্যার্থ হই, এর মানে কিন্তু এই না যে প্রোডাক্টটি নষ্ট। হতে পারে, আপনি প্রপারলি কনফিগার করতে পারেননি। তাই, এই বিষয়গুলোতে আপনাকে সাপোর্ট দেয়ার জন্য প্রস্তুত আছে Unique Store BD এর ডেডিকেটেড টিম।
