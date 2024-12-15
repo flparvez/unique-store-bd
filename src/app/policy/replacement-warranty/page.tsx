@@ -2,12 +2,12 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Replacement Warranty ',
+  title: 'Replacement Warranty | Unique Store Bd ',
   description: 'Unique Store Bd Replacement Warranty Policy',
 }
 const ReplacementPolicy = () => {
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+    <div className="bg-gray-100 p-6 mt-8 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Unique Store Bd Replacement Warranty Policy</h1>
       <p className="mb-4">
         আমরা Unique Store Bd-এ সবসময় অরিজিনাল এবং অথেনটিক প্রোডাক্ট বিক্রয় করি। আমাদের বেশিরভাগ প্রোডাক্টই ব্র্যান্ড ওয়ারেন্টি সহ আসে, কিছু কিছু প্রোডাক্ট থাকে ওয়ারেন্টি ছাড়া। যেসব প্রোডাক্টে ওয়ারেন্টি থাকে, সেগুলো ওয়েবসাইটে উল্লেখ থাকে। আবার ক্ষেত্র বিশেষে, প্রোডাক্টের সাথে ওয়ারেন্টি কার্ডও থাকে। যেকোন প্রোডাক্টের রিপ্লেসমেন্ট ওয়ারেন্টি পিরিয়ডে সর্বোচ্চ একবার প্রোডাক্টটি রিপ্লেস করা হয়, পরবর্তীতে সমস্যা হলে এবং ওয়ারেন্টি থাকলে সেটা সার্ভিস ওয়ারেন্টিতে থাকে। সুতরাং, একবারের বেশি আমরা কোন প্রোডাক্টই রিপ্লেস করতে পারি না।

@@ -2,12 +2,12 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Return Policy',
+  title: 'Return Policy | Unique Store Bd',
   description: 'Unique Store Bd Return Policy',
 }
 const Returns = () => {
   return (
-<div className="bg-gray-100 p-6 rounded-lg shadow-md">
+<div className="bg-gray-100 p-6 mt-8 rounded-lg shadow-md">
       <h1 className="text-2xl font-bold mb-4">Unique Store Bd Return Policy</h1>
       <p className="mb-4">
         আপনার প্রতিটি কেনাকাটা এবং প্রতিটি প্রোডাক্ট যাতে সঠিক থাকে, আমরা সেই লক্ষেই কাজ করে যাচ্ছি। এর পরেও যদি কোন কারণে প্রোডাক্টে কোন ম্যানুফ্যাকচারিং ফল্ট থাকে বা প্রোডাক্ট হাতে পাবার পর প্রোডাক্ট কাজ না করে, কালার বা সাইজ অর্ডার করা পণ্যের থেকে ভিন্ন হয় সেক্ষেত্রে পণ্য এক্সচেঞ্জ বা রিটার্ন করার সুযোগ রয়েছে। প্রোডাক্ট মিসিং বা ভিন্ন প্রোডাক্ট কমপ্লেইন করার ক্ষেত্রে অবশ্যই ডেলিভারি এর সময় ডেলিভারি ম্যান এর সামনে প্রোডাক্ট বুঝে নিন অথবা অবশ্যই আনবক্সিং ভিডিও ধারণ করতে হবে। আনবক্সিং ভিডিও ধারণ ছাড়া প্যাকেজে প্রোডাক্ট মিসিং, প্রোডাক্ট কুরিয়ারে ভেঙ্গেছে বা প্রোডাক্ট ডিফারেন্ট এই ধরনের ইস্যু গ্রহণযোগ্য নয়- তাই ভুল বুঝাবুঝি রোধ কল্পে অবশ্যই প্রোডাক্ট আনবক্সিং ভিডিও ধারণ করার অনুরোধ করা যাচ্ছে।
