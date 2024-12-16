@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '@/store/cartSlice';
 import { useAddOrderMutation } from '@/store/services/CheckOutApi';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
-const CheckoutPage = ({user}) => {
+const CheckoutPage = ({ user }) => {
+
   const router = useRouter();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -16,15 +17,14 @@ const CheckoutPage = ({user}) => {
   const [addOrder] = useAddOrderMutation();
 
   const [paymentDetails, setPaymentDetails] = useState({
-    
     cname: '',
     email: '',
     phone: '',
     address: '',
     city: '',
     transaction: '',
-    paymentType: "full",
-    ShippingType: ""
+    paymentType: 'full',
+    ShippingType: 'dhaka'
   });
 
   const [isProcessing, setIsProcessing] = useState(false);
@@ -37,11 +37,12 @@ const CheckoutPage = ({user}) => {
     });
   };
 
-  const dhakaO = paymentDetails.ShippingType === 'dhakao' ? 120 : null;
-  const dhaka = paymentDetails.ShippingType === 'dhaka' ? 60 : null;
+  const dhakaO = paymentDetails.ShippingType === 'dhakao' ? 120 : 0;
+  const dhaka = paymentDetails.ShippingType === 'dhaka' ? 60 : 0;
 
   const cartTotal = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
+  const totalAmount = dhaka ? cartTotal + dhaka : dhakaO ? cartTotal + dhakaO : cartTotal;
+  if (cart.items.length === 0) return router.push('/products');
   const ndata = {
     user: user?.id,
     name: paymentDetails.cname,
@@ -50,31 +51,32 @@ const CheckoutPage = ({user}) => {
     address: paymentDetails.address,
     city: paymentDetails.city,
     items: cart.items,
-    total: dhaka ? cartTotal + dhaka : dhakaO ? cartTotal + dhakaO : cartTotal,
+    total: totalAmount,
     transaction: paymentDetails.transaction,
-    paymentType: paymentDetails.paymentType
+    paymentType: paymentDetails.paymentType+" "+paymentDetails.ShippingType
   };
-
-
+// console.log(ndata)
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsProcessing(true);
     try {
       await addOrder(ndata).unwrap();
-  
-      setIsProcessing(false);
-      dispatch(clearCart());
+     
       toast.success('Order placed successfully!');
       router.push('/profile');
+      dispatch(clearCart());
     } catch (err) {
       toast.error('Failed to place the order');
       console.error('Failed to save the order: ', err);
+    } finally {
+      setIsProcessing(false);
     }
   };
 
-  if (cart.items.length === 0) return redirect('/products');
+
 
   return (
-    <div>
+<div>
       <form className="bg-white rounded-lg sm:mt-20 mt-14 shadow-md p-6" onSubmit={handleSubmit}>
         <h2 className='text-xl sm:text-2xl font-bold text-center'>অর্ডারটি কনফার্ম করতে ফর্মটি সম্পুর্ণ পুরণ করে নিচের Place Order বাটনে ক্লিক করুন।</h2>
         <div className="mb-4">
@@ -240,13 +242,14 @@ const CheckoutPage = ({user}) => {
         </div>
      
     
-       
-        <div className="flex items-center justify-between">
+        <div className='flex flex-col'>
+          <h2 className='text-center font-bold sm:text-2xl text-xl'> Total: ৳{totalAmount.toFixed(2)}</h2>
           <button
             type="submit"
-            className="mt-8 w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full bg-[#20b4ab] hover:bg-[#2d948d] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            disabled={isProcessing}
           >
-            {isProcessing ? 'Processing...' : 'Place Order'}
+            {isProcessing ? 'Placing Order...' : 'Place Order'}
           </button>
         </div>
       </form>
