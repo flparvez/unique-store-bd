@@ -28,7 +28,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
         title: product.name,
         price: product.price,
         quantity: 1,
-        image: product.images,
+        image: product.images[0].url,
       })
     );
     toast.success('Product added to cart');
@@ -50,7 +50,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
           <Image
   width={500}
   height={250}
-  src={product.images}
+  src={product.images[0].url}
   alt="Product Image"
   className="object-cover rounded-md"
   loading="lazy"

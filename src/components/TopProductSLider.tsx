@@ -8,8 +8,8 @@ import { Button } from './ui/button'
 
 const TopProductSLider = () => {
   const {data} = useGetProductsQuery("")
-  
-  const productsSlider = data?.slice(12, 23);
+
+  const productsSlider = data?.slice(0, 23);
 
   return (
     <div >

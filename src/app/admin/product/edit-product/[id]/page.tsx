@@ -4,15 +4,15 @@ import EditProductForm from '@/components/admin/EditProductForm';
 const EditProduct = async ({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: Promise<{ id: string }>
 }) => {
-  const slug = (await params).slug
+  const id = (await params).id
  
   return (
   <DashboardLayout>
  <h1 className="text-2xl font-bold">Edit Product</h1>
     <div>
-      <EditProductForm slug={slug}  />
+      <EditProductForm id={id}  />
     </div>
   </DashboardLayout>
   )

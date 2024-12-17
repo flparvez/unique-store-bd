@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '@/store/cartSlice';
 import { useAddOrderMutation } from '@/store/services/CheckOutApi';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
@@ -42,7 +42,7 @@ const CheckoutPage = ({ user }) => {
 
   const cartTotal = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const totalAmount = dhaka ? cartTotal + dhaka : dhakaO ? cartTotal + dhakaO : cartTotal;
-  if (cart.items.length === 0) return router.push('/products');
+
   const ndata = {
     user: user?.id,
     name: paymentDetails.cname,
@@ -55,7 +55,7 @@ const CheckoutPage = ({ user }) => {
     transaction: paymentDetails.transaction,
     paymentType: paymentDetails.paymentType+" "+paymentDetails.ShippingType
   };
-// console.log(ndata)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
@@ -63,7 +63,7 @@ const CheckoutPage = ({ user }) => {
       await addOrder(ndata).unwrap();
      
       toast.success('Order placed successfully!');
-      router.push('/profile');
+     
       dispatch(clearCart());
     } catch (err) {
       toast.error('Failed to place the order');
@@ -73,7 +73,7 @@ const CheckoutPage = ({ user }) => {
     }
   };
 
-
+  if (cart.items.length === 0) return redirect('/profile');
 
   return (
 <div>

@@ -11,7 +11,6 @@ const DashboardLayout = async ({ children }) => {
 const user = session?.user
 const admin = user?.role==='admin'
 
-
 if(!admin) redirect('/')
 
   return (

@@ -12,7 +12,10 @@ interface Product {
   category: {
     slug: string;
   };
-  images: string;
+  images: {
+    url: string;
+    public_id: string;
+  }[];
   price: number;
   slug: string;
 }

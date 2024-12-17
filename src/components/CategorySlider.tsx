@@ -13,13 +13,13 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { useGetCategoriesQuery } from '@/store/services/CategoryApi';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from './ui/button';
+
 
 // Define the Category type
 interface Category {
   _id: string;
   name: string;
-  image: string;
+ images: { url: string; public_id: string }[]
   slug: string;
 }
 
@@ -61,7 +61,7 @@ const CategorySlider: React.FC = () => {
                    <Image
                       width={150}
                       height={140}
-                      src={category.image}
+                      src={category.images[0].url}
                       alt={category.name}
                       className=" object-cover  rounded"
                     />

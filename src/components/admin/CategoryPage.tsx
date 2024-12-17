@@ -9,7 +9,12 @@ import Link from 'next/link';
 interface Category {
     _id: string;
     name: string;
-    image: string;
+    image: {
+      url: string;
+    };
+    images: {
+      url: string;
+    }[];
     slug: string;
   }
   
@@ -38,7 +43,7 @@ const CategoryPage = () => {
               <Image
                 width={200}
                 height={200}
-                src={category.image}
+                src={category.images[0].url}
                 alt={category.name}
                 className="w-full h-[300px] object-cover rounded-t-lg"
               />

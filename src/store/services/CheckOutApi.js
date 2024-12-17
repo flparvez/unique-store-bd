@@ -4,6 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const checkoutApi = createApi({
   reducerPath: 'orders',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/' }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/' }),
+
   tagTypes: ['Order'],
   endpoints: (builder) => ({
 

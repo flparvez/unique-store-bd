@@ -25,7 +25,7 @@ const LatestProductList = () => {
   <Image
     width={300}
     height={300}
-    src={product.images}
+    src={product.images[0].url}
     alt={product.name}
     className="object-cover "
     loading="lazy"

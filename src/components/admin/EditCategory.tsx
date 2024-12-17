@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useEditCategoryMutation } from "@/store/services/CategoryApi";
 import { Label } from '@/components/ui/label';
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import Image from "next/image";
 
 interface EditCategoryProps {
   slug: string;
@@ -16,44 +17,65 @@ interface EditCategoryProps {
 interface Category {
   _id: string;
   name: string;
-  image: string;
+  images: File[]
   slug: string;
 }
-
+interface Image {
+  public_id: string;
+  url:string
+  
+}
+type Img={
+  public_id:string
+  url:string
+}
 const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
  
   const router = useRouter();
-
+  const [existingImages, setExistingImages] = useState<Image[]>([]);
   const { register, handleSubmit, setValue } = useForm<Category>();
 
   useEffect(() => {
     async function fetchCategory() {
       const res = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`);
+      // const res = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`);
       const data = await res.json();
     
 
       // Prepopulate form with current category values
       if (data) {
         setValue("name", data.name);
-        setValue("image", data.image);
+        setExistingImages(data.images || []);
       }
     }
     fetchCategory();
   }, [slug, setValue]);
-
+  const handleImageDelete = (public_id: string) => {
+    setExistingImages(existingImages.filter(image => image.public_id !== public_id));
+    // You may want to add a call to delete the image from the server here
+  };
   const [editCategory, { isLoading }] = useEditCategoryMutation();
+ const onSubmit: SubmitHandler<Category> = async (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+ 
 
-  const onSubmit = async (data: Category) => {
-    const categoryUpdate = await editCategory({ slug:slug, updatedCategory: data }).unwrap();
-    if (categoryUpdate) {
-      toast.success("Category Updated");
-      router.push('/admin/category');
-    }
+    // Append multiple image files to the form data
+    Array.from(data.images).forEach((image) => {
+      formData.append("images", image);
+    });
 
-    if (!isLoading) {
+    formData.append("existingImages", JSON.stringify(existingImages));
+
+    const response = await editCategory({ slug:slug, updatedCategory: formData }).unwrap();
+
+    if (response) {
+      toast.success("Product Updated Successfully");
       router.push("/admin/category");
     }
   };
+
+
 
   return (
     <div className="max-w-md sm:max-w-[90%] w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
@@ -63,10 +85,19 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
           <Input {...register("name", { required: true })} id="name" placeholder="Category Name" type="text" />
         </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="images">Image Link</Label>
-          <Input {...register("image")} id="images" placeholder="Image Link" type="text" />
-        </LabelInputContainer>
+               <LabelInputContainer className="mb-4">
+                 <Label htmlFor="images">Product Images</Label>
+                 <Input {...register("images")} id="images" placeholder="Product Images" type="file" multiple />
+               </LabelInputContainer>
+               <div className="flex flex-wrap gap-2">
+      {/* Your component JSX */}
+      {existingImages.map((image) => (
+        <div key={image.public_id}>
+          <Image width={80} height={80} src={image.url} alt="Image" />
+          <button onClick={() => handleImageDelete(image.public_id)}>Delete</button>
+        </div>
+      ))}
+    </div>
 
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"

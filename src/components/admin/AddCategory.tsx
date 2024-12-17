@@ -13,7 +13,7 @@ import { toast } from "sonner";
 type Inputs = {
     id: string,
     name: string;
-  image: string;
+    images: File[];
 
 };
 
@@ -21,24 +21,25 @@ export default function AddCategoryForm() {
 
   const router= useRouter()
     const [addCategory] = useAddCategoryMutation();
-  const {
-    register,
-    handleSubmit,
-  } = useForm<Inputs>();
+  const { register, handleSubmit, watch, setValue } = useForm<Inputs>();
  
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    try {
-      const addCategories = await addCategory({ body: data }).unwrap();
-  
-      if (addCategories) {
-        toast.success("Category Added");
-        router.push('/admin/category');
-      }
-    } catch (error) {
-      toast.error("Failed to add category");
-      console.error("Error adding category:", error);
+ const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const formData = new FormData();
+    formData.append("name", data.name);
+ 
+
+
+    // Append multiple image files to the form data
+    Array.from(data.images).forEach((image) => {
+      formData.append("images", image);
+    });
+
+    const product = await addCategory({ body: formData }).unwrap();
+    if (product) {
+      toast.success("Product Created Successfully");
+      router.push("/admin/category");
     }
-  };                                    
+  };                                  
   // console.log(watch("name")); // watch input value by passing the name of it
 
   return (
@@ -57,10 +58,15 @@ export default function AddCategoryForm() {
       </LabelInputContainer>
  
  
-         <LabelInputContainer className="mb-4 ">
-      <Label htmlFor="image">Image Link</Label>
-      <Input {...register("image", { required: true })} id="images" placeholder="Image Link" type="text"   />
-      </LabelInputContainer>
+      <LabelInputContainer className="mb-4">
+               <Label htmlFor="images">Product Images</Label>
+               <Input
+                 {...register("images", { required: true })}
+                 id="images"
+                 type="file"
+                 multiple
+               />
+             </LabelInputContainer>
  
 
       

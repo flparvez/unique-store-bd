@@ -4,24 +4,24 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  // baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:4000/api/' }),
   baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/' }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd.vercel.app/api/' }),
   tagTypes: ['Product', 'Cart'],
   endpoints: (builder) => ({
 
     addProduct: builder.mutation({
       query: ({ body}) => ({
-        url: `products`,
+        url: `https://uniquestorebd.vercel.app/api/product`,
         method: 'POST',
         body,
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }, { type: 'Cart' }],
     }),
     
-    editProduct: builder.mutation({
+    updateProduct: builder.mutation({
       query: ({ updatedProduct, id }) => ({
-        url: `products/${id}`,
-        method: 'PUT',
+        url: `https://uniquestorebd.vercel.app/api/product/${id}`,
+        method: 'PATCH',
         body: updatedProduct,
       }),
       invalidatesTags: [{ type: 'Product', id: 'LIST' }, { type: 'Cart' }],
@@ -31,14 +31,17 @@ export const productsApi = createApi({
       providesTags: [{ type: 'Product', id: 'LIST' }],
     }),
 
-    getProductBySlug: builder.query({
+    getProductById: builder.query({
+      // query: (productId) => `products/${productId}`,
+      query: (productId) => `https://uniquestorebd.vercel.app/api/product/${productId}`,
+      // providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
+    }),
+
+       getProductBySlug: builder.query({
       query: (productSlug) => `products/slug/${productSlug}`,
       providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
-        getProductByCategorySlug: builder.query({
-      query: (productSlug) => `products/category/slug/${productSlug}`,
-      providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
-    }),
+
     
 
     deleteProduct: builder.mutation({
@@ -61,10 +64,10 @@ export const productsApi = createApi({
 
 export const {
   useGetProductsQuery,
-  useGetProductBySlugQuery,
+  useGetProductByIdQuery,
   useAddProductMutation,
   useDeleteProductMutation,
-  useEditProductMutation,
-useGetProductByCategorySlugQuery,
-useFetchProductsFromSearchQueryQuery
+  useUpdateProductMutation,
+useFetchProductsFromSearchQueryQuery,
+useGetProductBySlugQuery
 } = productsApi;

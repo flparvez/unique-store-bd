@@ -12,7 +12,9 @@ type Products = {
   name: string;
   description: string; // Updated to string type
   category: string;
-  images: string;
+  images: {
+    url: string;
+  }[];
   price: number;
   stock: number;
   sold: number;
@@ -48,7 +50,7 @@ if (isLoading) {
   <Image
     width={300}
     height={300}
-    src={product.images}
+    src={product.images[0].url}
     alt={product.name}
     className="object-cover w-full h-full"
     loading="lazy"

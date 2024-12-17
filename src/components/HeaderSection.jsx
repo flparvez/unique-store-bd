@@ -70,7 +70,7 @@ const Navbar = () => {
                     <li key={product._id} className="border-b last:border-0">
                       <Link href={`/product/${product.slug}`} onClick={handleProductClick}>
                         <div className="flex items-center p-2">
-                          <Image width={80} height={80} src={product.images} alt={product.name} className="sm:w-14 w-12 h-12 object-cover rounded-lg mr-4" />
+                          <Image width={80} height={80} src={product.images[0].url} alt={product.name} className="sm:w-14 w-12 h-12 object-cover rounded-lg mr-4" />
                           <div>
                             <p className="text-gray-800 font-bold">৳{product.price}</p>
                             <h3 className="text-gray-700 text-sm font-bold">{product.name}</h3>

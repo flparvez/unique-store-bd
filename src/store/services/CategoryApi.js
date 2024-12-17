@@ -5,6 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const categoryApi = createApi({
   reducerPath: 'categoryApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/'  }),
+  // baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/'  }),
   tagTypes: ['Category'],
   endpoints: (builder) => ({
 
@@ -15,7 +16,7 @@ export const categoryApi = createApi({
 
     addCategory: builder.mutation({
       query: ({body}) => ({
-        url: `categories`,
+        url: `https://uniquestorebd.vercel.app/api/category`,
         method: 'POST',
         body:body,
       }),
@@ -31,8 +32,8 @@ export const categoryApi = createApi({
  // Edit Category
  editCategory: builder.mutation({
   query: ({ slug, updatedCategory }) => ({
-    url: `categories/${slug}`,
-    method: 'PUT',
+    url: `https://uniquestorebd.vercel.app/api/category/${slug}`,
+    method: 'PATCH',
     body: updatedCategory,
   }),
   invalidatesTags: [{ type: 'Category', id: 'LIST' }],

@@ -85,6 +85,9 @@ const onSubmit = async (data) => {
       </div>
       <div className="mb-4">
         <span className="font-medium">Transaction ID:</span> {orders?.transaction}
+      </div>   
+      <div className="mb-4">
+        <span className="font-medium">PaymentType:</span> {orders?.paymentType}
       </div>
       <div className="mb-4">
         <span className="font-medium">Status:</span> {orders?.status}

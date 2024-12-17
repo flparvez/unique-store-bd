@@ -1,50 +1,55 @@
-import mongoose from 'mongoose';
-import slugify from 'slugify';
+import  mongoose, { Document, model, models, Schema } from 'mongoose';
 
-const ProductSchema = new mongoose.Schema(
-  {
-    name: { type: String, required: true },
-   sname: { type: String },
-    slug: {
-      type: String,
-      unique: true,   // Slug should be unique
-    },
-    description: {
-      type: String,  // Rich text description (HTML)
-      required: true,
-    },
-    price: { type: Number, required: true },
-    mprice: { type: Number, required: true },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category',
-      required: true
-    },
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', },
-    images: { type: String },
-    video: { type: String },
-    stock: { type: Number, required: true, default: 0 },
-    sold: { type: Number, default: 0 },
-    tags: { type: String },
-    warrenty: { type: String },
-  },
-  { timestamps: true }
-);
+interface Image {
+  url: string;
+  public_id: string;
+}
 
-// Pre-save hook to generate slug from name
-ProductSchema.pre('save', async function(next) {
-  if (this.isModified('name')) {
-    this.slug = slugify(this.name, { lower: true, strict: true });
+interface ProductDocuments extends Document {
+  name: string;
+  slug: string;
+  sname: string;
+  description: string;
 
-    // Ensure slug is unique
-    const slugExists = await mongoose.models.Product.findOne({ slug: this.slug });
-    if (slugExists) {
-      this.slug = `${this.slug}-${Date.now()}`;
-    }
-  }
-  next();
+  category: Schema.Types.ObjectId;
+  price: number;
+  mprice: number;
+  images: Image[];
+  stock: number;
+  sold: number;
+  video: string;
+  warranty: string;
+  tags: string[];
+  seo: string;
+}
+const imageSchema = new Schema<Image>({
+  url: { type: String, required: true },
+  public_id: { type: String, required: true }
+});
+
+const productSchema = new Schema<ProductDocuments>({
+  name: { type: String, required: true },
+  sname: { type: String, required: true },
+  slug: { type: String, required: true },
+  description: { type: String, required: true },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Category',
+    required: true
+  },  
+
+  price: { type: Number, required: true },
+  mprice: { type: Number, required: true },
+  images: { type: [imageSchema], required: true },
+  stock: { type: Number, required: true },
+  sold: { type: Number, required: true },
+  video: { type: String },
+  warranty: { type: String },
+  tags: { type: [String] },
+  seo: { type:String, },
+},{
+  timestamps: true
 });
 
 
-
-export const Product = mongoose.model('Product', ProductSchema);
+export const Product = models?.Product || mongoose.model('Product', productSchema);

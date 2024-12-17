@@ -55,7 +55,7 @@ const SwiperSlides = ({ products }) => {
                   <Image
                     width={220}
                     height={220}
-                    src={product.images}
+                    src={product.images[0].url}
                     alt={product.name}
                     className="object-cover w-full h-[200px]  text-center"
                     loading="lazy"

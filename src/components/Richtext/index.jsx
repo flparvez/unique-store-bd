@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect } from "react";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
@@ -34,17 +36,22 @@ export default function RichTextEditor({ content, onChange }) {
       Image,
       ImageResize,
     ],
-    content: content,
+    content, // Tiptap will handle HTML content directly
     editorProps: {
       attributes: {
         class: "min-h-[156px] border rounded-md bg-slate-50 py-2 px-3",
       },
     },
     onUpdate: ({ editor }) => {
-      console.log(editor.getHTML());
-      onChange(editor.getHTML());
+      onChange(editor.getHTML()); // Update the parent component on content change
     },
   });
+
+  useEffect(() => {
+    if (editor && content) {
+      editor.commands.setContent(content); // Update content if prop changes
+    }
+  }, [editor, content]); // Re-run when content prop changes
 
   return (
     <div>

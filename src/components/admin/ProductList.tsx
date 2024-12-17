@@ -10,7 +10,7 @@ interface Product {
   category: {
     slug: string;
   };
-  images: string;
+  images: { url: string; public_id: string }[];
   price: number;
   slug: string;
 }
@@ -26,7 +26,7 @@ const ProductList: React.FC<ProductListProps> = ({ product, handleDelete }) => {
       <div>
         <div className="relative">
         <Image width={200} height={200}
-            src={product.images}
+            src={product.images[0].url}
             alt="text" 
             className="w-full h-[300px] object-cover rounded-t-lg"
           />
@@ -39,7 +39,7 @@ const ProductList: React.FC<ProductListProps> = ({ product, handleDelete }) => {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between items-center">
-          <Link href={`/admin/product/edit-product/${product?.slug}`}>Edit</Link>
+          <Link href={`/admin/product/edit-product/${product?._id}`}>Edit</Link>
          
        
           <Button onClick={() => handleDelete(product?._id)}>Delete</Button>
