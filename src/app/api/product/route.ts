@@ -100,6 +100,7 @@ export const POST = async (request: NextRequest) => {
     const seo = formData.get("seo") as string | null;
     const warranty = formData.get("warranty") as string | null;
     const tags = (formData.get("tags") as string || '').split(',');
+
  
 
     await connectDb();

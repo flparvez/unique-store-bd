@@ -4,14 +4,19 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useGetProductsQuery } from "@/store/services/prodcutApi";
-
+type Product = {
+  _id: string;
+  tags:string[]; // Array of objects with a 'tag' property
+};
 type Products = {
   _id: string;
   slug: string;
   name: string;
   description: string; // Updated to string type
   category: string;
-  images: string;
+  images: {
+    url: string;
+  }[];
   price: number;
   stock: number;
   sold: number;
@@ -26,9 +31,13 @@ type Products = {
 const TopSellingProduct = () => {
   const {data} = useGetProductsQuery("")
 
-  // filter by tags top selling
-  const products = data?.filter((product:Products) => product.tags === "best-sell")
 
+// Filter products by checking if the 'tag' field inside each 'tags' object matches
+const products = data?.filter((product: Product) =>
+  product.tags.some((tag) => ["best-sell", "new-arrival"].includes(tag)) 
+);
+
+console.log(products); // To verify the filtered products
   return (
 <div className="container mx-auto sm:px-4 px-2 py-8 ">
   
@@ -41,7 +50,7 @@ const TopSellingProduct = () => {
   <Image
     width={300}
     height={300}
-    src={product.images}
+    src={product.images[0].url}
     alt={product.name}
     className="object-cover w-full h-full"
     loading="lazy"
