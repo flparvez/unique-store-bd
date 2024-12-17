@@ -20,11 +20,9 @@ export async function generateMetadata(
 
   try {
     // Fetch data from the API that provides all products
-    const response = await fetch('https://uniquestorebd-api.vercel.app/api/products');
-    const products = await response.json();
+    const response = await fetch(`https://uniquestorebd-api.vercel.app/api/products/slug/${slug}`);
+    const product = await response.json();
 
-    // Find the specific product by slug from the list of products
-    const product = products?.find((prod:Prorops ) => prod.slug === slug);
 
     if (!product) {
      
@@ -44,10 +42,10 @@ export async function generateMetadata(
     const plainTextDescription = htmlToText(product?.description || '');
     return {
       title: product?.name,
-      keywords: product?.name,
+      keywords: product?.seo,
     
       openGraph: {
-        images: [product?.images, ...previousImages],
+        images: [product?.images[0].url, ...previousImages],
         description:plainTextDescription,
         url: `https://uniquestorebd.vercel.app/product/${slug}`,
       },

@@ -19,14 +19,13 @@ export async function generateMetadata(
   const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
 
 
-
 if(!category) <Loading />
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: category?.name + " | Unique Store Bd",
     openGraph: {
-      images: [category?.image, ...previousImages],
+      images: [category?.images[0].url, ...previousImages],
       tags: [category?.name, ...previousImages],
       url: `https://uniquestorebd.vercel.app/products/${category?.slug}`,
     },

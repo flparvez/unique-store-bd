@@ -37,7 +37,7 @@ const products = data?.filter((product: Product) =>
   product.tags.some((tag) => ["best-sell", "new-arrival"].includes(tag)) 
 );
 
-console.log(products); // To verify the filtered products
+
   return (
 <div className="container mx-auto sm:px-4 px-2 py-8 ">
   
