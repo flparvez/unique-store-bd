@@ -134,8 +134,8 @@ const ProductPage = ({ slug }: { slug: string }) => {
                 />
               </div>
               <div className='border border-gray-400 p-2'>
-  <h5 className=" font-bold mb-2">What is the price of {product?.name} in Bangladesh?</h5>
-  <p className='font-medium'>The latest price of {product?.name} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.name} in Bangladesh at the best price from our website or any of our stores.</p>
+  <h5 className=" font-bold mb-2">What is the price of {product?.sname} in Bangladesh?</h5>
+  <p className='font-medium'>The latest price of {product?.sname} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.sname} in Bangladesh at the best price from our website or any of our stores.</p>
   </div>
             </div>
 
