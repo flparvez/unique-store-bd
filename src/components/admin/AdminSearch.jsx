@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+
 import { useDeleteProductMutation, useFetchProductsFromSearchQueryQuery } from "@/store/services/prodcutApi";
 import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 const AdminSearch = () => {
   const [query, setQuery] = useState('');
@@ -14,6 +15,7 @@ const AdminSearch = () => {
   const { data: products, error, isLoading } = useFetchProductsFromSearchQueryQuery(query, {
     skip: query === '', // Skip fetching when query is empty
   });
+  const [deleteProduct] = useDeleteProductMutation();
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -38,7 +40,7 @@ const AdminSearch = () => {
     };
   }, []);
 
-  const [deleteProduct] = useDeleteProductMutation();
+  
 
   const handleDelete = async (id) => {
     await deleteProduct({ id }).unwrap();
