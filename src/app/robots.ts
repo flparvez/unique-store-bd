@@ -8,9 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: ["/"],
       disallow: ["/admin/*"],
     },
-    sitemap: [
-      `${baseUrl}sitemap.xml`,
-      `${baseUrl}policy/sitemap.xml`
-    ],
+    sitemap: 'https://uniquestorebd.vercel.app/sitemap.xml',
   };
 }
