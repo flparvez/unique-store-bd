@@ -1,10 +1,13 @@
 import React from 'react'
 import Navbar from './HeaderSection'
+import { auth } from '@/auth'
 
-const Header = () => {
+const Header =async () => {
+    const session = await auth()
+    const user = session?.user
   return (
     <div >
-      <Navbar  />
+      <Navbar user={user}  />
     </div>
   )
 }

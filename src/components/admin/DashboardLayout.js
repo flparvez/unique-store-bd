@@ -2,6 +2,7 @@
 import { auth } from '@/auth';
 import Sidebar from './Sidebar';
 import { redirect } from 'next/navigation';
+import AdminSearch from './AdminSearch';
 
 
 
@@ -16,6 +17,7 @@ if(!admin) redirect('/')
   return (
     <div className="flex mt-[70px]">
       <Sidebar />
+      <AdminSearch />
       <div className="flex-1 p-6 bg-gray-100 min-h-screen">
         {children}
       </div>
