@@ -43,7 +43,7 @@ const SwiperSlides = ({ products }) => {
           768: { slidesPerView: 4 }, // For tablets
           1024: { slidesPerView: 4 }, // For desktops
         }}
-        navigation={true}
+        navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >

@@ -9,7 +9,7 @@ import { Button } from './ui/button'
 const TopProductSLider = () => {
   const {data} = useGetProductsQuery("")
 
-  const productsSlider = data?.slice(0, 23);
+  const productsSlider = data?.slice(9, 23);
 
   return (
     <div >

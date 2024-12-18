@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 import LiveChatButton from '@/components/LiveChatButton';
 import LatestProductList from '@/components/LatestProductList';
 import Loading from './Loading';
+import ProductImageSlider from './ProductImages';
 
 const ProductPage = ({ slug }: { slug: string }) => {
   
@@ -47,15 +48,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}
           <div className="overflow-hidden justify-center ">
-          <Image
-  width={500}
-  height={250}
-  src={product.images[0].url}
-  alt="Product Image"
-  className="object-cover rounded-md"
-  loading="lazy"
-/>
-
+<ProductImageSlider images={product.images} /> 
             {/* only lg */}
             <div className='hidden lg:block'>
            {/* Latest Product Section */}
