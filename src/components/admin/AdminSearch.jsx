@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { useFetchProductsFromSearchQueryQuery } from "@/store/services/prodcutApi";
+import { useDeleteProductMutation, useFetchProductsFromSearchQueryQuery } from "@/store/services/prodcutApi";
+import { Button } from "../ui/button";
 
 const AdminSearch = () => {
   const [query, setQuery] = useState('');
@@ -37,7 +38,12 @@ const AdminSearch = () => {
     };
   }, []);
 
+  const [deleteProduct] = useDeleteProductMutation();
 
+  const handleDelete = async (id) => {
+    await deleteProduct({ id }).unwrap();
+    toast.error("Product Deleted");
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white dark:bg-black   sm:py-2 z-50">
@@ -67,7 +73,9 @@ const AdminSearch = () => {
                           <div>
                             <p className="text-gray-800 font-bold">৳{product.price}</p>
                             <h3 className="text-gray-700 text-sm font-bold">{product.name}</h3>
+                   
                           </div>
+                          <Button onClick={() => handleDelete(product?._id)}>Delete</Button>
                         </div>
                       </Link>
                     </li>
