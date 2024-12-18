@@ -83,17 +83,21 @@ const ProductPage = ({ slug }: { slug: string }) => {
     <p className='text-lg text-green-600'>{product.stock > 0? "In Stock" : "Out of Stock"}</p>
 
 
-    <li className='font-bold'>
+ 
   {product.stock > 0 ? (
+
+<li className='font-bold'>
     <span>Only {product.stock} Left</span>
+
+    </li>
   ) : (
     ""
   )}
-</li>
+
 
      
           </div>
-          <li className="font-bold text-black ml-[80px]">{product.warrenty}
+          <li className="font-bold text-black ml-[80px]">{product.warranty}
            </li>
 
               {/* Product Category */}
@@ -105,13 +109,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
                 </span>
               </p>
   
-              {/* Product Tags */}
-              {/* <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md">
-                  {product.tags}
-                </span>
-           
-              </div> */}
+              <h2 className="text-lg font-semibold mb-2">Product Description</h2>
   
               {/* Product Video (YouTube Embed) */}
               {product.video ? (
@@ -129,7 +127,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
   
               {/* Product Description */}
               <div className="mb-6">
-                <h2 className="text-lg font-semibold mb-2">Product Description</h2>
+             
                 <div
                   className="prose"
                   dangerouslySetInnerHTML={{ __html: product.description }}
