@@ -52,12 +52,12 @@ const products = data?.filter((product: Product) =>
     height={300}
     src={product.images[0].url}
     alt={product.name}
-    className="object-cover w-full h-full"
+    className="object-cover w-full h-full  hover:animate-pulse"
     loading="lazy"
   />
 </div>
       <div className="p-3">
-      <h3 className=" text-black  sm:text-xl  font-extrabold">{product.name}</h3>
+      <h3 className=" text-black  sm:text-xl  text-sm font-bold uppercase">{product.name}</h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-red-600 text-xl font-bold animate-pulse">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>

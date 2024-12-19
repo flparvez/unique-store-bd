@@ -11,6 +11,7 @@ type Products = {
   _id: string;
   slug: string;
   name: string;
+  sname: string;
   description: string; // Updated to string type
   category: string;
   images: { url: string; public_id: string }[];
@@ -69,7 +70,7 @@ if (isLoading) {
 </div>
       <div className="p-3">
       {/* <h3 className="text-sm text-black sm:text-lg  font-bold hidden lg:block">{product.name}</h3> */}
-      <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>
+      <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.sname} </h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-indigo-600 font-bold">৳{product.price}</span>
           <span className="text-gray-900 line-through animate-pulse">৳{product.mprice}</span>

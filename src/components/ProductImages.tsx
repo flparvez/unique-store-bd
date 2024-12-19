@@ -33,7 +33,7 @@ const ProductImageSlider: React.FC<ProductImageSliderProps> = ({ images }) => {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <img src={image.url} alt={`Product Image ${index + 1}`} className="w-full h-auto" />
+            <Image width={100} height={50} src={image.url} alt={`Product ${index + 1}`} className="w-full h-auto object-cover" />
           </SwiperSlide>
         ))}
       </Swiper>
