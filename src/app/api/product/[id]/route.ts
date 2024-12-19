@@ -26,7 +26,7 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
             {
                 folder: 'next-cloudinary-uploads',
                 transformation: [
-                    { width: 800, height: 800, crop: 'fill', gravity: 'auto' },
+                    { width: 800, height: 900, crop: 'fill', gravity: 'auto' },
                     {
                         overlay: 'neqgwethxryghhmggnvi', // Replace with your logo's public ID
                         gravity: 'south_east',
