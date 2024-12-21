@@ -20,8 +20,8 @@ export const productsApi = createApi({
     
     updateProduct: builder.mutation({
       query: ({ updatedProduct, id }) => ({
-        url: `http://localhost:3000/api/product/${id}`,
-        // url: `https://uniquestorebd.vercel.app/api/product/${id}`,
+        // url: `http://localhost:3000/api/product/${id}`,
+        url: `https://uniquestorebd.vercel.app/api/product/${id}`,
         method: 'PATCH',
         body: updatedProduct,
       }),
@@ -34,13 +34,13 @@ export const productsApi = createApi({
 
     getProductById: builder.query({
   
-      query: (productId) => `http://localhost:3000/api/product/${productId}`,
+      query: (productId) => `https://uniquestorebd.vercel.app/api/product/${productId}`,
       // providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
 
        getProductBySlug: builder.query({
       query: (productSlug) => `products/slug/${productSlug}`,
-      providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
+      providesTags: ( productSlug) => [{ type: 'Product', id: productSlug }],
     }),
 
     
