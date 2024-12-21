@@ -28,32 +28,37 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
         folder: 'next-cloudinary-uploads',
         transformation: [
           {
-            width: 800,
-            height: 800,
-            crop: 'fill',
-            gravity: 'auto',
+              "quality": "auto:best",
+              "fetch_format": "auto"
           },
           {
-            overlay: 'neqgwethxryghhmggnvi', // Replace with your logo's public ID in Cloudinary
-            gravity: 'south_east',
-            width: 100,
-            opacity: 80,
-            x: 10,
-            y: 10,
-            crop: 'scale'
+              "effect": "sharpen:50"
           },
           {
-            overlay: {
-              font_family: 'Poppins', // Stylish and bold font
-              font_size: 30,
-           
-              text: 'Unique Store Bd' // Replace with your shop name
-            },
-            gravity: 'center',
-            color: '#FF0000', // Text color
-            opacity: 80,
+              "effect": "brightness:30"
+          },
+          {
+              "overlay": "neqgwethxryghhmggnvi",
+              "gravity": "south_east",
+              "width": 100,
+              "opacity": 80,
+              "x": 10,
+              "y": 10,
+              "crop": "scale"
+          },
+          {
+              "overlay": {
+                  "font_family": "Poppins",
+                  "font_size": 30,
+                  "font_weight": "bold",
+                  "text": "Unique Store Bd"
+              },
+              "gravity": "center",
+              "color": "#FF0000",
+              "opacity": 80,
+            
           }
-        ],
+      ],
       },
       (error, result) => {
         if (error) reject(error);

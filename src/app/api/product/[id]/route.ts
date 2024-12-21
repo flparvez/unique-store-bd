@@ -25,24 +25,39 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
         const uploadStream = cloudinary.uploader.upload_stream(
             {
                 folder: 'next-cloudinary-uploads',
-                transformation: [
-                    { width: 800, height: 900, crop: 'fill', gravity: 'auto' },
-                    {
-                        overlay: 'neqgwethxryghhmggnvi', // Replace with your logo's public ID
-                        gravity: 'south_east',
-                        width: 100,
-                        opacity: 80,
-                        x: 10,
-                        y: 10,
-                        crop: 'scale',
+               transformation: [
+                {
+                    "quality": "auto:best",
+                    "fetch_format": "auto"
+                },
+                {
+                    "effect": "sharpen:50"
+                },
+                {
+                    "effect": "brightness:30"
+                },
+                {
+                    "overlay": "neqgwethxryghhmggnvi",
+                    "gravity": "south_east",
+                    "width": 100,
+                    "opacity": 80,
+                    "x": 10,
+                    "y": 10,
+                    "crop": "scale"
+                },
+                {
+                    "overlay": {
+                        "font_family": "Poppins",
+                        "font_size": 30,
+                        "font_weight": "bold",
+                        "text": "Unique Store Bd"
                     },
-                    {
-                        overlay: { font_family: 'Poppins', font_size: 30, text: 'Unique Store Bd' },
-                        gravity: 'center',
-                        color: '#FF0000', // Text color
-                        opacity: 80,
-                    }
-                ],
+                    "gravity": "center",
+                    "color": "#FF0000",
+                    "opacity": 80,
+                  
+                }
+            ],
             },
             (error, result) => {
                 if (error) reject(error);
@@ -71,7 +86,7 @@ interface IProduct {
 
 // PATCH request to update product by id
 export const PATCH = async (request: NextRequest, context: { params: any }) => {
-    const id =await context.params.id; // Extract the id from params
+    const { id } = await context.params;
 
     if (!id) {
         return NextResponse.json({ error: "Missing product id" }, { status: 400 });
@@ -154,7 +169,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
 
 // GET request to fetch product by id
 export const GET = async (request: Request, context: { params: any }) => {
-    const id = await context.params.id; // Extract the id from params
+    const { id } = await context.params;
 
     if (!id) {
         return new NextResponse(
@@ -182,7 +197,7 @@ export const GET = async (request: Request, context: { params: any }) => {
 
 // DELETE request to delete product by id
 export const DELETE = async (request: Request, context: { params: any } ) => {
-    const id =await context.params.id; // Extract the id from params
+        const { id } = await context.params;
 
     if (!id) {
         return new NextResponse(
