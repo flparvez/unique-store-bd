@@ -6,8 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: ["/"],
-      disallow: ["/admin/*"],
+      // disallow: ["/admin/*"],
     },
-    sitemap: 'https://uniquestorebd.vercel.app/sitemap/sitemap.xml',
+    sitemap: 'https://uniquestorebd.vercel.app/api/sitemap/sitemap.xml',
   };
 }
