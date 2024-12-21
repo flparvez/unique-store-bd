@@ -28,7 +28,7 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
                transformation: [
                 {
                     "quality": "auto:best",
-                    "fetch_format": "auto"
+
                 },
                 {
                     "effect": "sharpen:50"
