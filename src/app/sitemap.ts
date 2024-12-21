@@ -7,7 +7,7 @@ const products = response;
 const allProducts = products?.map((product:any) =>{
  return {
   url:`${baseUrl}product/${product?.slug}`,
-  lastModified: product?.createdAt,
+  lastModified: product?.updatedAt,
  }
 } )
 
