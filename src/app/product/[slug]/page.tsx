@@ -39,7 +39,7 @@ export async function generateMetadata(
 
 
     const previousImages = (await parent).openGraph?.images || [];
-    const plainTextDescription = htmlToText(product?.description || '');
+    const plainTextDescription = htmlToText(product?.name || '');
     return {
       title: product?.name,
       keywords: product?.seo,
