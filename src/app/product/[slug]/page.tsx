@@ -39,15 +39,18 @@ export async function generateMetadata(
 
 
     const previousImages = (await parent).openGraph?.images || [];
-    const plainTextDescription = htmlToText(product?.name || '');
+
     return {
       title: product?.name,
       keywords: product?.seo,
-    
+    // description: product?.name,
+    description: `Shop the ${product?.sname} at the best price in Bangladesh. Buy ${product?.sname} online and get hassle free delivery.`,
       openGraph: {
+        title: product?.sname,
         images: [product?.images[0].url, ...previousImages],
-        description:plainTextDescription,
+        description: `Shop the ${product?.sname} at the best price in Bangladesh. Buy ${product?.sname} online and get hassle free delivery.`,
         url: `https://uniquestorebd.vercel.app/product/${slug}`,
+       
       },
       
     };
