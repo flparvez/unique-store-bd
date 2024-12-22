@@ -23,11 +23,6 @@ import {
 const OrderTable = ({orders}) => {
 
 
-const truncateText = (text, maxLength) => {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + "";
-  }
-}
 
   return (
     <div >
@@ -47,7 +42,7 @@ const truncateText = (text, maxLength) => {
       <TableBody>
         {orders?.map((invoice) => (
           <TableRow key={invoice._id}>
-            <TableCell className="font-medium"><Link href={`/profile/orders/${invoice._id}`}>{truncateText(invoice._id,5)}</Link></TableCell>
+            <TableCell className="font-medium"><Link href={`/profile/orders/${invoice._id}`}>{invoice.orderId}</Link></TableCell>
             <TableCell>{new Date(invoice.createdAt).toLocaleDateString()}</TableCell>
             <TableCell>{invoice.name}</TableCell>
             <TableCell>{invoice.status}</TableCell>

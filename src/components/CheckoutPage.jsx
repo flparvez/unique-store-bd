@@ -10,7 +10,7 @@ import { toast } from 'sonner';
 
 const CheckoutPage = ({ user }) => {
 
-  const router = useRouter();
+  const [orderId, setOrderId] = useState(null);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -60,8 +60,9 @@ const CheckoutPage = ({ user }) => {
     e.preventDefault();
     setIsProcessing(true);
     try {
-      await addOrder(ndata).unwrap();
-     
+      const response= await addOrder(ndata).unwrap();
+      setOrderId(response.orderId); // Set the orderId from the response
+
       toast.success('Order placed successfully!');
      
       dispatch(clearCart());
@@ -73,7 +74,7 @@ const CheckoutPage = ({ user }) => {
     }
   };
 
-  if (cart.items.length === 0) return redirect('/profile');
+ 
 
   return (
 <div>
@@ -253,6 +254,14 @@ const CheckoutPage = ({ user }) => {
           </button>
         </div>
       </form>
+
+        {/* Responsive Success Message with Order ID */}
+        {orderId && (
+        <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-md shadow-md text-center">
+          <h3 className="text-lg font-semibold">অর্ডারটি সফলভাবে সম্পন্ন হয়েছে!</h3>
+          <p className="mt-2">আপনার অর্ডার আইডি: <span className="font-bold">{orderId}</span></p>
+        </div>
+      )}
     </div>
   );
 };
