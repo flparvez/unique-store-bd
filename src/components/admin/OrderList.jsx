@@ -24,11 +24,7 @@ const OrderList = () => {
 
   if (isLoading) return <p>Loading...</p>;
   if (isError) return <p>Error loading orders.</p>;
-  const truncateText = (text, maxLength) => {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + "";
-    }
-  }
+
   const handleDelete = async (id) => {
     await deleteOrder({id}).unwrap();
     };
@@ -59,7 +55,7 @@ const OrderList = () => {
       <TableBody>
         {orderData &&  orderData?.map((invoice) => (
           <TableRow key={invoice._id}>
-            <TableCell className="font-medium"><Link href={`/admin/order/${invoice._id}`}>{truncateText(invoice._id,5)}</Link></TableCell>
+            <TableCell className="font-medium"><Link href={`/admin/order/${invoice._id}`}>{invoice?.orderId}</Link></TableCell>
             <TableCell>{new Date(invoice.createdAt).toLocaleDateString()}</TableCell>
             <TableCell>{invoice.name}</TableCell>
             <TableCell>{invoice.status}</TableCell>

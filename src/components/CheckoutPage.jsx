@@ -4,18 +4,19 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '@/store/cartSlice';
 import { useAddOrderMutation } from '@/store/services/CheckOutApi';
-import { redirect, useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
+
 const CheckoutPage = ({ user }) => {
 
-  const [orderId, setOrderId] = useState(null);
+  
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
   const [addOrder] = useAddOrderMutation();
-
+const [orderId, setorderId] = useState(null);
   const [paymentDetails, setPaymentDetails] = useState({
     cname: '',
     email: '',
@@ -61,11 +62,11 @@ const CheckoutPage = ({ user }) => {
     setIsProcessing(true);
     try {
       const response= await addOrder(ndata).unwrap();
-      setOrderId(response.orderId); // Set the orderId from the response
-
+setorderId(response._id);
       toast.success('Order placed successfully!');
-     
       dispatch(clearCart());
+     
+
     } catch (err) {
       toast.error('Failed to place the order');
       console.error('Failed to save the order: ', err);
@@ -73,11 +74,14 @@ const CheckoutPage = ({ user }) => {
       setIsProcessing(false);
     }
   };
-
- 
+if (orderId) {
+  redirect(`/profile/orders/${orderId}`);
+}
+  if (cart.items.length === 0) return redirect('/profile');
 
   return (
 <div>
+  
       <form className="bg-white rounded-lg sm:mt-20 mt-14 shadow-md p-6" onSubmit={handleSubmit}>
         <h2 className='text-xl sm:text-2xl font-bold text-center'>অর্ডারটি কনফার্ম করতে ফর্মটি সম্পুর্ণ পুরণ করে নিচের Place Order বাটনে ক্লিক করুন।</h2>
         <div className="mb-4">
@@ -255,13 +259,7 @@ const CheckoutPage = ({ user }) => {
         </div>
       </form>
 
-        {/* Responsive Success Message with Order ID */}
-        {orderId && (
-        <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-md shadow-md text-center">
-          <h3 className="text-lg font-semibold">অর্ডারটি সফলভাবে সম্পন্ন হয়েছে!</h3>
-          <p className="mt-2">আপনার অর্ডার আইডি: <span className="font-bold">{orderId}</span></p>
-        </div>
-      )}
+    
     </div>
   );
 };

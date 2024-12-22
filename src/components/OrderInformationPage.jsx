@@ -7,12 +7,18 @@ import Link from 'next/link';
 const OrderInformationPage = ({id}) => {
   const {data:order} = useGetOrderByIdQuery(id)
 
+  
+
 if (order) {
   return (
     <div className="container mx-auto px-4 py-8">
-    <h1 className="sm:text-4xl text-2xl font-bold text-center mb-8">Order Details</h1>
+       <div className="mt-8 p-4 bg-green-100 text-green-800 rounded-md shadow-md text-center">
+      <h3 className="text-lg font-semibold">অর্ডারটি সফলভাবে সম্পন্ন হয়েছে!</h3>
+      <p className="mt-2">আপনার অর্ডার আইডি: <span className="font-bold">{order?.orderId}</span></p>
+    </div>
+
     <div className="bg-white shadow-md rounded-lg p-6">
-      <h2 className="text-xl  font-semibold mb-4">Order ID: {order._id}</h2>
+      <h2 className="text-xl  font-semibold mb-4">Order ID: {order?.orderId}</h2>
       <div className="mb-4">
         <span className="font-medium">Customer Name:</span> {order.name}
       </div>   
@@ -44,9 +50,7 @@ if (order) {
       <div className="mb-4">
         <span className="font-medium">Status:</span> {order.status}
       </div>    
-       <div className="mb-4">
-        <span className="font-medium">paymentType:</span> {order.paymentType}
-      </div>
+
       <div className="mb-4">
         <span className="font-bold text-xl">Products:</span>
         <Table>
