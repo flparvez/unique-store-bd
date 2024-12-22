@@ -133,6 +133,16 @@ const ProductPage = ({ slug }: { slug: string }) => {
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
+              <div className=' '>
+{/* tags */}
+
+<div className="flex flex-wrap gap-2 mb-2 mt-2">
+
+<li
+   className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md"
+  >{product.seo}</li>
+</div>
+              </div>
               <div className='border border-gray-400 p-2'>
   <h5 className=" font-bold mb-2">What is the price of {product?.sname} in Bangladesh?</h5>
   <p className='font-medium'>The latest price of {product?.sname} is <b>৳{product?.price}</b> in Bangladesh. You can purchase the {product?.sname} in Bangladesh at the best price from our website or any of our stores.</p>

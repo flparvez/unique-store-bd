@@ -3,6 +3,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea"
 import { useGetCategoriesQuery } from "@/store/services/CategoryApi";
 import { cn } from "@/lib/utils";
 import { useUpdateProductMutation, useGetProductByIdQuery } from "@/store/services/prodcutApi";
@@ -174,7 +175,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="seo">SEO</Label>
-          <Input {...register("seo")} id="seo" placeholder="SEO" type="text" />
+          <Textarea {...register("seo")} id="seo" placeholder="SEO" aria-setsize={8} />
         </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="images">Product Images</Label>

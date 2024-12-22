@@ -1,6 +1,8 @@
 "use client";
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Textarea } from "@/components/ui/textarea"
+
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useGetCategoriesQuery } from "@/store/services/CategoryApi";
@@ -187,11 +189,11 @@ export default function AddProductForm() {
         </LabelInputContainer>
     <LabelInputContainer className="mb-4">
           <Label htmlFor="warranty">Seo</Label>
-          <Input
+          <Textarea
             {...register("seo", { required: true })}
             id="seo"
             placeholder="seo Information"
-            type="text"
+           aria-setsize={8}
           />
         </LabelInputContainer>
 
