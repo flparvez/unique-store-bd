@@ -35,7 +35,7 @@ export async function generateMetadata(
         },
       };
     }
-
+const description = htmlToText(product?.description);
 
 
     const previousImages = (await parent).openGraph?.images || [];
@@ -44,11 +44,11 @@ export async function generateMetadata(
       title: product?.name,
       keywords: product?.seo,
     // description: product?.name,
-    description: `Shop the ${product?.sname} at the best price in Bangladesh. Buy ${product?.sname} online and get hassle free delivery.`,
+    description: description,
       openGraph: {
-        title: product?.sname,
+        title: product?.name,
         images: [product?.images[0].url, ...previousImages],
-        description: `Shop the ${product?.sname} at the best price in Bangladesh. Buy ${product?.sname} online and get hassle free delivery.`,
+        description: description,
         url: `https://uniquestorebd.vercel.app/product/${slug}`,
        
       },
