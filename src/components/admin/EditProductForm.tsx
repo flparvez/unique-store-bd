@@ -161,10 +161,13 @@ export default function UpdateProductForm({ id }: { id: string }) {
           <Label htmlFor="video">Video URL</Label>
           <Input {...register("video")} id="video" placeholder="Video URL" type="text" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="tags">Tags</Label>
-          <Input {...register("tags")} id="tags" placeholder="Tags" type="text" />
-        </LabelInputContainer>
+            <LabelInputContainer className="mb-4">
+              <Label htmlFor="tags">Tags</Label>
+              <select {...register("tags", { required: true })} className="select">
+                <option value={"all"}> All</option>
+                <option value={"best-sell"}>Best Sell</option>
+              </select>
+            </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="mprice">Market Price</Label>
           <Input {...register("mprice", { required: true })} id="mprice" placeholder="Market Price" type="number" />
