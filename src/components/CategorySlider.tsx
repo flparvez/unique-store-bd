@@ -27,7 +27,7 @@ const CategorySlider: React.FC = () => {
   const { data } = useGetCategoriesQuery("");
 
   return (
-    <div className='w-full bg-[#ffe9e7] sm:w-[70%] justify-center sm:h-[215px]  h-[185px] mx-auto mt-2'>
+    <div className='w-full bg-[#ffe9e7] sm:w-[70%] justify-center sm:h-[188px]  h-[175px] mx-auto '>
 
 
        <Swiper
