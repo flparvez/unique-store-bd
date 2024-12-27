@@ -41,7 +41,7 @@ const SwiperSlides = ({ products }) => {
           350: { slidesPerView: 2 }, // For small screens
           580: { slidesPerView: 3 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
-          1024: { slidesPerView: 4 }, // For desktops
+          1024: { slidesPerView: 5 }, // For desktops
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
@@ -49,7 +49,7 @@ const SwiperSlides = ({ products }) => {
       >
         {products && products.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="w-[182px] h-[294px]  sm:w-[280px] md:w-[250px] sm:h-[290px] mx-auto my-2">
+            <div className="w-[182px] h-[294px]  sm:w-[70%] md:w-[250px] sm:h-[300px] mx-auto my-2">
               <Link href={`/product/${product.slug}`}>
                 <div className="overflow-hidden justify-center text-center">
                   <Image
@@ -61,7 +61,7 @@ const SwiperSlides = ({ products }) => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 30 ?  truncateText(product?.name, 30)+"..." : product.name} </h3>
+                <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 40 ?  truncateText(product?.name, 40) : product.name} </h3>
                 <p className="text-blue-700 font-bold text-center">{product.category.name}</p>
                 <p className="text-lg font-extrabold text-center">৳{product.price}</p>
               </Link>

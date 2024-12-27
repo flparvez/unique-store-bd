@@ -27,16 +27,16 @@ const CategorySlider: React.FC = () => {
   const { data } = useGetCategoriesQuery("");
 
   return (
-    <div className='w-full bg-[#ffe9e7] sm:w-[60%] justify-center sm:h-[215px]  h-[185px] mx-auto mt-2'>
+    <div className='w-full bg-[#ffe9e7] sm:w-[70%] justify-center sm:h-[215px]  h-[185px] mx-auto mt-2'>
 
 
        <Swiper
-        
+        scrollbar={{ draggable: true }}
         parallax={true}
-        autoplay={{
-          delay: 2900,
-          disableOnInteraction: false,
-        }}
+        // autoplay={{
+        //   delay: 2900,
+        //   disableOnInteraction: false,
+        // }}
         pagination={{
           clickable: true,
         }}
@@ -45,7 +45,7 @@ const CategorySlider: React.FC = () => {
           300: { slidesPerView: 2 }, // For very small screens
           360: { slidesPerView: 3 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
-          1024: { slidesPerView: 4 }, // For desktops
+          1024: { slidesPerView: 8 }, // For desktops
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
@@ -67,7 +67,7 @@ const CategorySlider: React.FC = () => {
                     />
                    </div>
                     <div className="p-4">
-                      <h3 className="sm:text-lg text-sm font-semibold text-center">{category.name}</h3>
+                      <h3 className=" sm:text-sm text-xs font-semibold text-center sm:ml-12">{category.name}</h3>
                     </div>
                   </Link>
                 </div>

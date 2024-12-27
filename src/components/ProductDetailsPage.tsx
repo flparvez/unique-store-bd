@@ -13,9 +13,12 @@ import LiveChatButton from '@/components/LiveChatButton';
 import LatestProductList from '@/components/LatestProductList';
 import Loading from './Loading';
 import ProductImageSlider from './ProductImages';
+import { useEffect } from 'react';
 
 const ProductPage = ({ slug }: { slug: string }) => {
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { data:product, isLoading } = useGetProductBySlugQuery(slug);
   const router = useRouter();
 

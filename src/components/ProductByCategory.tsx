@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGetProductsQuery } from "@/store/services/prodcutApi";
 
 import Image from 'next/image';
@@ -39,6 +39,9 @@ interface ProductByCategoryProps {
 }
 
 const ProductByCategory: React.FC<ProductByCategoryProps> = ({ slug }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { data,isLoading } = useGetProductsQuery("");
 
   // Filter products by category slug

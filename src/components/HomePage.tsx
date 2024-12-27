@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic'
 import Loading from './Loading'
 import { Button } from './ui/button'
+import { useEffect } from 'react'
 const DynamicTopProductSlider = dynamic(() => import('./TopProductSLider'), {
   loading: () =><Loading />,
   ssr: false
@@ -25,6 +26,10 @@ const DynamicTopSellingProduct = dynamic(() => import('./TopSellingProduct'), {
 
 
 const HomePage = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className='mt-[75px]'>
      

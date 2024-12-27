@@ -14,7 +14,7 @@ const TopProductSLider = () => {
   return (
     <div >
       
-      <h2 className="text-xl font-bold text-center ">
+      <h2 className="text-xl font-bold text-center sm:mt-24 ">
           <Button>Featured Product</Button>
           </h2>
  
