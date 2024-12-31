@@ -46,7 +46,7 @@ const EditCategory =async ({
  <h1 className="text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {categoryName} </h1>
  <CategorySlider />
     <ProductByCategory slug={slug} />
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto p-2">
     
     <p className="mb-4">
       <span className="font-semibold text-yellow-500">Unique Store BD</span> - The Most Reliable eCommerce Site in Bangladesh. We maintain a comprehensive stock to ensure you receive your orders as quickly as possible. Experience online shopping in Bangladesh for authentic products, including the latest tech gadgets such as live streaming gear, YouTube studio setups, vlogging gear, home studio equipment, webcams, microphones, lighting setups, ring lights, smartphones, gimbals, and related products.
