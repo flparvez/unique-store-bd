@@ -64,7 +64,7 @@ if (isLoading) {
     height={300}
     src={product.images[0].url}
     alt={product.name}
-    className="object-cover "
+    className="object-cover w-[40vh] h-[27vh]"
     loading="lazy"
   />
 </div>

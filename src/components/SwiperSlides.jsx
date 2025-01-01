@@ -39,7 +39,7 @@ const SwiperSlides = ({ products }) => {
         breakpoints={{
           0: { slidesPerView: 1 }, // For very small screens
           350: { slidesPerView: 2 }, // For small screens
-          580: { slidesPerView: 3 }, // For small screens
+          550: { slidesPerView: 3 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
           1024: { slidesPerView: 5 }, // For desktops
         }}
@@ -57,7 +57,7 @@ const SwiperSlides = ({ products }) => {
                     height={220}
                     src={product.images[0].url}
                     alt={product.name}
-                    className="object-cover w-auto h-auto  text-center"
+                    className=" object-cover w-[38vh] h-[27vh]  text-center"
                     loading="lazy"
                   />
                 </div>

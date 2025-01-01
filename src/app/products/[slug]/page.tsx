@@ -54,9 +54,9 @@ const EditCategory =async ({
 <br />
 <div className=" flex justify-center flex-wrap gap-2 mb-2 mt-2">
 {
-  category?.tags?  <li
+  category?.tags?<div><span>Tags </span><li
   className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md"
- >Tags: {category?.tags}</li>: null
+ > {category?.tags}</li></div>  : null
 }
 
 </div>
