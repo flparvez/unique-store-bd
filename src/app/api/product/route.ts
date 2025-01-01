@@ -110,7 +110,7 @@ export const POST = async (request: NextRequest) => {
 
     const newProduct = new Product({
       name,
-      slug:slugify(name!),
+      slug:slugify(name!).toLowerCase(),
       sname,
       description,
       category,

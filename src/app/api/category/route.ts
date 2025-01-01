@@ -17,7 +17,7 @@ interface CloudinaryUploadResult {
   secure_url: string;
 }
 
-// Function to upload image to Cloudinary with logo, text overlay, crop, and resize
+
 // Function to upload image to Cloudinary with logo, text overlay, crop, and resize
 const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadResult> => {
   const bytes = await file.arrayBuffer();
@@ -90,6 +90,7 @@ export const POST = async (request: NextRequest) => {
     }));
 
     const name = formData.get("name") as string | null;
+    const tags = formData.get("tags") as string | null;
 
  
 
@@ -97,6 +98,7 @@ export const POST = async (request: NextRequest) => {
 
     const newProduct = new Category({
       name,
+      tags,
       images,
       slug:slugify(name!),
      

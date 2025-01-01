@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils";
 import { useAddCategoryMutation } from "@/store/services/CategoryApi";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Textarea } from "../ui/textarea";
 
 
 type Inputs = {
     id: string,
     name: string;
+    tags: string;
     images: File[];
 
 };
@@ -21,11 +23,12 @@ export default function AddCategoryForm() {
 
   const router= useRouter()
     const [addCategory] = useAddCategoryMutation();
-  const { register, handleSubmit, watch, setValue } = useForm<Inputs>();
+  const { register, handleSubmit } = useForm<Inputs>();
  
  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
+    formData.append("tags", data.tags);
  
 
 
@@ -55,6 +58,11 @@ export default function AddCategoryForm() {
     <LabelInputContainer className="mb-4 ">
       <Label htmlFor="name">Category Name</Label>
       <Input {...register("name", { required: true })} id="name" placeholder="Category Name" type="text" />
+      </LabelInputContainer>
+ 
+    <LabelInputContainer className="mb-4 ">
+      <Label htmlFor="tags">Category tags</Label>
+      <Textarea {...register("tags", { required: true })} id="tags" placeholder="Category Seo tags"  />
       </LabelInputContainer>
  
  

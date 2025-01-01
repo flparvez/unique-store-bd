@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
 import Image from "next/image";
+import { Textarea } from "../ui/textarea";
 
 interface EditCategoryProps {
   slug: string;
@@ -17,6 +18,7 @@ interface EditCategoryProps {
 interface Category {
   _id: string;
   name: string;
+  tags: string;
   images: File[]
   slug: string;
 }
@@ -45,6 +47,7 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
       // Prepopulate form with current category values
       if (data) {
         setValue("name", data.name);
+        setValue("tags", data.tags);
         setExistingImages(data.images || []);
       }
     }
@@ -58,6 +61,7 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
  const onSubmit: SubmitHandler<Category> = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
+    formData.append("tags", data.tags);
  
 
     // Append multiple image files to the form data
@@ -84,7 +88,12 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
           <Label htmlFor="name">Category Name</Label>
           <Input {...register("name", { required: true })} id="name" placeholder="Category Name" type="text" />
         </LabelInputContainer>
-
+ 
+        <LabelInputContainer className="mb-4 ">
+      <Label htmlFor="tags">Category tags</Label>
+      <Textarea {...register("tags", { required: true })} id="tags" placeholder="Category Seo Tags"  />
+      </LabelInputContainer>
+ 
                <LabelInputContainer className="mb-4">
                  <Label htmlFor="images">Product Images</Label>
                  <Input {...register("images")} id="images" placeholder="Product Images" type="file" multiple />

@@ -13,6 +13,7 @@ const imageSchema = new Schema<Image>({
 
 const categorySchema= new mongoose.Schema({
     name: { type: String, required: true, unique: true },
+    tags: { type: [String] },
     images: { type: [imageSchema], required: true },
     slug: { type: String, unique: true },
 },{timestamps: true});
