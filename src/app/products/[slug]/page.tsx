@@ -26,7 +26,7 @@ if(!category) <Loading />
   return {
     title: category?.name + " In Unique Store Bd",
     description: category?.name + " Best Price In Unique Store Bd",
-    keywords: category?.name ,
+    keywords: category?.tags ,
     openGraph: {
       images: [category?.images[0].url, ...previousImages],
       tags: [category?.name, ...previousImages],
@@ -41,13 +41,26 @@ const EditCategory =async ({
 }) => {
 
   const slug = (await params).slug
-  const categoryName = slug.replace(/-/g, ' ').toUpperCase();
+
+
+
+  const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
 
   return (
     <div>
- <h1 className="text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {categoryName} | Unique Store Bd </h1>
+ <h1 className="text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {category?.name} | Unique Store Bd </h1>
  <CategorySlider />
     <ProductByCategory slug={slug} />
+<br />
+<div className=" flex justify-center flex-wrap gap-2 mb-2 mt-2">
+{
+  category?.tags?  <li
+  className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md"
+ >Tags: {category?.tags}</li>: null
+}
+
+</div>
+
     <div className="max-w-7xl mx-auto p-2">
     
     <p className="mb-4">

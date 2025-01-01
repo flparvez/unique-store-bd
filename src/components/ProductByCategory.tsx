@@ -98,6 +98,7 @@ const ProductByCategory: React.FC<ProductByCategoryProps> = ({ slug }) => {
            totalPages={Math.ceil(filterProducts?.length / productsPerPage)}
            onPageChange={paginate}
          />
+         
     </div>
   );
 }

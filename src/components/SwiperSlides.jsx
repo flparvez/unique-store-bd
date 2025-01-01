@@ -62,7 +62,7 @@ const SwiperSlides = ({ products }) => {
                   />
                 </div>
                 <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 40 ?  truncateText(product?.name, 40) : product.name} </h3>
-                <p className="text-blue-700 font-bold text-center">{product.category.name}</p>
+                <p className="text-blue-700 font-bold text-center">{product?.category?.name}</p>
                 <p className="text-lg font-extrabold text-center">৳{product.price}</p>
               </Link>
             </div>
