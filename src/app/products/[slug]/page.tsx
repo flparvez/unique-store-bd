@@ -24,7 +24,7 @@ if(!category) <Loading />
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: category?.name + " In Unique Store Bd",
+    title:"All "+ category?.name + " In Unique Store Bd",
     description: category?.name + " Best Price In Unique Store Bd",
     keywords: category?.tags ,
     openGraph: {
@@ -52,10 +52,10 @@ const EditCategory =async ({
  <CategorySlider />
     <ProductByCategory slug={slug} />
 <br />
-<div className=" flex justify-center flex-wrap gap-2 mb-2 mt-2">
+<div className="  justify-center flex flex-wrap gap-2 mb-2 mt-2">
 {
   category?.tags?<div><span>Tags </span><li
-  className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md"
+  className="px-3 py-1 w-[100%] space-x-2 bg-blue-200 text-blue-800 rounded-md break-words"
  > {category?.tags}</li></div>  : null
 }
 

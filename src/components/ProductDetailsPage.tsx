@@ -140,10 +140,9 @@ const ProductPage = ({ slug }: { slug: string }) => {
 {/* tags */}
 
 <div className="flex flex-wrap gap-2 mb-2 mt-2">
-
-<li
-   className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md"
-  >{product.seo}</li>
+  <li className="px-3 py-1 w-[99%] space-x-2 bg-blue-200 text-blue-800 rounded-md break-words">
+    {product.seo}
+  </li>
 </div>
               </div>
               <div className='border border-gray-400 p-2'>

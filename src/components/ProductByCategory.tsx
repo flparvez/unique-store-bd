@@ -75,7 +75,7 @@ const ProductByCategory: React.FC<ProductByCategoryProps> = ({ slug }) => {
     height={300}
     src={product.images[0].url}
     alt={product.name}
-    className="object-cover w-full h-full"
+    className=" object-cover w-[42vh] h-[27vh]"
     loading="lazy"
   />
 </div>
