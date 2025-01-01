@@ -52,7 +52,7 @@ if (isLoading) {
     height={300}
     src={product.images[0].url}
     alt={product.name}
-    className="object-cover w-full h-full"
+    className="object-cover sm:h-[230px]  h-[180px]"
     loading="lazy"
   />
 </div>

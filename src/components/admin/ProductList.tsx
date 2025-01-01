@@ -28,7 +28,7 @@ const ProductList: React.FC<ProductListProps> = ({ product, handleDelete }) => {
         <Image width={200} height={200}
             src={product.images[0].url}
             alt="text" 
-            className="w-full h-[300px] object-cover rounded-t-lg"
+            className="w-full sm:h-[230px]  h-[180px] object-cover rounded-t-lg"
           />
         </div>
         <CardContent>
