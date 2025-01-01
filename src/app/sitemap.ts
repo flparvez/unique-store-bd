@@ -8,7 +8,7 @@ export default async function sitemap() {
     { url: `${baseUrl}`, lastModified: new Date() },
     { url: `${baseUrl}policy/returns`, lastModified: new Date() },
     { url: `${baseUrl}policy/replacement-warranty`, lastModified: new Date() },
-    { url: `${baseUrl}products/table-lamp`, lastModified: new Date() },
+    { url: `${baseUrl}products/Table-Lamp`, lastModified: new Date() },
     { url: `${baseUrl}products/TWS`, lastModified: new Date() },
     { url: `${baseUrl}products/Smart-Watch`, lastModified: new Date() },
 
