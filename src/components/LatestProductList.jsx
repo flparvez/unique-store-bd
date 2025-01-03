@@ -21,15 +21,26 @@ const LatestProductList = () => {
 
 <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden">
   <Link href={`/product/${product.slug}`} className="block">
-  <div className="overflow-hidden">
+  <div className="relative">
   <Image
     width={300}
     height={300}
     src={product.images[0].url}
     alt={product.name}
-    className="object-cover w-[42vh] h-[27vh] "
+    className="object-cover sm:h-[230px]  h-[180px] hover:animate-pulse"
     loading="lazy"
   />
+
+
+  <div className="absolute bottom-0 left-0 flex justify-center w-full py-1 rounded-b">
+    <h3 className="text-sm font-semibold bg-black w-16 sm:w-28  text-white text-center">
+
+
+
+    {product.stock > 0? "In Stock" : "Out of Stock"}
+    </h3>
+  </div>
+
 </div>
       <div className="p-3">
       <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 50 ?  truncateText(product?.name, 50)+"..." : product.name} </h3>

@@ -58,7 +58,7 @@ if (isLoading) {
 
 <div key={product._id} className="bg-white rounded-lg  overflow-hidden">
   <Link href={`/product/${product.slug}`} className="block">
-  <div className="overflow-hidden">
+  <div className="relative">
   <Image
     width={300}
     height={300}
@@ -67,6 +67,15 @@ if (isLoading) {
     className="object-cover sm:h-[230px]  h-[180px] hover:animate-pulse"
     loading="lazy"
   />
+
+
+  <div className="absolute bottom-0 left-0 flex justify-center w-full py-1 rounded-b">
+    <h3 className="text-sm font-semibold bg-black w-16 sm:w-28 border border-white  text-white text-center">
+
+    {product.stock > 0? "In Stock" : "Out of Stock"}
+    </h3>
+  </div>
+
 </div>
       <div className="p-3">
       {/* <h3 className="text-sm text-black sm:text-lg  font-bold hidden lg:block">{product.name}</h3> */}
