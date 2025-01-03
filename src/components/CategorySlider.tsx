@@ -34,7 +34,7 @@ const CategorySlider: React.FC = () => {
         scrollbar={{ draggable: true }}
         parallax={true}
         autoplay={{
-          delay: 4900,
+          delay: 4200,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -45,7 +45,7 @@ const CategorySlider: React.FC = () => {
           300: { slidesPerView: 2 }, // For very small screens
           360: { slidesPerView: 3 }, // For small screens
           768: { slidesPerView: 4 }, // For tablets
-          1024: { slidesPerView: 8 }, // For desktops
+          1024: { slidesPerView: 7 }, // For desktops
         }}
         navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
@@ -59,8 +59,8 @@ const CategorySlider: React.FC = () => {
   <Link href={`/products/${category.slug}`}>
   <div className="relative">
   <Image
-    width={150}
-    height={140}
+    width={300}
+    height={300}
     src={category.images[0].url}
     alt={category.name}
     className="object-cover rounded"

@@ -18,7 +18,7 @@ const ProductImageSlider: React.FC<ProductImageSliderProps> = ({ images }) => {
       <Swiper
         parallax={true}
         autoplay={{
-          delay: 2500,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         pagination={{
