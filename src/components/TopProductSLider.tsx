@@ -14,10 +14,7 @@ const TopProductSLider = () => {
   return (
     <div >
       
-      <h2 className="text-xl font-bold text-center sm:mt-24 ">
-          <Button>Featured Product</Button>
-          </h2>
- 
+    
  {/* Featured Products And Category With Link */}
    <div className="sm:w-[70%] justify-center mx-auto h-full ">
 

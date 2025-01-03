@@ -27,16 +27,16 @@ const CategorySlider: React.FC = () => {
   const { data } = useGetCategoriesQuery("");
 
   return (
-    <div className='w-full bg-[#ffe9e7] sm:w-[70%] justify-center sm:h-[188px]  h-[175px] mx-auto '>
+    <div className='w-full bg-[#ffe9e7] sm:w-[70%] justify-center sm:h-[160px]  h-[150px] mx-auto '>
 
 
        <Swiper
         scrollbar={{ draggable: true }}
         parallax={true}
-        // autoplay={{
-        //   delay: 2900,
-        //   disableOnInteraction: false,
-        // }}
+        autoplay={{
+          delay: 4900,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -52,25 +52,29 @@ const CategorySlider: React.FC = () => {
         className="mySwiper"
       >
         <div className="container mx-auto  bg-[#ffe9e7] ">
-          <div className="flex overflow-x-scroll scrollbar-hide ">
+          <div className="flex overflow-x-scroll  ">
             {data?.map((category: Category) => (
               <SwiperSlide key={category._id}>
-                <div className="flex-shrink-0  bg-[#ffe9e7]   overflow-hidden">
-                  <Link href={`/products/${category.slug}`}>
-                   <div className='sm:ml-14 mt-2 ml-[18px]'>
-                   <Image
-                      width={150}
-                      height={140}
-                      src={category.images[0].url}
-                      alt={category.name}
-                      className=" object-cover  rounded"
-                    />
-                   </div>
-                    <div className="p-4">
-                      <h3 className=" sm:text-sm text-xs font-semibold text-center sm:ml-12">{category.name}</h3>
-                    </div>
-                  </Link>
-                </div>
+             <div className="flex-shrink-0 bg-[#ffe9e7] overflow-hidden">
+  <Link href={`/products/${category.slug}`}>
+  <div className="relative">
+  <Image
+    width={150}
+    height={140}
+    src={category.images[0].url}
+    alt={category.name}
+    className="object-cover rounded"
+  />
+  <div className="absolute bottom-0 left-0 w-full py-1 rounded-b">
+    <h3 className="text-sm font-semibold text-red-500 text-center">
+      {category.name}
+    </h3>
+  </div>
+</div>
+
+  </Link>
+</div>
+
               </SwiperSlide>
             ))}
           </div>

@@ -32,7 +32,7 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className='mt-[75px]'>
+    <div className='mt-[70px] sm:mt-[101px]'>
      
       {/* Slider */}
       <DynamicTopProductSlider />
