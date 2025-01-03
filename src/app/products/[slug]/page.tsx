@@ -25,7 +25,7 @@ if(!category) <Loading />
 
   return {
     title:category?.name + " In Unique Store Bd",
-    description: category?.name + " Best Price In Unique Store Bd" + " " + category?.tags,
+    description: category?.name + " Best Price In Unique Store Bd" + ", " + category?.tags,
     keywords: category?.tags ,
     openGraph: {
       images: [category?.images[0].url, ...previousImages],
