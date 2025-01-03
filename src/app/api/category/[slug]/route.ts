@@ -13,7 +13,7 @@ cloudinary.config({
 
 interface ICategory {
     name?: string;
-    tags?: string[];
+    tags?: string;
     images?: { url: string; public_id: string }[];
 }
 interface CloudinaryUploadResult {
@@ -111,6 +111,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
 
         const updateData: Partial<ICategory> = {
             name: fields.name || undefined,
+            tags: fields.tags || undefined,
           
         };
 
