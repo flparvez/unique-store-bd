@@ -69,8 +69,8 @@ if (isLoading) {
   />
 
 
-  <div className="absolute bottom-0 left-0 flex justify-center w-full py-1 rounded-b">
-    <h3 className="text-sm font-semibold bg-black w-14 sm:w-28 border border-white  text-white text-center">
+  <div className="absolute bottom-0 left-0 flex justify-center w-full  rounded-b">
+    <h3 className="text-sm font-semibold bg-black w-16 sm:w-28 border border-white  text-white text-center">
 
     {product.stock > 0? "In Stock" : "Out of Stock"}
     </h3>
