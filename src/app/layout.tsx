@@ -21,7 +21,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://Unique Store BD.vercel.app/"),
+  metadataBase: new URL("https://uniquestorebd.vercel.app/"),
   title: "Unique Store BD  | Quality Is Here",
   description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
   keywords:
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Unique Store BD | Quality Is Here",
     description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
     images: ["https://i.ibb.co.com/WBVg5rv/image.png"],
-    url: "https://Unique Store BD.vercel.app/",
+    url: "https://uniquestorebd.vercel.app/",
   },
 
   verification: {

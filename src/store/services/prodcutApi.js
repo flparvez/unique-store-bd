@@ -4,14 +4,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://Unique Store BD-api.vercel.app/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://uniquestorebd-api.vercel.app/api/' }),
   // baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:5000/api/' }),
   tagTypes: ['Product', 'Cart'],
   endpoints: (builder) => ({
 
     addProduct: builder.mutation({
       query: ({ body}) => ({
-        url: `https://Unique Store BD.vercel.app/api/product`,
+        url: `https://uniquestorebd.vercel.app/api/product`,
         method: 'POST',
         body,
       }),
@@ -21,7 +21,7 @@ export const productsApi = createApi({
     updateProduct: builder.mutation({
       query: ({ updatedProduct, id }) => ({
         // url: `http://localhost:3000/api/product/${id}`,
-        url: `https://Unique Store BD.vercel.app/api/product/${id}`,
+        url: `https://uniquestorebd.vercel.app/api/product/${id}`,
         method: 'PATCH',
         body: updatedProduct,
       }),
@@ -34,7 +34,7 @@ export const productsApi = createApi({
 
     getProductById: builder.query({
   
-      query: (productId) => `https://Unique Store BD.vercel.app/api/product/${productId}`,
+      query: (productId) => `https://uniquestorebd-api.vercel.app/api/product/${productId}`,
       // providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
 

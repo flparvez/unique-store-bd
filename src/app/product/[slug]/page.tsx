@@ -20,7 +20,7 @@ export async function generateMetadata(
 
   try {
     // Fetch data from the API that provides all products
-    const response = await fetch(`https://Unique Store BD-api.vercel.app/api/products/slug/${slug}`);
+    const response = await fetch(`https://uniquestorebd-api.vercel.app/api/products/slug/${slug}`);
     const product = await response.json();
 
 
@@ -49,7 +49,7 @@ const description = htmlToText(product?.description);
         title: product?.name,
         images: [product?.images[0].url, ...previousImages],
         description: description,
-        url: `https://Unique Store BD.vercel.app/product/${slug}`,
+        url: `https://uniquestorebd.vercel.app/product/${slug}`,
        
       },
       

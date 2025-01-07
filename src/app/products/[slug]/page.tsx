@@ -30,7 +30,7 @@ if(!category) <Loading />
     openGraph: {
       images: [category?.images[0].url, ...previousImages],
       tags: [category?.name, ...previousImages],
-      url: `https://Unique Store BD.vercel.app/products/${category?.slug}`,
+      url: `https://uniquestorebd.vercel.app/products/${category?.slug}`,
     },
   };
 }
@@ -44,7 +44,7 @@ const EditCategory =async ({
 
 
 
-  const category = await fetch(`https://Unique Store BD-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
+  const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
 
   return (
     <div>
