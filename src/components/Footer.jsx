@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="container mx-auto text-center px-4">
         <h2 className="text-xl sm:text-2xl font-bold mb-2">Unique Store BD | Quality Is Here</h2>
         <div className="flex justify-center items-center space-x-4 mb-2">
-          <Link href="https://www.facebook.com/Unique Store BD23" passHref>
+          <Link href="https://www.facebook.com/uniquestorebd23" passHref>
             <h2 className="text-gray-400 hover:text-white transition duration-300">
               <FaFacebookF size={24} />
             </h2>
