@@ -13,7 +13,7 @@ export const metadata = {
 
 const Profile = async () => {
   // Fetch orders
-  const response = await fetch('https://Unique Store BD-api.vercel.app/api/orders');
+  const response = await fetch('https://uniquestorebd-api.vercel.app/api/orders');
   // const response = await fetch('https://Unique Store BD-api.vercel.app/api/orders');
   const orders = await response.json();
 

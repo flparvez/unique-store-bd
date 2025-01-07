@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-
+ ## flparvez - Md Parvez Web Developer
 First, run the development server:
 
 ```bash
@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [https://Unique Store BD.vercel.app](https://Unique Store BD.vercel.app) with your browser to see the result.
+Open [https://uniquestorebd.vercel.app](https://uniquestorebd.vercel.app) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

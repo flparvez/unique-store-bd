@@ -17,7 +17,7 @@ export async function generateMetadata(
   const slug = (await params).slug
 
 
-  const category = await fetch(`https://Unique Store BD-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
+  const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
 
 
 if(!category) <Loading />
