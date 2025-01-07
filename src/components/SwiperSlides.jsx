@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -8,7 +9,6 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 const SwiperSlides = ({ products }) => {
   const [mounted, setMounted] = useState(false);
 
@@ -16,56 +16,53 @@ const SwiperSlides = ({ products }) => {
     setMounted(true);
   }, []);
 
+  // Truncate text utility
+  const truncateText = (text, maxLength) =>
+    text.length > maxLength ? text.substring(0, maxLength) : text;
+
   if (!mounted) return null;
-  const truncateText = (text, maxLength) => {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + "";
-    }
-  }
-  
+
   return (
     <div className="swiper-container">
-      
       <Swiper
-       
-        parallax={true}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
         breakpoints={{
-          0: { slidesPerView: 1 }, // For very small screens
-          350: { slidesPerView: 2 }, // For small screens
-          550: { slidesPerView: 3 }, // For small screens
-          768: { slidesPerView: 4 }, // For tablets
-          1024: { slidesPerView: 5 }, // For desktops
+          0: { slidesPerView: 1 },
+          350: { slidesPerView: 2 },
+          450: { slidesPerView: 3 },
+          550: { slidesPerView: 4 },
+          768: { slidesPerView: 4 },
+          1024: { slidesPerView: 5 },
         }}
-        navigation={false}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {products && products.map((product) => (
+        {products?.map((product) => (
           <SwiperSlide key={product._id}>
-            <div className="w-[182px] h-[294px]  sm:w-[70%] md:w-[250px] sm:h-[300px] mx-auto my-2">
-              <Link href={`/product/${product.slug}`}>
-                <div className="overflow-hidden justify-center text-center">
+            <Link href={`/product/${product.slug}`}>
+              <div className="w-[182px]  hover:scale-95 sm:w-[70%] md:w-[250px]  mx-auto my-2">
+                <div className="overflow-hidden text-center">
                   <Image
                     width={220}
                     height={220}
                     src={product.images[0].url}
                     alt={product.name}
-                    className=" object-cover w-full sm:h-[190px] h-[180px]  text-center"
+                    className="object-cover w-full sm:h-[190px] h-[180px]"
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm block text-black sm:text-xl  font-bold ">{product.name.length > 40 ?  truncateText(product?.name, 40) : product.name} </h3>
-                <p className="text-blue-700 font-bold text-center">{product?.category?.name}</p>
-                <p className="text-lg font-extrabold text-center">৳{product.price}</p>
-              </Link>
-            </div>
+                <h3 className="text-sm sm:text-xl font-bold text-black truncate">
+                  {truncateText(product.name, 40)}
+                </h3>
+                <p className="text-blue-700 font-bold text-center">
+                  {product?.category?.name}
+                </p>
+                <p className="text-lg font-extrabold text-center">
+                  ৳{product.price}
+                </p>
+              </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

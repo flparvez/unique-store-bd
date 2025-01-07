@@ -40,18 +40,14 @@ const LatestProduct = () => {
   // Change page
   const paginate = (pageNumber:number) => setCurrentPage(pageNumber)
 
-  const truncateText = (text:string, maxLength:number) => {
-    if (text.length > maxLength) {
-      return text.substring(0, maxLength) + "";
-    }
-  }
+
  
 if (isLoading) {
   return <Loading />
 }
 
   return (
-<div className="w-full sm:w-[80%] mx-auto sm:px-4 px-2 py-4">
+<div className="w-full sm:w-[80%] mx-auto sm:px-4 px-2 py-2">
   
 <div className="grid grid-cols-2 sm:grid-cols-2  gap-4 md:grid-cols-3 lg:grid-cols-5">
 {currentProducts?.map((product:Products) => (
