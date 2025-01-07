@@ -12,6 +12,7 @@ type Products = {
   _id: string;
   slug: string;
   name: string;
+  sname: string;
   description: string; // Updated to string type
   category: string;
   images: {
@@ -57,7 +58,7 @@ const products = data?.filter((product: Product) =>
   />
 </div>
       <div className="p-3">
-      <h3 className=" text-black  sm:text-xl  text-sm font-bold uppercase">{product.name}</h3>
+      <h3 className=" text-black  sm:text-xl  text-sm  font-semibold">{product.sname}</h3>
         <div className="flex items-center justify-between mt-2">
           <span className="text-red-600 text-xl font-bold animate-pulse">৳{product.price}</span>
           <span className="text-gray-500 line-through">৳{product.mprice}</span>

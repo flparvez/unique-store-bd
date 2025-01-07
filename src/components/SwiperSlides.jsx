@@ -52,8 +52,9 @@ const SwiperSlides = ({ products }) => {
                     loading="lazy"
                   />
                 </div>
-                <h3 className="text-sm sm:text-xl font-bold text-black truncate">
-                  {truncateText(product.name, 40)}
+                <h3 className="text-sm sm:text-xl font-bold text-black ">
+                  {product.name.length > 40 ? truncateText(product.name, 40) : product.sname}
+                  
                 </h3>
                 <p className="text-blue-700 font-bold text-center">
                   {product?.category?.name}
