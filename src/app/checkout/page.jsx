@@ -5,7 +5,7 @@ import CheckoutPage from '@/components/CheckoutPage'
 import React from 'react'
 export const metadata= {
   title: 'Order Page',
-  description: 'Order Page Unique Store Bd',
+  description: 'Order Page uniquestorebd',
 }
 const Checkout =async () => {
   const session = await auth()

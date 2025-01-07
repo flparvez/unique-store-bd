@@ -48,7 +48,7 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
               font_family: 'Poppins', // Stylish and bold font
               font_size: 30,
            
-              text: 'Unique Store Bd' // Replace with your shop name
+              text: 'uniquestorebd' // Replace with your shop name
             },
             gravity: 'center',
             color: '#FF0000', // Text color

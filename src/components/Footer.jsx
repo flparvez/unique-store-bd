@@ -9,7 +9,7 @@ const Footer = () => {
 
    
       <div className="container mx-auto text-center px-4">
-        <h2 className="text-xl sm:text-2xl font-bold mb-2">Unique Store Bd | Quality Is Here</h2>
+        <h2 className="text-xl sm:text-2xl font-bold mb-2">uniquestorebd | Quality Is Here</h2>
         <div className="flex justify-center items-center space-x-4 mb-2">
           <Link href="https://www.facebook.com/uniquestorebd23" passHref>
             <h2 className="text-gray-400 hover:text-white transition duration-300">
@@ -35,7 +35,7 @@ const Footer = () => {
           </Link>
         </div>
         <p className="mt-2 text-gray-400 text-sm">
-          &copy; {new Date().getFullYear()} Unique Store BD. All rights reserved.
+          &copy; {new Date().getFullYear()} uniquestorebd. All rights reserved.
         </p>
       </div>
     </footer>

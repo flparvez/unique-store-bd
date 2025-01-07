@@ -48,7 +48,7 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
                         "font_family": "Poppins",
                         "font_size": 30,
                         "font_weight": "bold",
-                        "text": "Unique Store Bd"
+                        "text": "uniquestorebd"
                     },
                     "gravity": "center",
                     "color": "#FF0000",

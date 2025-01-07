@@ -22,10 +22,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://uniquestorebd.vercel.app/"),
-  title: "UNIQUE STORE BD  | Quality Is Here",
-  description: "Online Shopping BD.  UNIQUE STORE BD.  Enjoy hassle-free online shopping from Unique Store Bd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
+  title: "uniquestorebd  | Quality Is Here",
+  description: "Online Shopping BD.  uniquestorebd.  Enjoy hassle-free online shopping from uniquestorebd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
   keywords:
-  "UNIQUE STORE BD, UNIQUE STORE,  Online Shopping in Bangladesh, Online Shopping Store, Buy Online, Shop Online, Electric Accessories, TWS, Unique Gadgets, Home Appliances, Daily Needs.",
+  "uniquestorebd, UNIQUE STORE Bd,  Online Shopping in Bangladesh, Online Shopping Store, Buy Online, Shop Online, Electric Accessories, TWS, Unique Gadgets, Home Appliances, Daily Needs.",
   robots: {
     index: true,
     follow: true,
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 
  
   openGraph: {
-    title: "Unique Store Bd | Quality Is Here",
-    description: "Online Shopping BD.  UNIQUE STORE BD.  Enjoy hassle-free online shopping from Unique Store Bd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
+    title: "uniquestorebd | Quality Is Here",
+    description: "Online Shopping BD.  uniquestorebd.  Enjoy hassle-free online shopping from uniquestorebd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
     images: ["https://i.ibb.co.com/WBVg5rv/image.png"],
     url: "https://uniquestorebd.vercel.app/",
   },

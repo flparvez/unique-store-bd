@@ -37,7 +37,7 @@ if (isLoading) {
   return (
 <div className="container mx-auto sm:px-4 px-2 py-8">
 <div className="flex justify-center">
-<h1 className="text-2xl font-bold" >Unique Store Bd <span className="text-lg">All Products</span></h1>
+<h1 className="text-2xl font-bold" >uniquestorebd <span className="text-lg">All Products</span></h1>
 
 </div>
 

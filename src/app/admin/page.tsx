@@ -5,7 +5,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
-  description: 'Admin Dashboard Unique Store Bd',
+  description: 'Admin Dashboard uniquestorebd',
 }
 
 const DynamicAdminPage = dynamic(() => import('@/components/admin/AdminPage'), {
