@@ -1,7 +1,7 @@
 export default async function sitemap() {
-  const response = await fetch(`https://uniquestorebd-api.vercel.app/api/products`).then((res) => res.json());
+  const response = await fetch(`https://Unique Store BD-api.vercel.app/api/products`).then((res) => res.json());
   const products = response;
-  const baseUrl = "https://uniquestorebd.vercel.app/";
+  const baseUrl = "https://Unique Store BD.vercel.app/";
 
   // Array of static URLs
   const staticUrls = [

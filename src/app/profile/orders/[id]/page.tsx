@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import React from 'react'
 export const metadata: Metadata = {
   title: 'Order Details',
-  description: 'Order Details- uniquestorebd',
+  description: 'Order Details- Unique Store BD',
 }
 const OrderInfo =async ({
   params,

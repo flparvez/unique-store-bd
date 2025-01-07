@@ -2,15 +2,15 @@ import React from 'react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Replacement Warranty | uniquestorebd ',
-  description: 'uniquestorebd Replacement Warranty Policy',
+  title: 'Replacement Warranty | Unique Store BD ',
+  description: 'Unique Store BD Replacement Warranty Policy',
 }
 const ReplacementPolicy = () => {
   return (
     <div className="bg-gray-100 p-6 mt-14 rounded-lg shadow-md">
-      <h1 className="text-xl font-bold mb-4">uniquestorebd Replacement Warranty Policy</h1>
+      <h1 className="text-xl font-bold mb-4">Unique Store BD Replacement Warranty Policy</h1>
       <p className="mb-4">
-        আমরা uniquestorebd-এ সবসময় অরিজিনাল এবং অথেনটিক প্রোডাক্ট বিক্রয় করি। আমাদের বেশিরভাগ প্রোডাক্টই ব্র্যান্ড ওয়ারেন্টি সহ আসে, কিছু কিছু প্রোডাক্ট থাকে ওয়ারেন্টি ছাড়া। যেসব প্রোডাক্টে ওয়ারেন্টি থাকে, সেগুলো ওয়েবসাইটে উল্লেখ থাকে। আবার ক্ষেত্র বিশেষে, প্রোডাক্টের সাথে ওয়ারেন্টি কার্ডও থাকে। যেকোন প্রোডাক্টের রিপ্লেসমেন্ট ওয়ারেন্টি পিরিয়ডে সর্বোচ্চ একবার প্রোডাক্টটি রিপ্লেস করা হয়, পরবর্তীতে সমস্যা হলে এবং ওয়ারেন্টি থাকলে সেটা সার্ভিস ওয়ারেন্টিতে থাকে। সুতরাং, একবারের বেশি আমরা কোন প্রোডাক্টই রিপ্লেস করতে পারি না।
+        আমরা Unique Store BD-এ সবসময় অরিজিনাল এবং অথেনটিক প্রোডাক্ট বিক্রয় করি। আমাদের বেশিরভাগ প্রোডাক্টই ব্র্যান্ড ওয়ারেন্টি সহ আসে, কিছু কিছু প্রোডাক্ট থাকে ওয়ারেন্টি ছাড়া। যেসব প্রোডাক্টে ওয়ারেন্টি থাকে, সেগুলো ওয়েবসাইটে উল্লেখ থাকে। আবার ক্ষেত্র বিশেষে, প্রোডাক্টের সাথে ওয়ারেন্টি কার্ডও থাকে। যেকোন প্রোডাক্টের রিপ্লেসমেন্ট ওয়ারেন্টি পিরিয়ডে সর্বোচ্চ একবার প্রোডাক্টটি রিপ্লেস করা হয়, পরবর্তীতে সমস্যা হলে এবং ওয়ারেন্টি থাকলে সেটা সার্ভিস ওয়ারেন্টিতে থাকে। সুতরাং, একবারের বেশি আমরা কোন প্রোডাক্টই রিপ্লেস করতে পারি না।
       </p>
       <h2 className="text-xl font-semibold mb-2">যে যে ক্ষেত্রে রিপ্লেসমেন্ট পাবেন:</h2>
       <ul className="list-disc list-inside mb-4">
@@ -37,7 +37,7 @@ const ReplacementPolicy = () => {
       </p>
       <h2 className="text-xl font-semibold mb-2">Replacement Warranty Policy</h2>
       <p className="mb-4">
-        We at uniquestorebd are offering all Genuine Products. Many of the products come with brand warranty and some don&apos;t. If there is any warranty for any particular product, it shall be clearly written on the website or on the invoice, or there may have a separate warranty card for the different time periods. Please bear in mind that the Replacement warranty will be only available once for a particular product and during the period if the product got the same or other issues from the second incident it will cover as a service warranty. In a simple way - The replacement warranty is valid at one time only. We are unable to replace it more than one time.
+        We at Unique Store BD are offering all Genuine Products. Many of the products come with brand warranty and some don&apos;t. If there is any warranty for any particular product, it shall be clearly written on the website or on the invoice, or there may have a separate warranty card for the different time periods. Please bear in mind that the Replacement warranty will be only available once for a particular product and during the period if the product got the same or other issues from the second incident it will cover as a service warranty. In a simple way - The replacement warranty is valid at one time only. We are unable to replace it more than one time.
       </p>
       <h2 className="text-xl font-semibold mb-2">Here is the simple and easy way to get a replacement, if there is an issue such as:</h2>
       <ul className="list-disc list-inside mb-4">

@@ -6,15 +6,15 @@ import React from 'react';
 
 export const metadata = {
   title: 'My Account',
-  description: 'My Account uniquestorebd',
+  description: 'My Account Unique Store BD',
 };
 
 
 
 const Profile = async () => {
   // Fetch orders
-  const response = await fetch('https://uniquestorebd-api.vercel.app/api/orders');
-  // const response = await fetch('https://uniquestorebd-api.vercel.app/api/orders');
+  const response = await fetch('https://Unique Store BD-api.vercel.app/api/orders');
+  // const response = await fetch('https://Unique Store BD-api.vercel.app/api/orders');
   const orders = await response.json();
 
   // Fetch user session

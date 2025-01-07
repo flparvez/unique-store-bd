@@ -42,7 +42,7 @@ const uploadImageWithLogoAndText = async (file: File): Promise<CloudinaryUploadR
                         crop: 'scale',
                     },
                     {
-                        overlay: { font_family: 'Poppins', font_size: 30, text: 'uniquestorebd' },
+                        overlay: { font_family: 'Poppins', font_size: 30, text: 'Unique Store BD' },
                         gravity: 'center',
                         color: '#FF0000', // Text color
                         opacity: 80,

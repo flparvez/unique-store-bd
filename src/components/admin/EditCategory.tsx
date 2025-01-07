@@ -39,8 +39,8 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
 
   useEffect(() => {
     async function fetchCategory() {
-      const res = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`);
-      // const res = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`);
+      const res = await fetch(`https://Unique Store BD-api.vercel.app/api/categories/${slug}`);
+      // const res = await fetch(`https://Unique Store BD-api.vercel.app/api/categories/${slug}`);
       const data = await res.json();
     
 

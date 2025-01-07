@@ -6,7 +6,7 @@ import { FaFacebookMessenger } from 'react-icons/fa';
 const LiveChatButton = () => {
   return (
     <div className="fixed bottom-16 sm:right-20  right-12 z-50">
-      <Link target='_blank' href="https://www.facebook.com/uniquestorebd23" passHref>
+      <Link target='_blank' href="https://www.facebook.com/Unique Store BD23" passHref>
         <h1
           
           rel="noopener noreferrer"

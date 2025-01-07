@@ -21,11 +21,11 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://uniquestorebd.vercel.app/"),
-  title: "UniqueStoreBd  | Quality Is Here",
-  description: "Online Shopping BD.  uniquestorebd.  Enjoy hassle-free online shopping from UniqueStoreBd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
+  metadataBase: new URL("https://Unique Store BD.vercel.app/"),
+  title: "Unique Store BD  | Quality Is Here",
+  description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
   keywords:
-  "uniquestorebd, UNIQUE STORE Bd,  Online Shopping in Bangladesh, Online Shopping Store, Buy Online, Shop Online, Electric Accessories, TWS, Unique Gadgets, Home Appliances, Daily Needs.",
+  "Unique Store BD, UNIQUE STORE Bd,  Online Shopping in Bangladesh, Online Shopping Store, Buy Online, Shop Online, Electric Accessories, TWS, Unique Gadgets, Home Appliances, Daily Needs.",
   robots: {
     index: true,
     follow: true,
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
 
  
   openGraph: {
-    title: "UniqueStoreBd | Quality Is Here",
-    description: "Online Shopping BD.  uniquestorebd.  Enjoy hassle-free online shopping from uniquestorebd. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
+    title: "Unique Store BD | Quality Is Here",
+    description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
     images: ["https://i.ibb.co.com/WBVg5rv/image.png"],
-    url: "https://uniquestorebd.vercel.app/",
+    url: "https://Unique Store BD.vercel.app/",
   },
 
   verification: {
