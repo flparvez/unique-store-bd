@@ -51,7 +51,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
   const [updateProduct] = useUpdateProductMutation();
   const [existingImages, setExistingImages] = useState<Image[]>([]);
 
-  const { register, handleSubmit, setValue } = useForm<Inputs>();
+  const { register, handleSubmit, setValue , watch } = useForm<Inputs>();
 
   useEffect(() => {
     if (productData) {
