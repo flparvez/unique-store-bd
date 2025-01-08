@@ -24,7 +24,7 @@ if(!category) <Loading />
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title:category?.name + " In Unique Store BD",
+    title:category?.name,
     description: category?.name + " Best Price In Unique Store BD" + ", " + category?.tags,
     keywords: category?.tags ,
     openGraph: {
