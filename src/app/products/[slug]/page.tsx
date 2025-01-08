@@ -48,7 +48,7 @@ const EditCategory =async ({
 
   return (
     <div>
- <h1 className="text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {category?.name} | Unique Store BD </h1>
+ <h1 className="text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {category?.name} - Unique Store Bd </h1>
  <CategorySlider />
     <ProductByCategory slug={slug} />
 <br />
