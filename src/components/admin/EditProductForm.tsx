@@ -127,24 +127,24 @@ export default function UpdateProductForm({ id }: { id: string }) {
           <Label htmlFor="sname">Short Name</Label>
           <Input {...register("sname", { required: true })} id="sname" placeholder="Short Name" type="text" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
+   <LabelInputContainer className="mb-4">
           <Label htmlFor="description">Product Description</Label>
           <RichTextEditor
-            content={productData?.description} // Use the watched value from react-hook-form
-            onChange={handleDescriptionChange} // Use this to update the form state
+            content={watch("description")}
+            onChange={handleDescriptionChange}
           />
         </LabelInputContainer>
 
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="category">Category</Label>
-          <select {...register("category", { required: true })} id="category" className="input">
-            {categories?.map((category: Category) => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </LabelInputContainer>
+            <LabelInputContainer className="mb-4">
+               <Label htmlFor="category">Category</Label>
+               <select {...register("category", { required: true })} className="select">
+                 {categories?.map((category: Category) => (
+                   <option key={category._id} value={category._id}>
+                     {category.name}
+                   </option>
+                 ))}
+               </select>
+             </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="price">Price</Label>
           <Input {...register("price", { required: true })} id="price" placeholder="Price" type="number" />
