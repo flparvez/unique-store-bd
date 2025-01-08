@@ -34,7 +34,7 @@ export const productsApi = createApi({
 
     getProductById: builder.query({
   
-      query: (productId) => `https://uniquestorebd-api.vercel.app/api/product/${productId}`,
+      query: (productId) => `products/${productId}`,
       // providesTags: (result, error, productSlug) => [{ type: 'Product', id: productSlug }],
     }),
 
