@@ -115,7 +115,7 @@ const Navbar = ({user}) => {
 
       {/* Welcome Text */}
       <div className="w-full text-center text-gray-800 dark:text-white sm:text-[17px] text-[13px] font-bold ">
-        <marquee className="text-red-500" >আসসালামু আলাইকুম সম্মানিত সদস্য আপনাকে অভিনন্দন ওয়েবসাইটে প্রবেশ করার
+        <marquee className="text-red-500" >Unique Store Bd | আসসালামু আলাইকুম সম্মানিত সদস্য আপনাকে অভিনন্দন ওয়েবসাইটে প্রবেশ করার
           জন্য। আমাদের কাছে পেয়ে যাবেন টেকসই নিত্য প্রয়োজনীয় ইলেকট্রনিক
           মালামাল। আপনার পছন্দের প্রোডাক্ট এড কার্ড করে এখনই অর্ডার করুন।</marquee>
       </div>
