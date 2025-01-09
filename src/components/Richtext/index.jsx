@@ -10,48 +10,65 @@ import Highlight from "@tiptap/extension-highlight";
 import Image from "@tiptap/extension-image";
 import BulletList from "@tiptap/extension-bullet-list";
 import OrderedList from "@tiptap/extension-ordered-list";
+import Placeholder from "@tiptap/extension-placeholder";
+import Underline from "@tiptap/extension-underline";
+import Link from "@tiptap/extension-link";
 import ImageResize from "tiptap-extension-resize-image";
 
 export default function RichTextEditor({ content, onChange }) {
   const editor = useEditor({
     extensions: [
-      StarterKit.configure(),
+      StarterKit.configure({
+        heading: {
+          levels: [1, 2, 3],
+        },
+      }),
       TextAlign.configure({
         types: ["heading", "paragraph"],
       }),
-      Heading.configure({
-        levels: [1, 2, 3],
+      Heading,
+      Highlight,
+      Underline,
+      Link.configure({
+        openOnClick: true,
+      }),
+      Image,
+      ImageResize,
+      BulletList.configure({
+        HTMLAttributes: {
+          class: "list-disc ml-4",
+        },
       }),
       OrderedList.configure({
         HTMLAttributes: {
-          class: "list-decimal ml-3",
+          class: "list-decimal ml-4",
         },
       }),
-      BulletList.configure({
-        HTMLAttributes: {
-          class: "list-disc ml-3",
-        },
+      Placeholder.configure({
+        placeholder: "Write your product description here...",
       }),
-      Highlight,
-      Image,
-      ImageResize,
     ],
-    content, // Tiptap will handle HTML content directly
+    content, // Initial content
     editorProps: {
       attributes: {
-        class: "min-h-[156px] border rounded-md bg-slate-50 py-2 px-3",
+        class:
+          "prose prose-sm max-w-none min-h-[200px] border border-gray-300 rounded-md bg-white p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500",
       },
     },
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML()); // Update the parent component on content change
+      const updatedContent = editor.getHTML();
+      if (updatedContent !== content) {
+        onChange(updatedContent); // Trigger parent's onChange only when content changes
+      }
     },
   });
 
+  // Only set content when the editor is initialized and content changes externally
   useEffect(() => {
-    if (editor && content) {
-      editor.commands.setContent(content); // Update content if prop changes
+    if (editor && editor.getHTML() !== content) {
+      editor.commands.setContent(content);
     }
-  }, [editor, content]); // Re-run when content prop changes
+  }, [editor, content]);
 
   return (
     <div>
