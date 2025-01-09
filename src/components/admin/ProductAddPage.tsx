@@ -51,6 +51,7 @@ export default function AddProductForm() {
     setValue("description", value);
   };
 
+
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
@@ -100,13 +101,13 @@ export default function AddProductForm() {
          
           />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="description">Product Description</Label>
-          <RichTextEditor
-            content={watch("description")}
-            onChange={handleDescriptionChange}
-          />
-        </LabelInputContainer>
+         <LabelInputContainer className="mb-4">
+                <Label htmlFor="description">Product Description</Label>
+                <RichTextEditor
+                  content={watch("description")}
+                  onChange={handleDescriptionChange}
+                />
+              </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="category">Category</Label>
           <select {...register("category", { required: true })} className="select">

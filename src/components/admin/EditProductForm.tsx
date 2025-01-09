@@ -1,30 +1,34 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea";
 import { useGetCategoriesQuery } from "@/store/services/CategoryApi";
-import { cn } from "@/lib/utils";
 import { useUpdateProductMutation, useGetProductByIdQuery } from "@/store/services/prodcutApi";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
-import RichTextEditor from "@/components/Richtext"; // Import your custom RichTextEditor
 import Image from "next/image";
-
+import RichTextEditor from "@/components/Richtext";
+type Img={
+  public_id:string
+  url:string
+}
 type Category = {
   _id: string;
   name: string;
 };
+
+type ProductImage = {
+  url: string;
+  public_id: string;
+};
+
 interface Image {
   public_id: string;
   url:string
   
-}
-type Img={
-  public_id:string
-  url:string
 }
 type Inputs = {
   name: string;
@@ -32,7 +36,6 @@ type Inputs = {
   description: string;
   category: string;
   images: File[];
-
   price: number;
   stock: number;
   sold: number;
@@ -47,144 +50,157 @@ export default function UpdateProductForm({ id }: { id: string }) {
   const router = useRouter();
   const { data: categoriesData } = useGetCategoriesQuery("");
   const { data: productData } = useGetProductByIdQuery(id, { skip: !id });
-  const categories = categoriesData;
   const [updateProduct] = useUpdateProductMutation();
   const [existingImages, setExistingImages] = useState<Image[]>([]);
 
-  const { register, handleSubmit, setValue , watch } = useForm<Inputs>();
+  const { register, handleSubmit, setValue, watch } = useForm<Inputs>();
 
+  // Populate form with product data
   useEffect(() => {
     if (productData) {
-      setValue("name", productData.name);
-      setValue("sname", productData.sname);
-      setValue("description", productData.description);
-      setValue("category", productData.category);
-      setValue("price", productData.price);
-      setValue("stock", productData.stock);
-      setValue("sold", productData.sold);
-      setValue("video", productData.video);
-      setValue("tags", productData.tags);
-      setValue("mprice", productData.mprice);
-      setValue("warranty", productData.warranty);
-      setValue("seo", productData.seo);
       setExistingImages(productData.images || []);
+      const {
+        name,
+        sname,
+        description,
+        category,
+        price,
+        stock,
+        sold,
+        video,
+        tags,
+        mprice,
+        warranty,
+        seo,
+      } = productData;
+      setValue("name", name);
+      setValue("sname", sname);
+      setValue("description", description);
+      setValue("category", category._id);
+      setValue("price", price);
+      setValue("stock", stock);
+      setValue("sold", sold);
+      setValue("video", video);
+      setValue("tags", tags);
+      setValue("mprice", mprice);
+      setValue("warranty", warranty);
+      setValue("seo", seo);
     }
   }, [productData, setValue]);
-
-  // Register 'description' field manually
-  useEffect(() => {
-    register("description", { required: true });
-  }, [register]);
 
   const handleDescriptionChange = (value: string) => {
     setValue("description", value);
   };
 
   const handleImageDelete = (public_id: string) => {
-    setExistingImages(existingImages.filter(image => image.public_id !== public_id));
-    // You may want to add a call to delete the image from the server here
+    setExistingImages((prev) => prev.filter((image) => image.public_id !== public_id));
   };
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("sname", data.sname);
-    formData.append("description", data.description);
-    formData.append("category", data.category);
-    formData.append("price", data.price.toString());
-    formData.append("stock", data.stock.toString());
-    formData.append("sold", data.sold.toString());
-    formData.append("video", data.video);
-    formData.append("tags", data.tags);
-    formData.append("mprice", data.mprice.toString());
-    formData.append("warranty", data.warranty);
-    formData.append("seo", data.seo);
-
-    // Append multiple image files to the form data
-    Array.from(data.images).forEach((image) => {
-      formData.append("images", image);
+    Object.entries(data).forEach(([key, value]) => {
+      if (key === "images" && Array.isArray(value)) {
+        value.forEach((image) => formData.append("images", image));
+      } else {
+        formData.append(key, value as string);
+      }
     });
-
     formData.append("existingImages", JSON.stringify(existingImages));
 
-    const response = await updateProduct({ updatedProduct: formData, id: id }).unwrap();
-
-    if (response) {
+    try {
+      await updateProduct({ updatedProduct: formData, id }).unwrap();
       toast.success("Product Updated Successfully");
       router.push("/admin");
+    } catch (error) {
+      toast.error("Failed to update product. Try again!");
     }
   };
 
   return (
-    <div className="max-w-md sm:max-w-[90%] w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
-      <form className="my-8" onSubmit={handleSubmit(onSubmit)}>
-        {/* Existing input fields */}
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="name">Product Name</Label>
+    <div className="max-w-md sm:max-w-[90%] w-full mx-auto rounded-md p-4 shadow-input bg-white dark:bg-black">
+      <form onSubmit={handleSubmit(onSubmit)}>
+     {/* Input Fields */}
+
+    {/* Existing input fields */}
+    <LabelInputContainer >
+          <Label htmlFor="name" className="mt-2">Product Name</Label>
           <Input {...register("name", { required: true })} id="name" placeholder="Product Name" type="text" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="sname">Short Name</Label>
+        <LabelInputContainer >
+          <Label htmlFor="sname" className="mt-2">Short Name</Label>
           <Input {...register("sname", { required: true })} id="sname" placeholder="Short Name" type="text" />
         </LabelInputContainer>
-   <LabelInputContainer className="mb-4">
-          <Label htmlFor="description">Product Description</Label>
+   <LabelInputContainer >
+   <Label htmlFor="description" className="mt-2">Product Description</Label>
           <RichTextEditor
             content={watch("description")}
             onChange={handleDescriptionChange}
           />
         </LabelInputContainer>
 
-            <LabelInputContainer className="mb-4">
-               <Label htmlFor="category">Category</Label>
-               <select {...register("category", { required: true })} className="select">
-                 {categories?.map((category: Category) => (
-                   <option key={category._id} value={category._id}>
-                     {category.name}
-                   </option>
-                 ))}
-               </select>
-             </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="price">Price</Label>
+
+        <LabelInputContainer>
+          <Label htmlFor="category" className="mt-2">Category</Label>
+          <select
+            {...register("category", { required: true })}
+            id="category"
+            className="select"
+            defaultValue={productData?.category?._id || ""}
+          >
+            <option value="" disabled>
+              Select Category
+            </option>
+            {categoriesData?.map((category: Category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </LabelInputContainer>
+
+      
+        <LabelInputContainer >
+          <Label htmlFor="price" className="mt-2">Price</Label>
           <Input {...register("price", { required: true })} id="price" placeholder="Price" type="number" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="stock">Stock</Label>
+        <LabelInputContainer >
+          <Label htmlFor="stock" className="mt-2">Stock</Label>
           <Input {...register("stock", { required: true })} id="stock" placeholder="Stock" type="number" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="sold">Sold</Label>
+        <LabelInputContainer >
+          <Label htmlFor="sold" className="mt-2">Sold</Label>
           <Input {...register("sold", { required: true })} id="sold" placeholder="Sold" type="number" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="video">Video URL</Label>
+        <LabelInputContainer >
+          <Label htmlFor="video"  className="mt-2">Video URL</Label>
           <Input {...register("video")} id="video" placeholder="Video URL" type="text" />
         </LabelInputContainer>
-            <LabelInputContainer className="mb-4">
-              <Label htmlFor="tags">Tags</Label>
+            <LabelInputContainer >
+              <Label htmlFor="tags" className="mt-2">Tags</Label>
               <select {...register("tags", { required: true })} className="select">
                 <option value={"all"}> All</option>
                 <option value={"best-sell"}>Best Sell</option>
               </select>
             </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="mprice">Market Price</Label>
+        <LabelInputContainer >
+          <Label htmlFor="mprice" className="mt-2">Market Price</Label>
           <Input {...register("mprice", { required: true })} id="mprice" placeholder="Market Price" type="number" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="warranty">Warranty</Label>
+        <LabelInputContainer >
+          <Label htmlFor="warranty" className="mt-2">Warranty</Label>
           <Input {...register("warranty")} id="warranty" placeholder="Warranty" type="text" />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="seo">SEO</Label>
+        <LabelInputContainer >
+          <Label htmlFor="seo" className="mt-2">SEO</Label>
           <Textarea {...register("seo")} id="seo" placeholder="SEO" aria-setsize={8} />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="images">Product Images</Label>
+        <LabelInputContainer >
+          <Label htmlFor="images" className="mt-2">Product Images</Label>
           <Input {...register("images")} id="images" placeholder="Product Images" type="file" multiple />
         </LabelInputContainer>
-        <div className="flex flex-wrap gap-2">
+
+        {/* Existing Images */}
+        <div className="flex flex-wrap gap-2 mt-2">
           {existingImages?.map((image:Img) => (
             <div key={image.public_id} className="relative">
               <Image width={100}  height={100} src={image.url} alt={image.public_id} className="w-24 h-24 object-cover rounded-md" />
@@ -199,32 +215,17 @@ export default function UpdateProductForm({ id }: { id: string }) {
           ))}
         </div>
 
-        <button
-          className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 mt-8 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
-          type="submit"
-        >
-          Update Product &rarr;
-          <BottomGradient />
+
+
+
+        <button type="submit" className="w-full mt-4 bg-blue-500 text-white rounded-md p-2">
+          Update Product
         </button>
       </form>
     </div>
   );
 }
 
-const BottomGradient: React.FC = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
-  );
-};
-
-interface LabelInputContainerProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
-const LabelInputContainer: React.FC<LabelInputContainerProps> = ({ children, className }) => {
-  return <div className={cn("flex flex-col space-y-2 w-full", className)}>{children}</div>;
-};
+const LabelInputContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div className="flex flex-col space-y-2 w-full">{children}</div>
+);
