@@ -1,7 +1,5 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { toast } from 'sonner';
-import Link from 'next/link';
+
 
 interface Users {
   _id: string;
@@ -12,7 +10,7 @@ interface Users {
 const AllUsers =async () => {
 //  fetch user by fetch request
 
-let data = await fetch('https://uniquestorebd-api.vercel.app/api/users')
+let data = await fetch('https://uniquestorebd.vercel.app/api/users')
 let users = await data.json()
 
   return (
