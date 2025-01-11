@@ -37,7 +37,7 @@ export const metadata: Metadata = {
  
   openGraph: {
     title: {
-      template: "%s | Unique Store BD",
+      template: "%s - Unique Store BD",
       default: "Unique Store BD  | Quality Is Here",
     },
     description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
