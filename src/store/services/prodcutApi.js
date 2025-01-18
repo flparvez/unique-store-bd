@@ -21,7 +21,7 @@ export const productsApi = createApi({
     updateProduct: builder.mutation({
       query: ({ updatedProduct, id }) => ({
         // url: `http://localhost:3000/api/product/${id}`,
-        url: `https://uniquestorebd.vercel.app/api/product/${id}`,
+        url: `http://localhost:3000/api/product/${id}`,
         method: 'PATCH',
         body: updatedProduct,
       }),

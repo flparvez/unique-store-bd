@@ -11,31 +11,23 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
 import RichTextEditor from "@/components/Richtext";
-type Img={
-  public_id:string
-  url:string
-}
+
+type Img = {
+  public_id: string;
+  url: string;
+};
+
 type Category = {
   _id: string;
   name: string;
 };
 
-type ProductImage = {
-  url: string;
-  public_id: string;
-};
-
-interface Image {
-  public_id: string;
-  url:string
-  
-}
-type Inputs = {
+interface Inputs {
   name: string;
   sname: string;
   description: string;
   category: string;
-  images: File[];
+  images: FileList | null;
   price: number;
   stock: number;
   sold: number;
@@ -44,14 +36,14 @@ type Inputs = {
   mprice: number;
   warranty: string;
   seo: string;
-};
+}
 
 export default function UpdateProductForm({ id }: { id: string }) {
   const router = useRouter();
   const { data: categoriesData } = useGetCategoriesQuery("");
   const { data: productData } = useGetProductByIdQuery(id, { skip: !id });
   const [updateProduct] = useUpdateProductMutation();
-  const [existingImages, setExistingImages] = useState<Image[]>([]);
+  const [existingImages, setExistingImages] = useState<Img[]>([]);
 
   const { register, handleSubmit, setValue, watch } = useForm<Inputs>();
 
@@ -98,23 +90,34 @@ export default function UpdateProductForm({ id }: { id: string }) {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const formData = new FormData();
+
+    // Append text data
     Object.entries(data).forEach(([key, value]) => {
-      if (key === "images" && Array.isArray(value)) {
-        value.forEach((image) => formData.append("images", image));
-      } else {
+      if (key !== "images") {
         formData.append(key, value as string);
       }
     });
+
+    // Append existing images
     formData.append("existingImages", JSON.stringify(existingImages));
+
+    // Append new images
+    if (data.images) {
+      Array.from(data.images).forEach((file) => {
+        formData.append("images", file);
+      });
+    }
 
     try {
       await updateProduct({ updatedProduct: formData, id }).unwrap();
       toast.success("Product Updated Successfully");
       router.push("/admin");
     } catch (error) {
+      console.error("Error updating product:", error);
       toast.error("Failed to update product. Try again!");
     }
   };
+
 
   return (
     <div className="max-w-md sm:max-w-[90%] w-full mx-auto rounded-md p-4 shadow-input bg-white dark:bg-black">
@@ -194,16 +197,22 @@ export default function UpdateProductForm({ id }: { id: string }) {
           <Label htmlFor="seo" className="mt-2">SEO</Label>
           <Textarea {...register("seo")} id="seo" placeholder="SEO" aria-setsize={8} />
         </LabelInputContainer>
-        <LabelInputContainer >
+        <LabelInputContainer>
           <Label htmlFor="images" className="mt-2">Product Images</Label>
           <Input {...register("images")} id="images" placeholder="Product Images" type="file" multiple />
         </LabelInputContainer>
 
         {/* Existing Images */}
         <div className="flex flex-wrap gap-2 mt-2">
-          {existingImages?.map((image:Img) => (
+          {existingImages.map((image) => (
             <div key={image.public_id} className="relative">
-              <Image width={100}  height={100} src={image.url} alt={image.public_id} className="w-24 h-24 object-cover rounded-md" />
+              <Image
+                width={100}
+                height={100}
+                src={image.url}
+                alt={image.public_id}
+                className="w-24 h-24 object-cover rounded-md"
+              />
               <button
                 type="button"
                 onClick={() => handleImageDelete(image.public_id)}
@@ -214,9 +223,6 @@ export default function UpdateProductForm({ id }: { id: string }) {
             </div>
           ))}
         </div>
-
-
-
 
         <button type="submit" className="w-full mt-4 bg-blue-500 text-white rounded-md p-2">
           Update Product
