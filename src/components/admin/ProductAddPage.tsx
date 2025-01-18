@@ -32,6 +32,7 @@ type Inputs = {
   mprice: number;
   warranty: string;
   seo: string;
+  lastUpdatedIndex: number;
 };
 
 export default function AddProductForm() {
@@ -66,6 +67,7 @@ export default function AddProductForm() {
     formData.append("mprice", data.mprice.toString());
     formData.append("warranty", data.warranty);
     formData.append("seo", data.seo);
+    formData.append("lastUpdatedIndex", data.lastUpdatedIndex.toString());
 
     // Append multiple image files to the form data
     Array.from(data.images).forEach((image) => {
@@ -179,6 +181,17 @@ export default function AddProductForm() {
             type="number"
           />
         </LabelInputContainer>
+     <LabelInputContainer className="mb-4">
+          <Label htmlFor="lastUpdatedIndex">lastUpdatedIndex </Label>
+          <Input
+            {...register("lastUpdatedIndex", { required: true })}
+            id="sold"
+            placeholder="lastUpdatedIndex "
+            type="number"
+          />
+        </LabelInputContainer>
+
+
         <LabelInputContainer className="mb-4">
           <Label htmlFor="warranty">Warranty</Label>
           <Input

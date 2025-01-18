@@ -36,6 +36,7 @@ interface Inputs {
   mprice: number;
   warranty: string;
   seo: string;
+  lastUpdatedIndex : number
 }
 
 export default function UpdateProductForm({ id }: { id: string }) {
@@ -64,6 +65,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
         mprice,
         warranty,
         seo,
+        lastUpdatedIndex
       } = productData;
       setValue("name", name);
       setValue("sname", sname);
@@ -77,6 +79,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
       setValue("mprice", mprice);
       setValue("warranty", warranty);
       setValue("seo", seo);
+      setValue("lastUpdatedIndex", lastUpdatedIndex);
     }
   }, [productData, setValue]);
 
@@ -193,6 +196,14 @@ export default function UpdateProductForm({ id }: { id: string }) {
           <Label htmlFor="warranty" className="mt-2">Warranty</Label>
           <Input {...register("warranty")} id="warranty" placeholder="Warranty" type="text" />
         </LabelInputContainer>
+
+     <LabelInputContainer >
+          <Label htmlFor="lastUpdatedIndex" className="mt-2">lastUpdatedIndex</Label>
+          <Input {...register("lastUpdatedIndex")} id="lastUpdatedIndex" placeholder="lastUpdatedIndex" type="number" />
+        </LabelInputContainer>
+
+
+
         <LabelInputContainer >
           <Label htmlFor="seo" className="mt-2">SEO</Label>
           <Textarea {...register("seo")} id="seo" placeholder="SEO" aria-setsize={8} />

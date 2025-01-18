@@ -80,6 +80,7 @@ interface IProduct {
     warranty?: string;
     seo?: string;
     tags?: string[];
+    lastUpdatedIndex?: number;
 }
 
 // PATCH request to update product by id
@@ -127,6 +128,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
             seo: formData.get("seo") as string | null,
             warranty: formData.get("warranty") as string | null,
             tags: formData.get("tags") as string | null,
+            lastUpdatedIndex: formData.get("lastUpdatedIndex") as number | null,
         };
 
         await connectDb();
@@ -143,7 +145,9 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
             video: fields.video || undefined,
             warranty: fields.warranty || undefined,
             seo: fields.seo || undefined,
+            lastUpdatedIndex: fields.lastUpdatedIndex || undefined,
             tags: fields.tags ? fields.tags.split(',') : undefined,
+           
         };
 
         if (images.length > 0) {

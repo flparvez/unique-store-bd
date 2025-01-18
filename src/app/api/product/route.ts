@@ -101,6 +101,7 @@ export const POST = async (request: NextRequest) => {
     const sold = parseInt(formData.get("sold") as string || '0', 10);
     const video = formData.get("video") as string | null;
     const seo = formData.get("seo") as string | null;
+    const lastUpdatedIndex = formData.get("lastUpdatedIndex") as number | null;
     const warranty = formData.get("warranty") as string | null;
     const tags = (formData.get("tags") as string || '').split(',');
 
@@ -122,7 +123,8 @@ export const POST = async (request: NextRequest) => {
       sold,
       warranty,
       tags,
-      seo
+      seo,
+      lastUpdatedIndex
     });
 
     await newProduct.save();

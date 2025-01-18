@@ -21,6 +21,7 @@ interface ProductDocuments extends Document {
   warranty: string;
   tags: string[];
   seo: string;
+  lastUpdatedIndex : number
 }
 const imageSchema = new Schema<Image>({
   url: { type: String, required: true },
@@ -47,6 +48,10 @@ const productSchema = new Schema<ProductDocuments>({
   warranty: { type: String },
   tags: { type: [String] },
   seo: { type:String, },
+  lastUpdatedIndex: {
+    type: Number,
+    default: 0, // Default priority is 0
+  },
 },{
   timestamps: true
 });
