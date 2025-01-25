@@ -52,11 +52,17 @@ const SwiperSlides = ({ products }) => {
                   />
              
 
-                       <div className="absolute top-0 left-0 w-full  py-1 rounded-b">
-                <h3 className="text-sm sm:text-lg w-14 bg-orange-500 text-white font-bold text-right "> Featured</h3>
+                       <div className="absolute top-0 left-0 flex justify-end w-full  py-1 rounded-b">
+                <h3 className="text-sm sm:text-lg w-20 text-center bg-indigo-500 text-white font-bold  "> Featured</h3>
 
-                <p className="text-lg ml-36  w-20 font-extrabold bg-green-500 text-black text-center">
+              </div>
+              <div className="absolute top-0 left-0 w-full flex justify-center  py-1 rounded-b">
+              <p className="text-lg ml-20 mt-20 w-20 font-extrabold bg-green-500 text-black text-center">
                   ৳{product.price}
+                </p>
+
+                <p className="text-lg  ml-20 mt-20 w-20    font-extralight bg-orange-500 text-black text-center line-through">
+                  ৳{product.mprice}
                 </p>
               </div>
               <div className="absolute flex bottom-8 left-0 w-full justify-center text-center   py-1 rounded-b">
