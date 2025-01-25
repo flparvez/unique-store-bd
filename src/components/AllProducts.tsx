@@ -9,6 +9,7 @@ import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
 import { addItem } from "@/store/cartSlice";
 import { toast } from "sonner";
+import { Button } from "./ui/button";
 
 type Products = {
   _id: string;
@@ -105,12 +106,12 @@ const AllProducts = () => {
               
             </div>
             </Link>
-            <button
+            <Button
               onClick={() => handleAddToCart(product)} // Pass the product object
-              className="w-full border border-black  py-1 font-semibold bg-orange-600 text-white  hover:bg-blue-700 transition duration-300"
+              className="w-full   bg-orange-600 text-white  hover:bg-blue-700 transition duration-300"
             >
               Add to Cart
-            </button>
+            </Button>
           </div>
         ))}
       </div>

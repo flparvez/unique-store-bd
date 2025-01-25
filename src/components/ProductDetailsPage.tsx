@@ -36,7 +36,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
       })
     );
     toast.success('Product added to cart');
-    router.push('/cart');
+    router.push('/checkout');
   };
   if (isLoading) {
     return <Loading />
@@ -158,7 +158,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
                 onClick={handleAddToCart}
                 className="w-full  py-2 sm:py-4 bg-orange-600  text-white rounded-md hover:bg-blue-700 transition duration-300"
               >
-                Add to Cart
+                Order Now
               </button>
 
   
