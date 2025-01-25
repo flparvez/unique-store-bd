@@ -29,39 +29,44 @@ const SwiperSlides = ({ products }) => {
         pagination={{ clickable: true }}
         breakpoints={{
           0: { slidesPerView: 1 },
-          350: { slidesPerView: 2 },
-          450: { slidesPerView: 3 },
-          550: { slidesPerView: 4 },
-          768: { slidesPerView: 4 },
-          1024: { slidesPerView: 5 },
+          350: { slidesPerView: 1 },
+          490: { slidesPerView: 3 },
+          550: { slidesPerView: 3 },
+  
         }}
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
         {products?.map((product) => (
-          <SwiperSlide key={product._id}>
+          <SwiperSlide className='flex-shrink-0' key={product._id}>
             <Link href={`/product/${product.slug}`}>
-              <div className="w-[182px]  hover:scale-95 sm:w-[70%] md:w-[250px]  mx-auto my-2">
+              <div className="w-full hover:scale-95 ]  mx-auto my-2">
                 <div className="overflow-hidden text-center">
                   <Image
-                    width={220}
-                    height={220}
+                    width={500}
+                    height={500}
                     src={product.images[0].url}
                     alt={product.name}
-                    className="object-cover w-full sm:h-[190px] h-[180px]"
+                    className="object-cover w-full sm:h-[330px]  h-[300px] hover:animate-pulse"
                     loading="lazy"
                   />
-                </div>
-                <h3 className="text-sm sm:text-xl font-bold text-black ">
-                  {product.name.length > 40 ? truncateText(product.name, 40) : product.sname}
-                  
-                </h3>
-                <p className="text-blue-700 font-bold text-center">
-                  {product?.category?.name}
-                </p>
-                <p className="text-lg font-extrabold text-center">
+             
+
+                       <div className="absolute top-0 left-0 w-full  py-1 rounded-b">
+                <h3 className="text-sm sm:text-lg w-14 bg-orange-500 text-white font-bold text-right "> Featured</h3>
+
+                <p className="text-lg ml-36  w-20 font-extrabold bg-green-500 text-black text-center">
                   ৳{product.price}
                 </p>
+              </div>
+              <div className="absolute flex bottom-8 left-0 w-full justify-center text-center   py-1 rounded-b">
+                <h3 className="text-sm w-[97%] sm:font-extrabold font-bold bg-black text-white">  {product.name.length > 40 ? truncateText(product.name, 40) : product.sname}</h3>
+              </div>
+              
+                </div>
+             
+                
+           
               </div>
             </Link>
           </SwiperSlide>
