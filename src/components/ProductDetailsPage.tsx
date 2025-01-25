@@ -5,7 +5,7 @@ import { YouTubeEmbed } from '@next/third-parties/google'
 
 import { addItem } from '@/store/cartSlice';
 import { useGetProductBySlugQuery } from '@/store/services/prodcutApi';
-import Image from 'next/image';
+
 import { toast } from 'sonner';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
