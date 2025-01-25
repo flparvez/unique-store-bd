@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useGetProductsQuery } from "@/store/services/prodcutApi";
 import Loading from "./Loading";
+import { Button } from "./ui/button";
 
 type Products = {
   _id: string;
@@ -27,7 +28,7 @@ type Products = {
 const LatestProduct = () => {
   const { data: products, isLoading } = useGetProductsQuery("");
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 18;
+  const productsPerPage = 20;
   const truncateText = (text:any, maxLength:any) =>
     text.length > maxLength ? text.substring(0, maxLength) : text;
 
@@ -51,7 +52,7 @@ const LatestProduct = () => {
         {currentProducts?.map((product: Products) => (
           <div key={product._id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
             <Link href={`/product/${product.slug}`} className="block">
-              <div className="relative">
+            <div className="relative">
                 {/* Product Image */}
                 <Image
                   width={300}
@@ -86,11 +87,11 @@ const LatestProduct = () => {
         ))}
       </div>
       {/* Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={Math.ceil((products?.length || 0) / productsPerPage)}
-        onPageChange={paginate}
-      />
+  <div className="flex justify-center mt-4">
+
+<Link href={"/products"} >  <Button>Load All Products</Button>
+</Link>
+  </div>
     </div>
   );
 };

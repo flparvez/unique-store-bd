@@ -40,7 +40,7 @@ const products = data?.filter((product: Product) =>
 
 
   return (
-<div className="container mx-auto sm:px-4 px-2 py-8 ">
+<div className="container mx-auto sm:px-4 px-2 py-2 ">
   
 <div className="grid grid-cols-2 sm:grid-cols-3  gap-4 md:grid-cols-3 lg:grid-cols-4">
 {products?.map((product:Products) => (
@@ -48,14 +48,16 @@ const products = data?.filter((product: Product) =>
 <div key={product._id} className="bg-white rounded-lg shadow-md overflow-hidden ">
   <Link href={`/product/${product.slug}`} className="block">
   <div className="overflow-hidden ">
-  <Image
-    width={300}
-    height={300}
-    src={product.images[0].url}
-    alt={product.name}
-    className="object-cover w-full h-full  hover:animate-pulse"
-    loading="lazy"
-  />
+           <Image
+                   width={300}
+                   height={300}
+                   src={product.images[0].url}
+                   alt={product.name}
+                   className="object-cover sm:h-[230px] h-[180px] w-full"
+                   loading="lazy"
+                   placeholder="blur"
+                   blurDataURL="/placeholder-image.jpg" // Replace with an actual placeholder image
+                 />
 </div>
       <div className="p-3">
       <h3 className=" text-black  sm:text-xl  text-sm  font-semibold">{product.sname}</h3>
