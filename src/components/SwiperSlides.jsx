@@ -40,14 +40,14 @@ const SwiperSlides = ({ products }) => {
         {products?.map((product) => (
           <SwiperSlide className='flex-shrink-0' key={product._id}>
             <Link href={`/product/${product.slug}`}>
-              <div className="w-full hover:scale-95 ]  mx-auto my-2">
+              <div className="w-full hover:scale-95 ]  mx-auto my-1">
                 <div className="overflow-hidden text-center">
                   <Image
                     width={500}
                     height={500}
                     src={product.images[0].url}
                     alt={product.name}
-                    className="object-cover w-full sm:h-[330px]  h-[300px] hover:animate-pulse"
+                    className="object-cover w-full sm:h-[330px]  h-[310px] hover:animate-pulse"
                     loading="lazy"
                   />
              
@@ -66,7 +66,7 @@ const SwiperSlides = ({ products }) => {
                 </p>
               </div>
               <div className="absolute flex bottom-8 left-0 w-full justify-center text-center   py-1 rounded-b">
-                <h3 className="text-sm w-[97%] sm:font-extrabold font-bold bg-black text-white">  {product.name.length > 40 ? truncateText(product.name, 40) : product.sname}</h3>
+                <h3 className="text-lg font-mono w-[97%] sm:font-extrabold font-bold ">  {product.name.length > 43 ? truncateText(product.name, 43) : product.sname}</h3>
               </div>
               
                 </div>
