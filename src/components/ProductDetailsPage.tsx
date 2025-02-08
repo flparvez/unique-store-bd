@@ -6,7 +6,7 @@ import { YouTubeEmbed } from '@next/third-parties/google'
 import { addItem } from '@/store/cartSlice';
 import { useGetProductBySlugQuery } from '@/store/services/prodcutApi';
 
-import { toast } from 'sonner';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import LiveChatButton from '@/components/LiveChatButton';
@@ -35,7 +35,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
         image: product.images[0].url,
       })
     );
-    toast.success('Product added to cart');
+  
     router.push('/checkout');
   };
   if (isLoading) {
