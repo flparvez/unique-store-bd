@@ -76,6 +76,7 @@ interface IProduct {
     images?: { url: string; public_id: string }[];
     stock?: number;
     sold?: number;
+    advanced?: number;
     video?: string;
     warranty?: string;
     seo?: string;
@@ -123,6 +124,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
             price: formData.get("price") as string | null,
             mprice: formData.get("mprice") as string | null,
             stock: formData.get("stock") as string | null,
+            advanced: formData.get("advanced") as string | null,
             sold: formData.get("sold") as string | null,
             video: formData.get("video") as string | null,
             seo: formData.get("seo") as string | null,
@@ -141,6 +143,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
             price: fields.price ? parseFloat(fields.price) : undefined,
             mprice: fields.mprice ? parseFloat(fields.mprice) : undefined,
             stock: fields.stock ? parseInt(fields.stock, 10) : undefined,
+            advanced: fields.advanced ? parseInt(fields.advanced, 10) : undefined,
             sold: fields.sold ? parseInt(fields.sold, 10) : undefined,
             video: fields.video || undefined,
             warranty: fields.warranty || undefined,

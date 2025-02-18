@@ -30,6 +30,7 @@ interface Inputs {
   images: FileList | null;
   price: number;
   stock: number;
+  advanced: number;
   sold: number;
   video: string;
   tags: string;
@@ -59,6 +60,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
         category,
         price,
         stock,
+        advanced,
         sold,
         video,
         tags,
@@ -74,6 +76,7 @@ export default function UpdateProductForm({ id }: { id: string }) {
       setValue("price", price);
       setValue("stock", stock);
       setValue("sold", sold);
+      setValue("advanced", advanced);
       setValue("video", video);
       setValue("tags", tags);
       setValue("mprice", mprice);
@@ -173,6 +176,12 @@ export default function UpdateProductForm({ id }: { id: string }) {
           <Label htmlFor="stock" className="mt-2">Stock</Label>
           <Input {...register("stock", { required: true })} id="stock" placeholder="Stock" type="number" />
         </LabelInputContainer>
+   <LabelInputContainer >
+          <Label htmlFor="advanced" className="mt-2">advanced</Label>
+          <Input {...register("advanced", )} id="advanced" placeholder="Advanced Required" type="number" />
+        </LabelInputContainer>
+
+
         <LabelInputContainer >
           <Label htmlFor="sold" className="mt-2">Sold</Label>
           <Input {...register("sold", { required: true })} id="sold" placeholder="Sold" type="number" />

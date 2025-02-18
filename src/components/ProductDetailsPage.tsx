@@ -23,6 +23,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
   const router = useRouter();
 
   const dispatch = useDispatch();
+const payment = product?.advanced? product.advanced : 100
 
   const handleAddToCart = () => {
     dispatch(
@@ -31,6 +32,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
         slug: product.slug,
         title: product.name,
         price: product.price,
+        apayment:payment, 
         quantity: 1,
         image: product.images[0].url,
       })
@@ -102,7 +104,9 @@ const ProductPage = ({ slug }: { slug: string }) => {
           </div>
           <li className="font-bold text-black ml-[80px]">{product.warranty}
            </li>
-
+<div>
+  <h2 className='text-red-600 font-bold'>{product.advanced? product.advanced : 100} Taka or full payment in advance is required</h2>
+</div>
               {/* Product Category */}
               <p className="flex flex-wrap gap-2 mb-2 mt-2">
                 Category: <span className="px-3 py-1 bg-blue-200 text-blue-800 rounded-md">

@@ -96,6 +96,7 @@ export const POST = async (request: NextRequest) => {
     const description = formData.get("description") as string | null;
     const category = formData.get("category") as string | null;
     const price = parseFloat(formData.get("price") as string || '0');
+    const advanced = parseFloat(formData.get("advanced") as string || '0');
     const mprice = parseFloat(formData.get("mprice") as string || '0');
     const stock = parseInt(formData.get("stock") as string || '0', 10);
     const sold = parseInt(formData.get("sold") as string || '0', 10);
@@ -119,6 +120,7 @@ export const POST = async (request: NextRequest) => {
       mprice,
       images: images,
       stock,
+      advanced,
       video,
       sold,
       warranty,

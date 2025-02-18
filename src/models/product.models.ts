@@ -17,6 +17,7 @@ interface ProductDocuments extends Document {
   images: Image[];
   stock: number;
   sold: number;
+  advanced: number;
   video: string;
   warranty: string;
   tags: string[];
@@ -44,6 +45,7 @@ const productSchema = new Schema<ProductDocuments>({
   images: { type: [imageSchema], required: true },
   stock: { type: Number, required: true },
   sold: { type: Number, required: true },
+  advanced: { type: Number, default:100 },
   video: { type: String },
   warranty: { type: String },
   tags: { type: [String] },

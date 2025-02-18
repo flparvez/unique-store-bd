@@ -14,6 +14,7 @@ const CheckoutPage = ({ user }) => {
   
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
+const payment = cart?.items[0]?.apayment 
 
   const [addOrder] = useAddOrderMutation();
 const [orderId, setorderId] = useState(null);
@@ -54,6 +55,7 @@ const [orderId, setorderId] = useState(null);
     items: cart.items,
     total: totalAmount,
     transaction: paymentDetails.transaction,
+    apayment: payment,
     paymentType: paymentDetails.paymentType+" "+paymentDetails.ShippingType
   };
 
@@ -187,7 +189,7 @@ if (orderId) {
             )}
           </div>
         </div>
-        <div className="py-2">
+        <div className="py-2 flex justify-center">
           <label className="block text-xl mb-3 font-bold text-gray-700">Payment Type <span className='text-red-600'>*</span></label>
           <div className="flex items-center">
             <input
@@ -199,7 +201,7 @@ if (orderId) {
               onChange={handleCardInput}
               className="mr-2"
             />
-            <label htmlFor="fullPayment" className="mr-4">Full Payment</label>
+            <label htmlFor="fullPayment" className="mr-4 sm:text-xl">Full Payment</label>
             <input
               type="radio"
               id="partialPayment"
@@ -209,11 +211,11 @@ if (orderId) {
               onChange={handleCardInput}
               className="mr-2"
             />
-            <label htmlFor="partialPayment">Partial Payment</label>
+            <label htmlFor="partialPayment " className='sm:text-xl '>Partial Payment</label>
           </div>
         </div>
            {paymentDetails.paymentType === 'full' && (
-          <div className="my-2">
+          <div className="my-2 flex justify-center">
 
             <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'>Pay Full Payment ৳{dhaka? ndata.total: dhakaO && ndata.total}</h2>
            
@@ -223,7 +225,7 @@ if (orderId) {
              {paymentDetails.paymentType === 'partial' && (
           <div className="mb-4">
             
-            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'> Pay ৳100 online & ৳{dhaka? ndata.total -100: dhakaO && ndata.total -100}  with Cash on Delivery</h2>
+            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'> Pay ৳{payment} online & ৳{dhaka? ndata.total -payment: dhakaO && ndata.total -payment}  with Cash on Delivery</h2>
            
           </div>
         )}
