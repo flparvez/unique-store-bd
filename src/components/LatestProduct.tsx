@@ -31,9 +31,7 @@ type Products = {
 const LatestProduct = () => {
   const { data: products, isLoading } = useGetProductsQuery("");
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 20;
-  const truncateText = (text:any, maxLength:any) =>
-    text.length > maxLength ? text.substring(0, maxLength) : text;
+  const productsPerPage = 24;
 
   // Calculate current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;

@@ -33,7 +33,7 @@ type Products = {
 const AllProducts = () => {
   const { data: products, isLoading } = useGetProductsQuery("");
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 28;
+  const productsPerPage = 32;
 
   // Calculate current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
