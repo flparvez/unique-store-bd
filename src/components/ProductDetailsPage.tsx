@@ -124,7 +124,7 @@ const payment = product?.advanced? product.advanced : 100
                   {/* <h2 className="text-lg font-semibold mb-2">Product Video</h2> */}
                   <div className="aspect-w-16 aspect-h-9">
                   {/* className="w-full lg:h-80 md:h-96 h-56 rounded-md" */}
-                  <YouTubeEmbed  videoid={product.video}  params="controls=0&color=red" />
+                  <YouTubeEmbed  videoid={product.video}  params="controls=1&color=red&list=PLe0fjqkPBsQMz80PmZUol8z3AJRwYBHwu" />
                 
                   </div>
                 </div>
