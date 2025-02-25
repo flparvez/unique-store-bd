@@ -49,7 +49,7 @@ const description = htmlToText(product?.description);
         title: product?.name,
         images: [product?.images[0].url, ...previousImages],
         description: description,
-        url: `https://uniquestorebd.vercel.app/product/${slug}`,
+        url: `https://uniquestorebd.shop/product/${slug}`,
        
       },
       

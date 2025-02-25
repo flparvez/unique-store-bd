@@ -16,7 +16,7 @@ export const categoryApi = createApi({
 
     addCategory: builder.mutation({
       query: ({body}) => ({
-        url: `https://uniquestorebd.vercel.app/api/category`,
+        url: `https://uniquestorebd.shop/api/category`,
         method: 'POST',
         body:body,
       }),
@@ -32,7 +32,7 @@ export const categoryApi = createApi({
  // Edit Category
  editCategory: builder.mutation({
   query: ({ slug, updatedCategory }) => ({
-    url: `https://uniquestorebd.vercel.app/api/category/${slug}`,
+    url: `https://uniquestorebd.shop/api/category/${slug}`,
     method: 'PATCH',
     body: updatedCategory,
   }),

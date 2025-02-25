@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     },
     description: "Online Shopping BD.  Unique Store BD.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials",
     images: ["https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png"],
-    url: "https://uniquestorebd.vercel.app/",
+    url: "https://uniquestorebd.shop/",
   },
 
   verification: {

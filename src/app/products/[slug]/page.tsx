@@ -30,7 +30,7 @@ if(!category) <Loading />
     openGraph: {
       images: [category?.images[0].url, ...previousImages],
       tags: [category?.name, ...previousImages],
-      url: `https://uniquestorebd.vercel.app/products/${category?.slug}`,
+      url: `https://uniquestorebd.shop/products/${category?.slug}`,
     },
   };
 }

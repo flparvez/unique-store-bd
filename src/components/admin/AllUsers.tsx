@@ -10,7 +10,7 @@ interface Users {
 const AllUsers =async () => {
 //  fetch user by fetch request
 
-let data = await fetch('https://uniquestorebd.vercel.app/api/users')
+let data = await fetch('https://uniquestorebd.shop/api/users')
 let users = await data.json()
 
   return (

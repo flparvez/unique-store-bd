@@ -11,7 +11,7 @@ export const productsApi = createApi({
 
     addProduct: builder.mutation({
       query: ({ body}) => ({
-        url: `https://uniquestorebd.vercel.app/api/product`,
+        url: `https://uniquestorebd.shop/api/product`,
         method: 'POST',
         body,
       }),
@@ -21,7 +21,7 @@ export const productsApi = createApi({
     updateProduct: builder.mutation({
       query: ({ updatedProduct, id }) => ({
         // url: `http://localhost:3000/api/product/${id}`,
-        url: `https://uniquestorebd.vercel.app/api/product/${id}`,
+        url: `https://uniquestorebd.shop/api/product/${id}`,
         method: 'PATCH',
         body: updatedProduct,
       }),
