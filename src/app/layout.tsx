@@ -67,18 +67,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="GTM-NWBLSZ7R" />
+      <GoogleTagManager gtmId="GTM-N9P2439Z" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NWBLSZ7R"
-            height="0"
-            width="0"
-            style={{display:"none",visibility:"hidden"}}
-          ></iframe>
-        </noscript>
+
+  {/* gtm */}
+ 
+<noscript>
+  <iframe 
+  src="https://www.googletagmanager.com/ns.html?id=GTM-N9P2439Z"
+
+height="0"
+ width="0"
+ style={{display:"none",visibility:"hidden"}}>
+  </iframe></noscript>
+
+
+
+
+
+
+
 
         <Provider store={store}>
           <Header />
