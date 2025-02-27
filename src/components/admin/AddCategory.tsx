@@ -14,6 +14,7 @@ import { Textarea } from "../ui/textarea";
 type Inputs = {
     id: string,
     name: string;
+    description: string;
     tags: string;
     images: File[];
 
@@ -28,6 +29,7 @@ export default function AddCategoryForm() {
  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
+    formData.append("description", data.description);
     formData.append("tags", data.tags);
  
 
@@ -58,6 +60,10 @@ export default function AddCategoryForm() {
     <LabelInputContainer className="mb-4 ">
       <Label htmlFor="name">Category Name</Label>
       <Input {...register("name", { required: true })} id="name" placeholder="Category Name" type="text" />
+      </LabelInputContainer>
+     <LabelInputContainer className="mb-4 ">
+      <Label htmlFor="description">Category description</Label>
+      <Input {...register("description")} id="description" placeholder="Category description" type="text" />
       </LabelInputContainer>
  
     <LabelInputContainer className="mb-4 ">

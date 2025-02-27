@@ -48,6 +48,7 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
       // Prepopulate form with current category values
       if (data) {
         setValue("name", data.name);
+        setValue("description", data.description);
         setValue("tags", data.tags);
         setExistingImages(data.images || []);
       }
@@ -62,6 +63,7 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
  const onSubmit: SubmitHandler<Category> = async (data) => {
     const formData = new FormData();
     formData.append("name", data.name);
+    formData.append("description", data.description);
     formData.append("tags", data.tags);
  
 
