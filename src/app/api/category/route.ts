@@ -90,6 +90,7 @@ export const POST = async (request: NextRequest) => {
     }));
 
     const name = formData.get("name") as string | null;
+    const description = formData.get("description") as string | null;
     const tags = formData.get("tags") as string | null;
 
  
@@ -98,6 +99,7 @@ export const POST = async (request: NextRequest) => {
 
     const newProduct = new Category({
       name,
+      description,
       tags,
       images,
       slug:slugify(name!),

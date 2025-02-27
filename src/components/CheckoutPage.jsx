@@ -84,7 +84,7 @@ if (orderId) {
   return (
 <div>
   
-      <form className="bg-white rounded-lg sm:mt-20 mt-14 shadow-md p-6" onSubmit={handleSubmit}>
+      <form className="bg-white rounded-lg sm:mt-10 mt-4 shadow-md p-6" onSubmit={handleSubmit}>
         <h2 className='text-xl sm:text-2xl font-bold text-center'>অর্ডারটি কনফার্ম করতে ফর্মটি সম্পুর্ণ পুরণ করে নিচের Place Order বাটনে ক্লিক করুন।</h2>
         <div className="mb-4">
           <label htmlFor="CustomerName" className="block text-sm font-medium text-gray-700">আপনার নাম <span className='text-red-600'>*</span></label>

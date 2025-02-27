@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 }
 const AfterSaleService = () => {
   return (
-    <div className="max-w-4xl mt-12 mx-auto p-4">
+    <div className="max-w-4xl mt-2 mx-auto p-4">
       <h1 className="text-xl font-bold text-center mb-6">Unique Store BD এর আফটার সেলস এবং টেকনিক্যাল সাপোর্ট</h1>
 
       <p className="mb-4">

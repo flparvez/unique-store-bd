@@ -66,11 +66,7 @@ const AllProducts = () => {
 
   return (
     <div className="container mx-auto sm:px-4 px-2 py-3">
-      <div className="flex justify-center">
-        <h1 className="text-2xl font-bold">
-          Unique Store BD <span className="text-xl font-bold">All Products</span>
-        </h1>
-      </div>
+ 
 
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-4">
         {currentProducts?.map((product: Products) => (

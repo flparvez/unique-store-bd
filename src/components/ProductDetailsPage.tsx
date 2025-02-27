@@ -48,7 +48,7 @@ const payment = product?.advanced? product.advanced : 100
     <h2>Product Not Found</h2>
   }else{
     return (
-      <div className="container sm:mt-24 mt-[65px] mx-auto p-2">
+      <div className="container sm:mt-12 mt-[39px] mx-auto p-2">
         {/* Product Info Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Product Image */}

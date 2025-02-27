@@ -25,7 +25,7 @@ if(!category) <Loading />
 
   return {
     title:category?.name,
-    description: category?.name + " Best Price In Unique Store BD" + ", " + category?.tags,
+    description: category?.description + ", " + category?.tags,
     keywords: category?.tags ,
     openGraph: {
       images: [category?.images[0].url, ...previousImages],
@@ -48,7 +48,11 @@ const EditCategory =async ({
 
   return (
     <div>
- <h1 className="text-xl sm:text-2xl font-bold mt-16 sm:mt-24 justify-center flex">  {category?.name} - Unique Store Bd </h1>
+ <h1 className="text-sm font-extrabold sm:text-2xl sm:font-bold mt-11 sm:mt-12 justify-center flex">  {category?.name} - Unique Store Bd </h1>
+ {/* Category description */}
+{
+  category?.description? <p className='text-sm font-bold sm:font-extrabold text-center'>{category?.description}</p> : <p className='text-sm font-bold sm:font-extrabold text-center'>Unique Store Bd -{category?.name} Details</p>
+}
  <CategorySlider />
     <ProductByCategory slug={slug} />
 <br />

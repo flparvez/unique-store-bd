@@ -92,7 +92,7 @@ height="0"
 
         <Provider store={store}>
           <Header />
-          <main className="mt-7">{children}</main>
+          <main className="">{children}</main>
           <Toaster richColors duration={1500} position="top-right" />
           <div className="mb-8">
             <TopMain />

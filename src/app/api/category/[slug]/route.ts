@@ -13,6 +13,7 @@ cloudinary.config({
 
 interface ICategory {
     name?: string;
+    description?: string;
     tags?: string;
     images?: { url: string; public_id: string }[];
 }
@@ -94,6 +95,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
 
         const fields = {
             name: formData.get("name") as string | null,
+            description: formData.get("description") as string | null,
             tags: formData.get("tags") as string | null,
    
         };

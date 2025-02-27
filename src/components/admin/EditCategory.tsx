@@ -18,6 +18,7 @@ interface EditCategoryProps {
 interface Category {
   _id: string;
   name: string;
+  description: string;
   tags: string;
   images: File[]
   slug: string;
@@ -88,7 +89,13 @@ const EditCategory: React.FC<EditCategoryProps> = ({ slug }) => {
           <Label htmlFor="name">Category Name</Label>
           <Input {...register("name", { required: true })} id="name" placeholder="Category Name" type="text" />
         </LabelInputContainer>
+         <LabelInputContainer className="mb-4">
+          <Label htmlFor="description">Category description</Label>
+          <Input {...register("description", )} id="description" placeholder="Category description" type="text" />
+        </LabelInputContainer>
  
+
+
         <LabelInputContainer className="mb-4 ">
       <Label htmlFor="tags">Category tags</Label>
       <Textarea {...register("tags", { required: true })} id="tags" placeholder="Category Seo Tags"  />

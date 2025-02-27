@@ -1,5 +1,7 @@
 "use client"
-
+import { Marquee } from "@devnomic/marquee";
+// if you copy ala shadcn, no need import css.
+import "@devnomic/marquee/dist/index.css";
 import dynamic from 'next/dynamic'
 import Loading from './Loading'
 import { Button } from './ui/button'
@@ -32,8 +34,12 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className='mt-[68px] sm:mt-[86px]'>
-     
+    <div className='mt-[40px] sm:mt-[52px]'>
+         <div className="w-full text-center text-gray-800 dark:text-white sm:text-[17px] text-[13px] font-bold ">
+        <Marquee className="text-red-500" >Unique Store Bd | আসসালামু আলাইকুম সম্মানিত সদস্য আপনাকে অভিনন্দন ওয়েবসাইটে প্রবেশ করার
+          জন্য। আমাদের কাছে পেয়ে যাবেন টেকসই নিত্য প্রয়োজনীয় ইলেকট্রনিক
+          মালামাল। আপনার পছন্দের প্রোডাক্ট এড কার্ড করে এখনই অর্ডার করুন।</Marquee>
+      </div>
       {/* Slider */}
       <DynamicTopProductSlider />
 
