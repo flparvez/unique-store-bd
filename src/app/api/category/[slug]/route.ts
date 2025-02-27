@@ -113,6 +113,7 @@ export const PATCH = async (request: NextRequest, context: { params: any }) => {
 
         const updateData: Partial<ICategory> = {
             name: fields.name || undefined,
+            description: fields.description || undefined,
             tags: fields.tags || undefined,
           
         };
