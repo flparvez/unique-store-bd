@@ -182,7 +182,7 @@ const CheckoutPage = ({ user }) => {
                 </div>
               </div>
             ))}
-            <div className="mb-4 flex justify-center">
+            <div className="mb-2 flex justify-center">
               <label className="block text-xl font-bold py-2 px-4 text-gray-700">Shipping <span className='text-red-600'>*</span></label>
               <div className="flex items-center">
                 <input
@@ -210,7 +210,7 @@ const CheckoutPage = ({ user }) => {
             {paymentDetails.ShippingType === 'dhakao' && (
               <div className="">
                 {
-                  dc? <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳120</h2>
+                  dc? <h2 className='block text-center font-extrabold sm:text-2xl text-xl text-green-600'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-2xl text-xl text-green-600'>Delivery Charge ৳120</h2>
                 }
               
               </div>
@@ -218,7 +218,7 @@ const CheckoutPage = ({ user }) => {
             {paymentDetails.ShippingType === 'dhaka' && (
           <div className="">
           {
-            dc? <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳60</h2>
+            dc? <h2 className='block text-center font-extrabold sm:text-xl text-sm text-green-600'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-xl text-sm text-green-600'>Delivery Charge ৳60</h2>
           }
         
         </div>
@@ -226,7 +226,7 @@ const CheckoutPage = ({ user }) => {
           </div>
         </div>
         <div className="py-2 flex justify-center">
-          <label className="block text-xl mb-3 font-bold text-gray-700">Payment Type <span className='text-red-600'>*</span></label>
+          <label className="block sm:text-xl text-sm mb-3 font-bold text-gray-700">Payment Type <span className='text-red-600'>*</span></label>
           <div className="flex items-center">
             <input
               type="radio"
