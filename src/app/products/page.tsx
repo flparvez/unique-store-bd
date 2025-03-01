@@ -9,11 +9,12 @@ export const metadata: Metadata = {
 }
 const Products = () => {
   return (
-    <div className='mt-24'>
-           <div className="flex justify-center">
-        <h1 className="text-2xl font-bold">
+    <div className='mt-11 sm:mt-13'>
+           <div className="text-center">
+        <h1 className="text-xl sm:text-2xl font-bold mb-1">
           Uniques Store BD <span className="text-xl font-bold">All Products</span>
         </h1>
+        <p className='text-sm font-bold sm:font-extrabold text-center'>Online Shopping BD. <span className='font-bold text-red-600'>Unique Store BD</span>.  Enjoy hassle-free online shopping from Unique Store BD. Find genuine products,  TWS earbuds, unique gadgets, home appliances, and daily essentials</p>
       </div>
       <CategorySlider />
       <AllProducts />
