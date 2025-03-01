@@ -19,7 +19,7 @@ const Topbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 mb-1"
+              className="h-5 w-6 mb-1"
             >
               <path
                 strokeLinecap="round"
@@ -38,7 +38,7 @@ const Topbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 mb-1"
+              className="h-5 w-6 mb-1"
             >
               <path
                 strokeLinecap="round"
@@ -57,7 +57,7 @@ const Topbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 mb-1"
+              className="h-5 w-6 mb-1"
             >
               <path
                 strokeLinecap="round"
@@ -86,7 +86,7 @@ const Topbar = () => {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="h-6 w-6 mb-1"
+              className="h-5 w-6 mb-1"
             >
               <path
                 strokeLinecap="round"
