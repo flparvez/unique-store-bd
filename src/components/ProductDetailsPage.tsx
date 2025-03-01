@@ -16,15 +16,14 @@ import ProductImageSlider from './ProductImages';
 import { useEffect } from 'react';
 
 const ProductPage = ({ slug }: { slug: string }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   const { data:product, isLoading } = useGetProductBySlugQuery(slug);
   const router = useRouter();
 
   const dispatch = useDispatch();
-const payment = product?.advanced? product.advanced : 100
+const payment = product?.advanced || 100
 
+const deliveryCharge = product?.advanced === 200;
   const handleAddToCart = () => {
     dispatch(
       addItem({
@@ -32,7 +31,9 @@ const payment = product?.advanced? product.advanced : 100
         slug: product.slug,
         title: product.name,
         price: product.price,
+        advanced: product.advanced,
         apayment:payment, 
+        dc: deliveryCharge,
         quantity: 1,
         image: product.images[0].url,
       })
@@ -40,6 +41,10 @@ const payment = product?.advanced? product.advanced : 100
   
     router.push('/checkout');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   if (isLoading) {
     return <Loading />
   }

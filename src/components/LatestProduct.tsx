@@ -22,6 +22,7 @@ type Products = {
   price: number;
   stock: number;
   sold: number;
+  advanced: number;
   video: string;
   tags: string;
   mprice: number;
@@ -43,12 +44,16 @@ const LatestProduct = () => {
 
   // Add to cart handler
   const handleAddToCart = (product: Products) => {
+    const payment = product?.advanced? product.advanced : 100
+    const deliveryCharge = product.advanced === 200;
     dispatch(
       addItem({
         product: product._id,
         slug: product.slug,
         title: product.name,
         price: product.price,
+        dc: deliveryCharge,
+        apayment:payment, 
         quantity: 1,
         image: product.images[0]?.url,
       })

@@ -1,90 +1,120 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '@/store/cartSlice';
-import { useAddOrderMutation } from '@/store/services/CheckOutApi';
-import { redirect } from 'next/navigation';
-import Image from 'next/image';
-import { toast } from 'sonner';
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "@/store/cartSlice";
+import { useAddOrderMutation } from "@/store/services/CheckOutApi";
 
+import Image from "next/image";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const CheckoutPage = ({ user }) => {
-
-  
+  const router = useRouter();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
-const payment = cart?.items[0]?.apayment 
 
-  const [addOrder] = useAddOrderMutation();
-const [orderId, setorderId] = useState(null);
+  const [copied, setCopied] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [orderId, setOrderId] = useState(null);
   const [paymentDetails, setPaymentDetails] = useState({
-    cname: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    transaction: '',
-    paymentType: 'full',
-    ShippingType: 'dhaka'
+    cname: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    transaction: "",
+    paymentType: "full",
+    ShippingType: "dhaka",
   });
 
-  const [isProcessing, setIsProcessing] = useState(false);
+  const payment = cart?.items[0]?.apayment 
 
-  const handleCardInput = (e) => {
-    const { name, value } = e.target;
-    setPaymentDetails({
-      ...paymentDetails,
-      [name]: value
-    });
-  };
+  const dc = cart?.items?.[0]?.dc || false;
 
-  const dhakaO = paymentDetails.ShippingType === 'dhakao' ? 120 : 0;
-  const dhaka = paymentDetails.ShippingType === 'dhaka' ? 60 : 0;
+  // **Calculate Total Price Using useMemo to Prevent Unnecessary Re-renders**
+  const cartTotal = useMemo(() => {
+    return cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }, [cart.items]);
 
-  const cartTotal = cart.items.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const totalAmount = dhaka ? cartTotal + dhaka : dhakaO ? cartTotal + dhakaO : cartTotal;
+  const shippingCharge = useMemo(() => {
+    return paymentDetails.ShippingType === "dhakao" ? 120 : paymentDetails.ShippingType === "dhaka" ? 60 : 0;
+  }, [paymentDetails.ShippingType]);
 
-  const ndata = {
-    user: user?.id,
-    name: paymentDetails.cname,
-    email: paymentDetails.email,
-    phone: paymentDetails.phone,
-    address: paymentDetails.address,
-    city: paymentDetails.city,
-    items: cart.items,
-    total: totalAmount,
-    transaction: paymentDetails.transaction,
-    apayment: payment,
-    paymentType: paymentDetails.paymentType+" "+paymentDetails.ShippingType
-  };
+  const totalAmount = useMemo(() => {
+    return dc ? cartTotal : cartTotal + shippingCharge;
+  }, [cartTotal, shippingCharge, dc]);
 
+  // **Handle Input Changes**
+  const handleCardInput = useCallback((e) => {
+    setPaymentDetails((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }, []);
+
+  // **Handle Copy Click**
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText("01608257876");
+      setCopied(true);
+      toast.success("Copied: 01608257876");
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast.error("Failed to copy number");
+    }
+  }, []);
+
+  // **Handle Order Submission**
+  const [addOrder] = useAddOrderMutation();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
-    try {
-      const response= await addOrder(ndata).unwrap();
-setorderId(response._id);
-      toast.success('Order placed successfully!');
-      dispatch(clearCart());
-     
 
+    const orderData = {
+      user: user?.id,
+      name: paymentDetails.cname,
+      email: paymentDetails.email,
+      phone: paymentDetails.phone,
+      address: paymentDetails.address,
+      city: paymentDetails.city,
+      items: cart.items,
+      total: totalAmount,
+      transaction: paymentDetails.transaction,
+      apayment: payment,
+      paymentType: `${paymentDetails.paymentType} ${paymentDetails.ShippingType}`,
+    };
+
+    try {
+      const response = await addOrder(orderData).unwrap();
+      setOrderId(response._id);
+      toast.success("Order placed successfully!");
+      dispatch(clearCart());
     } catch (err) {
-      toast.error('Failed to place the order');
-      console.error('Failed to save the order: ', err);
+      toast.error("Failed to place the order");
     } finally {
       setIsProcessing(false);
     }
   };
-if (orderId) {
-  redirect(`/profile/orders/${orderId}`);
-}
-  if (cart.items.length === 0) return redirect('/profile');
+
+  // **Redirect User After Order Placement**
+  useEffect(() => {
+    if (orderId) {
+      router.push(`/profile/orders/${orderId}`);
+    }
+  }, [orderId, router]);
+
+  // **Redirect if Cart is Empty**
+  useEffect(() => {
+    if (cart.items.length === 0) {
+      router.push("/profile");
+    }
+  }, [cart.items.length, router]);
 
   return (
-<div>
-  
-      <form className="bg-white rounded-lg sm:mt-10 mt-4 shadow-md p-6" onSubmit={handleSubmit}>
+    <div>
+    
+    <form className="bg-white rounded-lg sm:mt-10 mt-4 shadow-md p-6" onSubmit={handleSubmit}>
         <h2 className='text-xl sm:text-2xl font-bold text-center'>অর্ডারটি কনফার্ম করতে ফর্মটি সম্পুর্ণ পুরণ করে নিচের Place Order বাটনে ক্লিক করুন।</h2>
         <div className="mb-4">
           <label htmlFor="CustomerName" className="block text-sm font-medium text-gray-700">আপনার নাম <span className='text-red-600'>*</span></label>
@@ -179,13 +209,19 @@ if (orderId) {
             </div>
             {paymentDetails.ShippingType === 'dhakao' && (
               <div className="">
-                <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳120</h2>
+                {
+                  dc? <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳120</h2>
+                }
+              
               </div>
             )}
             {paymentDetails.ShippingType === 'dhaka' && (
-              <div className="">
-                <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳60</h2>
-              </div>
+          <div className="">
+          {
+            dc? <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge Free</h2>: <h2 className='block text-center font-bold sm:text-2xl text-xl text-gray-700'>Delivery Charge ৳60</h2>
+          }
+        
+        </div>
             )}
           </div>
         </div>
@@ -217,7 +253,7 @@ if (orderId) {
            {paymentDetails.paymentType === 'full' && (
           <div className="my-2 flex justify-center">
 
-            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'>Pay Full Payment ৳{dhaka? ndata.total: dhakaO && ndata.total}</h2>
+            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'>Pay Full Payment ৳{totalAmount}</h2>
            
           </div>
         )}
@@ -225,13 +261,13 @@ if (orderId) {
              {paymentDetails.paymentType === 'partial' && (
           <div className="mb-4">
             
-            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'> Pay ৳{payment} online & ৳{dhaka? ndata.total -payment: dhakaO && ndata.total -payment}  with Cash on Delivery</h2>
+            <h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700'> Pay ৳{payment} online & ৳{totalAmount - payment}  with Cash on Delivery</h2>
            
           </div>
         )}
 
         
-<h2 className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700 border'>Bkash(personal): 01608257876</h2>
+<div className='block  text-center font-bold sm:text-2xl text-xl  text-gray-700 border'>Bkash(personal):  <button type="button" onClick={handleCopy}>01608257876</button> </div> 
 <br />
         {/* Transaction ID */}
         <div className="mb-4">
@@ -261,7 +297,6 @@ if (orderId) {
         </div>
       </form>
 
-    
     </div>
   );
 };
