@@ -97,8 +97,48 @@ const ProductDetails  = async ({
 }) => {
 
   const slug = (await params).slug
+  const product = await getProduct(slug);
+  if (!product) {
+    return (
+      <div className="text-center py-10">
+        <h2 className="text-2xl font-bold text-red-500">Product Not Found</h2>
+        <p className="text-gray-600">Sorry, this product is unavailable.</p>
+      </div>
+    );
+  }
+ 
+  const price = product?.price || 0;
+  const image = product?.images?.[0]?.url || '/default-image.jpg';
 
-  return <ProductDetailsPage slug={slug}  /> ;
+  return (
+    <>
+    {/* ✅ Schema.org JSON-LD for SEO */}
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": product.name,
+          "image": image,
+          "description": `Buy ${product.name} online at the best price in Bangladesh.`,
+          "brand": { "@type": "Brand", "name": "Unique Store BD" },
+          "offers": {
+            "@type": "Offer",
+            "url": `https://uniquestorebd.shop/product/${slug}`,
+            "priceCurrency": "BDT",
+            "price": price,
+            "availability": "https://schema.org/InStock"
+          }
+        }),
+      }}
+    />
+
+    {/* ✅ Product Details Component */}
+    <ProductDetailsPage slug={slug} />
+  </>
+
+  ) ;
 
 
 };
