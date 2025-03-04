@@ -5,7 +5,8 @@ interface Image {
   public_id: string;
 }
 
-interface ProductDocuments extends Document {
+export interface IProduct  {
+  _id: string;
   name: string;
   slug: string;
   sname: string;
@@ -29,7 +30,7 @@ const imageSchema = new Schema<Image>({
   public_id: { type: String, required: true }
 });
 
-const productSchema = new Schema<ProductDocuments>({
+const productSchema = new Schema<IProduct>({
   name: { type: String, required: true },
   sname: { type: String, required: true },
   slug: { type: String, required: true },
