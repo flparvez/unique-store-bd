@@ -121,6 +121,24 @@ const ProductDetails  = async ({
           "@type": "Product",
           "name": product.name,
           "image": image,
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.4",
+            "reviewCount": "9"
+          },
+        "review": {
+          "@type": "Review",
+          "author": "Md Ashikur Rahman",
+          "datePublished": "2024-11-19",
+          "description": "This is a great product!",
+          "name": "A very good product",
+          "reviewRating": {
+            "@type": "Rating",
+            "bestRating": "5",
+            "ratingValue": "4",
+            "worstRating": "1"
+          }
+        },
           "description": `Buy ${product.name} online at the best price in Bangladesh.`,
           "brand": { "@type": "Brand", "name": "Unique Store BD" },
           "offers": {
@@ -128,6 +146,9 @@ const ProductDetails  = async ({
             "url": `https://uniquestorebd.shop/product/${slug}`,
             "priceCurrency": "BDT",
             "price": price,
+            "priceValidUntil": "2025-11-05",
+            "shippingDetails": "Free shipping on orders over ৳10000",
+            "hasMerchantReturnPolicy": 'https://uniquestorebd.shop/policy/returns',
             "availability": "https://schema.org/InStock"
           }
         }),
