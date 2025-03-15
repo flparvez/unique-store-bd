@@ -22,28 +22,23 @@ const geistMono = localFont({
 });
 
 // ✅ Optimized SEO Metadata
+
 export const metadata: Metadata = {
+
   title: {
     template: "%s - Unique Store BD",
-    default: "Unique Store BD - Quality Is Here",
+    default: "Unique Store BD - Best Online Shopping in Bangladesh",
   },
   description:
     "Buy authentic gadgets, TWS earbuds, home appliances & unique accessories online in Bangladesh at Unique Store BD. Enjoy hassle-free shopping with best prices & fast delivery.",
   keywords:
-    "Unique Store BD, Online Shopping BD, TWS Earbuds, Gadgets, Home Appliances, Buy Online, Electric Accessories, Best Shopping BD, Tech Accessories, Unique Gadgets BD",
-
-  // ✅ Search engine indexing settings
+    "Unique Store BD, Online Shopping BD, TWS Earbuds, Gadgets, Home Appliances, Buy Online, Electric Accessories, Best Shopping BD, Tech Accessories, Unique Gadgets BD, Bangladesh Online Store",
   robots: {
     index: true,
     follow: true,
   },
-
-  // ✅ OpenGraph Meta for Facebook, WhatsApp, etc.
   openGraph: {
-    title: {
-      template: "%s - Unique Store BD",
-      default: "Unique Store BD - Best Online Shopping in Bangladesh",
-    },
+    title: "Unique Store BD - Best Online Shopping in Bangladesh",
     description:
       "Shop online in Bangladesh with Unique Store BD. Find original TWS earbuds, home gadgets & more at best prices. Trusted online store with fast delivery & secure payment.",
     images: [
@@ -53,36 +48,42 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Unique Store BD",
   },
-
-  // ✅ Twitter Card Metadata for better sharing on Twitter
   twitter: {
     card: "summary_large_image",
     title: "Unique Store BD - Best Online Shopping in Bangladesh",
     description:
-      "Shop online for TWS earbuds, gadgets, home appliances & more. Enjoy the best deals & fast delivery from Unique Store BD.",
+      "Shop online for TWS earbuds, Rechargeable Fan, Table Lamp, gadgets, home appliances & more. Enjoy the best deals & fast delivery from Unique Store BD.",
     images: [
+      "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1742060244/ea4imit2icsqfpwahihm.png",
       "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
     ],
   },
-
-  // ✅ Google Site Verification for Search Console
   verification: {
     other: {
-        "google-site-verification": "H1QKSH2SYxJ7TemokhY7BFgKgZN-iJT1B51u-CZ4wpw",
-      },
+      "google-site-verification": "H1QKSH2SYxJ7TemokhY7BFgKgZN-iJT1B51u-CZ4wpw",
+    },
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-          <GoogleTagManager gtmId="GTM-N9P2439Z" />
+      <GoogleTagManager gtmId="GTM-N9P2439Z" />
       <head>
-        {/* ✅ Google Tag Manager (GTM) - Optimized */}
-      
-        
+        {/* ✅ Preload essential fonts and images for faster load times */}
+        <link
+          rel="preload"
+          href="./fonts/GeistVF.woff"
+          as="font"
+          type="font/woff"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png"
+          as="image"
+        />
+
         {/* ✅ JSON-LD Schema Markup for Google SEO */}
         <script
           type="application/ld+json"
@@ -90,20 +91,20 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Store",
-              "name": "Unique Store BD",
-              "url": "https://uniquestorebd.shop/",
-              "image": "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
-              "description":
-                "Shop online in Bangladesh for unique gadgets, home appliances & TWS earbuds. Enjoy best deals and fast delivery from Unique Store BD.",
-              "address": {
+              name: "Unique Store BD",
+              url: "https://uniquestorebd.shop/",
+              image:
+                "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
+              description:
+                "Shop online for TWS earbuds, Rechargeable Fan, Table Lamp, gadgets, home appliances & more. Enjoy the best deals & fast delivery from Unique Store BD.",
+              address: {
                 "@type": "PostalAddress",
-                "addressLocality": "Dhaka",
-                "addressCountry": "BD",
+                addressLocality: "Dhaka",
+                addressCountry: "BD",
               },
-              "sameAs": [
-                "https://www.facebook.com/uniquestorebd23",
-               
-              ],
+              sameAs: ["https://www.facebook.com/uniquestorebd23"],
+              openingHours: "Mo-Su 09:00-21:00",
+              telephone: "+8801608257876",
             }),
           }}
         />
@@ -111,14 +112,13 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* ✅ Google Tag Manager (noscript fallback) */}
         <noscript>
-  <iframe 
-  src="https://www.googletagmanager.com/ns.html?id=GTM-N9P2439Z"
-
-height="0"
- width="0"
- style={{display:"none",visibility:"hidden"}}>
-  </iframe></noscript>
-
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N9P2439Z"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
 
         <Provider store={store}>
           <Header />

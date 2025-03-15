@@ -12,7 +12,10 @@ export interface IProduct  {
   sname: string;
   description: string;
 
-  category: Schema.Types.ObjectId;
+  category: {
+    _id: string;
+    name: string;
+  };
   price: number;
   mprice: number;
   images: Image[];

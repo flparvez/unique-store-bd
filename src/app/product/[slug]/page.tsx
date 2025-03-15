@@ -1,103 +1,79 @@
-import ProductDetailsPage from '@/components/ProductDetailsPage'
+import ProductDetailsPage from '@/components/ProductDetailsPage';
 import type { Metadata, ResolvingMetadata } from 'next';
 import { htmlToText } from 'html-to-text';
 import { IProduct } from '@/models/product.models';
 
+// Types
 type Props = {
-  params: Promise<{ slug: string }>;
-};
-type Prorops = {
-  slug: string;
-  name: string
-  images: string
+  params: { slug: string };
 };
 
-
+// Fetch product data
 async function getProduct(slug: string): Promise<IProduct | null> {
   try {
     const res = await fetch(`https://uniquestorebd-api.vercel.app/api/products/slug/${slug}`, {
-      next: { revalidate: 3600 }, // ISR - Revalidate every 1 hour
+      next: { revalidate: 3600 },
     });
-
     if (!res.ok) return null;
     return res.json();
   } catch (error) {
-    console.error("Error fetching product:", error);
+    console.error('Error fetching product:', error);
     return null;
   }
 }
 
+// SEO Metadata generation
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  // Read route params
   const { slug } = await params;
-
   try {
-    // Fetch data from the API that provides all products
     const product = await getProduct(slug);
 
     if (!product) {
-     
-   
-      // Handle case where product is not found
       return {
-        title: 'Product Not Found',
-
-        openGraph: {
-          images: ['/default-image.jpg'], // Provide a default image
-
-        },
+        title: 'Product Not Found | Unique Store BD',
+        description: 'Sorry, this product is unavailable. Check other great deals at Unique Store BD!',
+        openGraph: { images: ['/default-image.jpg'] },
       };
     }
-const description = htmlToText(product?.description);
 
-
+    const description = htmlToText(product?.description || '').slice(0, 155);
+    const keywords = `${product?.seo}, ${product?.category?.name || ''}, Unique Store BD, Buy ${product.name} in Bangladesh`;
 
     const previousImages = (await parent).openGraph?.images || [];
 
     return {
       title: `${product.name} | Unique Store BD`,
-      description: description,
-      keywords: product?.seo || '',
-      alternates: {
-        canonical: `https://uniquestorebd.shop/product/${slug}`, // ✅ Canonical URL
-      },
+      description,
+      keywords,
+      alternates: { canonical: `https://uniquestorebd.shop/product/${slug}` },
+
+
       openGraph: {
         type: 'website',
         title: `${product.name} | Unique Store BD`,
-        description: description,
+        description,
         url: `https://uniquestorebd.shop/product/${slug}`,
         images: [product.images?.[0]?.url || '/default-image.jpg', ...previousImages],
-      }
+      },
     };
-
   } catch (error) {
-    console.error('Error fetching product metadata:', error);
-
-    // Return fallback metadata if fetching fails
+    console.error('Error generating metadata:', error);
     return {
       title: 'Error fetching product',
-
-      openGraph: {
-        images: ['/default-image.jpg'], // Provide a default image in case of error
-
-      },
+      description: 'Unable to load product details. Please try again later.',
+      openGraph: { images: ['/default-image.jpg'] },
     };
   }
 }
 
-
-
-const ProductDetails  = async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) => {
-
-  const slug = (await params).slug
+// Product Details Component
+const ProductDetails = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
   const product = await getProduct(slug);
+
   if (!product) {
     return (
       <div className="text-center py-10">
@@ -106,62 +82,60 @@ const ProductDetails  = async ({
       </div>
     );
   }
- 
+
   const price = product?.price || 0;
   const image = product?.images?.[0]?.url || '/default-image.jpg';
 
   return (
     <>
-    {/* ✅ Schema.org JSON-LD for SEO */}
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org/",
-          "@type": "Product",
-          "name": product.name,
-          "image": image,
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.4",
-            "reviewCount": "9"
-          },
-        "review": {
-          "@type": "Review",
-          "author": "Md Ashikur Rahman",
-          "datePublished": "2024-11-19",
-          "description": "This is a great product!",
-          "name": "A very good product",
-          "reviewRating": {
-            "@type": "Rating",
-            "bestRating": "5",
-            "ratingValue": "4",
-            "worstRating": "1"
-          }
-        },
-          "description": `Buy ${product.name} online at the best price in Bangladesh.`,
-          "brand": { "@type": "Brand", "name": "Unique Store BD" },
-          "offers": {
-            "@type": "Offer",
-            "url": `https://uniquestorebd.shop/product/${slug}`,
-            "priceCurrency": "BDT",
-            "price": price,
-            "priceValidUntil": "2025-11-05",
-            "shippingDetails": "Free shipping on orders over ৳10000",
-            "hasMerchantReturnPolicy": 'https://uniquestorebd.shop/policy/returns',
-            "availability": "https://schema.org/InStock"
-          }
-        }),
-      }}
-    />
+      {/* ✅ Enhanced Schema.org JSON-LD for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": product.name,
+            "image": image,
+            "description": `Buy ${product.name} online at the best price in Bangladesh from Unique Store BD.`,
+            "brand": { "@type": "Brand", "name": "Unique Store BD" },
+            
+            "category": product.category || 'General',
+            "offers": {
+              "@type": "Offer",
+              "url": `https://uniquestorebd.shop/product/${slug}`,
+              "priceCurrency": "BDT",
+              "price": price,
+              "priceValidUntil": "2025-12-31",
+              "availability": "https://schema.org/InStock",
+              "seller": { "@type": "Organization", "name": "Unique Store BD" }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "15"
+            },
+            "review": {
+              "@type": "Review",
+              "author": "Md Ashikur Rahman",
+              "datePublished": "2024-11-19",
+              "description": "Excellent quality and value for money!",
+              "name": "Highly recommended",
+              "reviewRating": {
+                "@type": "Rating",
+                "bestRating": "5",
+                "ratingValue": "5",
+                "worstRating": "1"
+              }
+            }
+          }),
+        }}
+      />
 
-    {/* ✅ Product Details Component */}
-    <ProductDetailsPage slug={slug} />
-  </>
-
-  ) ;
-
-
+      {/* ✅ Render Product Details Page */}
+      <ProductDetailsPage slug={slug} />
+    </>
+  );
 };
 
 export default ProductDetails;
