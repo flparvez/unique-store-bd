@@ -53,7 +53,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <div className="container sm:mt-12 mt-[39px] mx-auto p-2">
+    <div className="container  mx-auto p-2">
       {/* Product Info Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Product Image */}

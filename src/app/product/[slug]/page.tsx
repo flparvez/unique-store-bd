@@ -141,9 +141,13 @@ const ProductDetails  = async ({
           }),
         }}
       />
-
+ 
       {/* ✅ Render Product Details Page */}
+      <div>
+      <h1 className="sm:text-xl text-sm my-2 font-bold text-green-700 mt-14 ml-4"> {product.sname}</h1>
       <ProductDetailsPage slug={slug} />
+      </div>
+      
     </>
   );
 };
