@@ -90,6 +90,7 @@ const CheckoutPage = ({ user }) => {
       setOrderId(response._id);
       toast.success("Order placed successfully!");
       dispatch(clearCart());
+      
     } catch (err) {
       toast.error("Failed to place the order");
     } finally {
@@ -105,11 +106,6 @@ const CheckoutPage = ({ user }) => {
   }, [orderId, router]);
 
   // **Redirect if Cart is Empty**
-  useEffect(() => {
-    if (cart.items.length === 0) {
-      router.push("/profile");
-    }
-  }, [cart.items.length, router]);
 
   return (
     <div>

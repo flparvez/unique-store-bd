@@ -28,7 +28,7 @@ if (order) {
       </div>  
       {
         order.paymentType === "partial" ?   <div className="mb-4">
-        <span className="font-medium">Pay Cash On Delivery:</span> {order.total -200} Tk
+        <span className="font-medium">Pay Cash On Delivery:</span> {order.total -100} Tk
       </div> : ""
       }
       

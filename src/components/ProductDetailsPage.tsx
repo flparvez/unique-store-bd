@@ -52,7 +52,15 @@ const ProductPage = ({ slug }: { slug: string }) => {
     return <h2 className="text-center text-2xl font-bold text-red-500">Product Not Found</h2>;
   }
 
+
+
   return (
+
+
+
+
+
+    
     <div className="container  mx-auto p-2">
       {/* Product Info Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
