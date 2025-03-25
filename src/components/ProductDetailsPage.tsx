@@ -87,11 +87,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
           <div>
             <h1 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
               {product.name}
-              {product.sname && (
-                <span className="block text-lg text-green-700 mt-1">
-                  Model: {product.sname}
-                </span>
-              )}
+           
             </h1>
 
             {/* Price Section */}
