@@ -1,31 +1,84 @@
-export default async function sitemap() {
-  const response = await fetch(`https://uniquestorebd-api.vercel.app/api/products`).then((res) => res.json());
-  const products = response;
-  const baseUrl = "https://uniquestorebd.shop/";
+import { MetadataRoute } from 'next'
 
-  // Array of static URLs
-  const staticUrls = [
-    { url: `${baseUrl}`, lastModified: new Date() },
-    { url: `${baseUrl}policy/returns`, lastModified: new Date() },
-    { url: `${baseUrl}policy/replacement-warranty`, lastModified: new Date() },
-    { url: `${baseUrl}products/Table-Lamp`, lastModified: new Date() },
-    { url: `${baseUrl}products/TWS`, lastModified: new Date() },
-    { url: `${baseUrl}products`, lastModified: new Date() },
-    { url: `${baseUrl}products/Smart-Watch`, lastModified: new Date() },
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const baseUrl = "https://uniquestorebd.shop";
+  
+  // Fetch all necessary data in parallel
+  const [productsRes, categoriesRes] = await Promise.all([
+    fetch('https://uniquestorebd-api.vercel.app/api/products', {
+      next: { revalidate: 86400 } // Revalidate daily
+    }),
+    fetch('https://uniquestorebd-api.vercel.app/api/categories', {
+      next: { revalidate: 86400 } // Revalidate daily
+    })
+  ]);
 
-  ];
+  // Handle potential errors
+  if (!productsRes.ok || !categoriesRes.ok) {
+    console.error('Failed to fetch data for sitemap');
+    // Return at least the static URLs as fallback
+    return generateStaticUrls(baseUrl);
+  }
 
-  // Map product data to URLs
-  const allProducts = products?.map((product:any) => {
-    return {
-      url: `${baseUrl}product/${product?.slug}`,
-      lastModified: product?.updatedAt,
-    };
-  });
+  const products = await productsRes.json();
+  const categories = await categoriesRes.json();
 
-  // Combine static URLs and product URLs
+  // Generate all dynamic URLs
+  const productUrls = products?.map((product: any) => ({
+    url: `${baseUrl}/product/${product.slug}`,
+    lastModified: product.updatedAt ? new Date(product.updatedAt) : new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  })) || [];
+
+  const categoryUrls = categories?.map((category: any) => ({
+    url: `${baseUrl}/products/${category.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  })) || [];
+
+  // Combine all URLs
   return [
-    ...staticUrls,
-    ...allProducts
+    ...generateStaticUrls(baseUrl),
+    ...categoryUrls,
+    ...productUrls
+  ];
+}
+
+function generateStaticUrls(baseUrl: string): MetadataRoute.Sitemap {
+  return [
+    {
+      url: `${baseUrl}/`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/products`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/policy/returns`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/policy/replacement-warranty`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    // Add other important static pages
+    {
+      url: `${baseUrl}/policy/after-sales-support`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    },
+
   ];
 }

@@ -1,94 +1,211 @@
-import React from 'react'
-
 import ProductByCategory from '@/components/ProductByCategory';
 import CategorySlider from '@/components/CategorySlider';
 import type { Metadata, ResolvingMetadata } from 'next';
-import Loading from '@/components/Loading';
+
 import Link from 'next/link';
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
-export async function generateMetadata(
-  { params }: Props,
+
+export async function generateMetadata( { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const { slug } = await params;
 
+  try {
+    const category = await fetch(
+      `https://uniquestorebd-api.vercel.app/api/categories/${slug}`
+    ).then((res) => res.json());
 
+    if (!category) {
+      return {
+        title: "Category Not Found | Unique Store BD",
+        description: "The requested category does not exist",
+      };
+    }
+
+    const previousImages = (await parent).openGraph?.images || [];
+    const description = `${category.description || 'Browse our collection of'} ${category.name}. ${category.tags || 'Best prices in Bangladesh'}`;
+
+    return {
+      title: `${category.name} - Unique Store BD`,
+      description: description.slice(0, 160),
+      keywords: [
+        category.name,category?.tags,
+        'buy online',
+        'price in Bangladesh',
+        'Unique Store BD'
+      ].join(', '),
+      alternates: {
+        canonical: `https://uniquestorebd.shop/products/${category.slug}`,
+      },
+      openGraph: {
+        title: `${category.name} | Unique Store BD`,
+        description: description.slice(0, 160),
+        url: `https://uniquestorebd.shop/products/${category.slug}`,
+        images: [category.images?.[0]?.url || '/default-category.jpg', ...previousImages],
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${category.name} | Unique Store BD`,
+        description: description.slice(0, 160),
+        images: [category.images?.[0]?.url || '/default-category.jpg'],
+      },
+    };
+  } catch (error) {
+    console.error('Error generating metadata:', error);
+    return {
+      title: "Category | Unique Store BD",
+      description: "Browse our product categories",
+    };
+  }
+}
+
+const CategoryPage = async (
+  {
+    params,
+  }: {
+    params: Promise<{ slug: string }>
+  }
+) => {
   const slug = (await params).slug
 
+  try {
+    const category = await fetch(
+      `https://uniquestorebd-api.vercel.app/api/categories/${slug}`
+    ).then((res) => res.json());
 
-  const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
+    if (!category) {
+      return (
+        <div className="text-center py-10">
+          <h1 className="text-2xl font-bold text-red-500">Category Not Found</h1>
+          <p className="text-gray-600 mt-2">
+            The category you're looking for doesn't exist.
+          </p>
+          <Link 
+            href="/products" 
+            className="text-blue-600 hover:underline mt-4 inline-block"
+          >
+            Browse all categories
+          </Link>
+        </div>
+      );
+    }
 
+    // Structured data for category
+    const categorySchema = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: category.name,
+      description: category.description,
+      url: `https://uniquestorebd.shop/products/${category.slug}`,
+      image: category.images?.[0]?.url || '/default-category.jpg'
+    };
 
-if(!category) <Loading />
-  const previousImages = (await parent).openGraph?.images || [];
+    return (
+      <div className="container mt-10 mx-auto px-2">
+        {/* Structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(categorySchema) }}
+        />
 
-  return {
-    title:category?.name + " | Unique Store Bd",
-    description: category?.description + ", " + category?.tags,
-    keywords: category?.tags ,
-    openGraph: {
-      images: [category?.images[0].url, ...previousImages],
-      tags: [category?.name, ...previousImages],
-      url: `https://uniquestorebd.shop/products/${category?.slug}`,
-    },
-  };
-}
-const EditCategory =async ({
-  params,
-}: {
-  params: Promise<{ slug: string }>
-}) => {
+        {/* Breadcrumb navigation */}
+        <nav aria-label="Breadcrumb" className="py-2 text-sm">
+          <ol className="flex items-center space-x-2">
+            <li>
+              <Link href="/" className="text-blue-600 hover:underline">Home</Link>
+            </li>
+            <li>/</li>
+            <li className="text-gray-600" aria-current="page">
+              {category.name}
+            </li>
+          </ol>
+        </nav>
 
-  const slug = (await params).slug
+        {/* Category header */}
+        <header className="text-center ">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {category.name}
+          </h1>
+          {category.description && (
+            <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
+              {category.description}
+            </p>
+          )}
+        </header>
 
+        <CategorySlider />
 
+        {/* Main products */}
+        <section className="my-8">
+          <ProductByCategory slug={slug} />
+        </section>
 
-  const category = await fetch(`https://uniquestorebd-api.vercel.app/api/categories/${slug}`).then((res) => res.json())
+        {/* Tags */}
+        {category.tags && (
+          <section className="mb-8">
+            <h2 className="text-lg font-semibold mb-2 text-center">Related Tags</h2>
+            <div className="flex flex-wrap justify-center gap-2">
+           
+                <span
+               
+                  className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
+                >
+                  {category?.tags}
+                </span>
+       
+            </div>
+          </section>
+        )}
 
-  return (
-    <div>
- <h1 className="text-sm font-extrabold sm:text-2xl sm:font-bold mt-11 sm:mt-12 justify-center flex">  {category?.name} - Unique Store Bd </h1>
- {/* Category description */}
-{
-  category?.description? <p className='text-sm font-bold sm:font-extrabold text-center'>{category?.description}</p> : <p className='text-sm font-bold sm:font-extrabold text-center'>Unique Store Bd -{category?.name} Details</p>
-}
- <CategorySlider />
-    <ProductByCategory slug={slug} />
-<br />
-<div className="  justify-center flex flex-wrap gap-2 mb-2 mt-2">
-{
-  category?.tags?<div><span>Tags </span><li
-  className="px-3 py-1 w-[100%] space-x-2 bg-blue-200 text-blue-800 rounded-md break-words"
- > {category?.tags}</li></div>  : null
-}
+        {/* SEO content */}
+        <section className="max-w-4xl mx-auto py-8 border-t border-gray-200">
+          <div className="prose prose-sm md:prose-base mx-auto">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+               {category.name} at Unique Store BD
+            </h2>
+            <p>
+              <strong className="text-yellow-600">Unique Store BD</strong> offers the best selection of {category.name} in Bangladesh. 
+              We maintain comprehensive stock to ensure quick delivery of your orders.
+            </p>
+            <p>
+              Experience online shopping in Bangladesh for authentic products at competitive prices. 
+              Our collection includes the latest {category.name} with guaranteed quality and warranty.
+            </p>
+            <p>
+              Enjoy convenient home delivery or pickup options. We provide exceptional after-sales 
+              support and free consultations to help you find the best products for your needs.
+            </p>
+            <p>
+              With years of experience, we've earned customer trust through authentic products 
+              and quality service, making us a leading eCommerce platform in Bangladesh.
+            </p>
+            <p>
+              Join our community on <Link href="https://www.facebook.com/uniquestorebd23" className="text-yellow-600 hover:underline">Facebook</Link> 
+              to stay updated on new arrivals and special offers for {category.name}.
+            </p>
+            <p>
+              For the best {category.name} in Bangladesh, <strong className="text-yellow-600">Unique Store BD</strong> is your 
+              trusted destination with professional support and competitive pricing.
+            </p>
+          </div>
+        </section>
+      </div>
+    );
+  } catch (error) {
+    console.error('Error loading category:', error);
+    return (
+      <div className="text-center py-10">
+        <h1 className="text-2xl font-bold text-red-500">Error Loading Category</h1>
+        <p className="text-gray-600 mt-2">
+          We're having trouble loading this category. Please try again later.
+        </p>
+      </div>
+    );
+  }
+};
 
-</div>
-
-    <div className="max-w-7xl mx-auto p-2">
-    
-    <p className="mb-4">
-      <span className="font-semibold text-yellow-500">Unique Store BD</span> - The Most Reliable eCommerce Site in Bangladesh. We maintain a comprehensive stock to ensure you receive your orders as quickly as possible. Experience online shopping in Bangladesh for authentic products, including the latest tech gadgets such as live streaming gear, YouTube studio setups, vlogging gear, home studio equipment, webcams, microphones, lighting setups, ring lights, smartphones, gimbals, and related products.
-    </p>
-    <p className="mb-4">
-      Enjoy the convenience of home delivery or courier service, or pick up your orders from our pickup point. We guarantee product quality, fast delivery, and exceptional after-sales support. Benefit from our free pre-sales and post-sales consultations to find the best budget-friendly gear.
-    </p>
-    <p className="mb-4">
-      Our technical team is dedicated to providing a seamless online shopping experience in Bangladesh, offering world-class, original products at reasonable prices. Our customer care team is always ready to assist you with your purchases and provide technical support.
-    </p>
-    <p className="mb-4">
-      With over one year of experience, we have earned the trust of millions of customers through authentic products and quality after-sales support, making us the most reliable and trusted platform in the Bangladesh eCommerce industry.
-    </p>
-    <p className="mb-4">
-      Join our vibrant online community to share your shopping experiences, learn about new products, and get answers to your questions. We are highly active on social media, especially in our Facebook Page:<Link href="https://www.facebook.com/uniquestorebd23" passHref><span className="font-semibold text-yellow-500">Unique Store BD</span></Link>, where we engage with customers to improve our services.
-    </p>
-    <p className="mb-4">
-      Whether you need live streaming equipment, YouTube studio gear, or other home studio equipment, <span className="font-semibold text-yellow-500">Unique Store BD</span> is your go-to recommendation. Help your friends by recommending us, and we'll provide friendly and professional assistance.
-    </p>
-  </div>
-    </div>
-
-  )
-}
-
-export default EditCategory
+export default CategoryPage;
