@@ -8,69 +8,95 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 
-// ✅ Importing custom fonts for better performance
+// Font optimization with font-display swap
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: 'swap',
 });
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: 'swap',
 });
 
-// ✅ Optimized SEO Metadata
-
+// Enhanced SEO Metadata
 export const metadata: Metadata = {
-
+  metadataBase: new URL('https://uniquestorebd.shop'),
   title: {
-    template: "%s - Unique Store BD",
-    default: "Unique Store BD - Best Online Shopping in Bangladesh",
+    template: "%s | Unique Store BD",
+    default: "Unique Store BD - Authentic Gadgets & Electronics Online Shop",
   },
-  description:
-    "Buy authentic gadgets, TWS earbuds, home appliances & unique accessories online in Bangladesh at Unique Store BD. Enjoy hassle-free shopping with best prices & fast delivery.",
-  keywords:
-    "Unique Store BD, Online Shopping BD, TWS Earbuds, Gadgets, Home Appliances, Buy Online, Electric Accessories, Best Shopping BD, Tech Accessories, Unique Gadgets BD, Bangladesh Online Store",
+  description: "Buy authentic TWS earbuds, smart watches, home appliances & tech gadgets in Bangladesh. Best prices with warranty, fast delivery & easy returns.",
+  keywords: [
+    "Unique Store BD",
+    "Online Shopping Bangladesh",
+    "Original TWS Earbuds",
+    "Smart Watches BD",
+    "Home Appliances",
+    "Tech Gadgets Bangladesh",
+    "Best Price Electronics",
+    "Authentic Products BD",
+    "Online Store Bangladesh",
+    "Earphones Price in BD"
+  ],
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    }
   },
   openGraph: {
-    title: "Unique Store BD - Best Online Shopping in Bangladesh",
-    description:
-      "Shop online in Bangladesh with Unique Store BD. Find original TWS earbuds, home gadgets & more at best prices. Trusted online store with fast delivery & secure payment.",
-    images: [
-      "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
-    ],
-    url: "https://uniquestorebd.shop/",
-    type: "website",
+    title: "Unique Store BD - Authentic Gadgets & Electronics",
+    description: "Shop original TWS earbuds, smart watches, home appliances & tech gadgets at best prices in Bangladesh with warranty & fast delivery.",
+    url: "https://uniquestorebd.shop",
     siteName: "Unique Store BD",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
+        width: 1200,
+        height: 630,
+        alt: "Unique Store BD - Best Online Shopping in Bangladesh",
+      }
+    ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Unique Store BD - Best Online Shopping in Bangladesh",
-    description:
-      "Shop online for TWS earbuds, Rechargeable Fan, Table Lamp, gadgets, home appliances & more. Enjoy the best deals & fast delivery from Unique Store BD.",
+    title: "Unique Store BD - Authentic Gadgets & Electronics",
+    description: "Shop 100% original tech products at best prices in Bangladesh",
+    creator: "@UniqueStoreBD",
     images: [
-      "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1742060244/ea4imit2icsqfpwahihm.png",
-      "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
+      "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png"
     ],
   },
   verification: {
+    google: "H1QKSH2SYxJ7TemokhY7BFgKgZN-iJT1B51u-CZ4wpw",
     other: {
-      "google-site-verification": "H1QKSH2SYxJ7TemokhY7BFgKgZN-iJT1B51u-CZ4wpw",
+      "facebook-domain-verification": ["your-facebook-verification-code"],
     },
   },
+  alternates: {
+    canonical: "https://uniquestorebd.shop",
+  },
+  category: "ecommerce",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <GoogleTagManager gtmId="GTM-N9P2439Z" />
       <head>
-        {/* ✅ Preload essential fonts and images for faster load times */}
+        {/* Preload critical resources */}
         <link
           rel="preload"
           href="./fonts/GeistVF.woff"
@@ -84,47 +110,87 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           as="image"
         />
 
-        {/* ✅ JSON-LD Schema Markup for Google SEO */}
+        {/* Favicon and App Icons */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        {/* Comprehensive Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Store",
+              "@type": "Organization",
               name: "Unique Store BD",
-              url: "https://uniquestorebd.shop/",
-              image:
-                "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
-              description:
-                "Shop online for TWS earbuds, Rechargeable Fan, Table Lamp, gadgets, home appliances & more. Enjoy the best deals & fast delivery from Unique Store BD.",
+              url: "https://uniquestorebd.shop",
+              logo: "https://res.cloudinary.com/dxmvrhcjx/image/upload/v1736267263/hm8yhv7pehnbxw4klxym.png",
+              description: "Authentic gadgets and electronics online store in Bangladesh",
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "House 01, Road 01, Sector 01, Uttara, Dhaka",
                 addressLocality: "Dhaka",
-                addressCountry: "BD",
+                addressRegion: "Dhaka",
+                postalCode: "1200",
+                addressCountry: "BD"
               },
-              sameAs: ["https://www.facebook.com/uniquestorebd23"],
-              openingHours: "Mo-Su 09:00-21:00",
-              telephone: "+8801608257876",
-            }),
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+8801608257876",
+                contactType: "customer service",
+                email: "uniquestorebd23@gmail.com",
+                areaServed: "BD",
+                availableLanguage: ["en", "bn"]
+              },
+              sameAs: [
+                "https://www.facebook.com/uniquestorebd23",
+                "https://www.instagram.com/uniquestorebd",
+                "https://www.linkedin.com/company/uniquestorebd"
+              ],
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                opens: "09:00",
+                closes: "21:00"
+              },
+              priceRange: "$$"
+            })
           }}
         />
+
+        {/* Search Console Verification */}
+        <meta name="google-site-verification" content="H1QKSH2SYxJ7TemokhY7BFgKgZN-iJT1B51u-CZ4wpw" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* ✅ Google Tag Manager (noscript fallback) */}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-gray-900`}>
+        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-N9P2439Z"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
+            aria-hidden="true"
           ></iframe>
         </noscript>
 
         <Provider store={store}>
           <Header />
-          <main className="">{children}</main>
-          <Toaster richColors duration={1500} position="top-right" />
-          <div className="mb-8">
+          <main className="min-h-[calc(100vh-160px)]">
+            {children}
+          </main>
+          <Toaster 
+            richColors 
+            duration={1500} 
+            position="top-right" 
+            closeButton 
+            toastOptions={{
+              classNames: {
+                toast: 'font-sans',
+              },
+            }} 
+          />
+          <div className="mt-8">
             <TopMain />
           </div>
           <Footer />
