@@ -107,7 +107,7 @@ const ProductDetails = async ({
 
   if (!product) {
     return (
-      <div className="container mx-auto py-10 px-4 text-center">
+      <div className=" mx-auto py-10 px-4 text-center">
         <h1 className="text-2xl font-bold text-red-600 mb-2">Product Not Available</h1>
         <p className="text-gray-600 mb-4">
           The product you're looking for is currently unavailable.
@@ -173,7 +173,7 @@ const ProductDetails = async ({
       />
 
       {/* Breadcrumb navigation for SEO */}
-      <nav aria-label="Breadcrumb" className="container mt-10 mx-auto px-4 pt-4 text-sm">
+      <nav aria-label="Breadcrumb" className="container mt-10 mx-auto px-2 pt-2 text-sm">
         <ol className="flex items-center space-x-2">
           <li>
             <a href="/" className="text-blue-600 hover:underline">Home</a>
@@ -195,7 +195,7 @@ const ProductDetails = async ({
       </nav>
 
       {/* Main product content */}
-      <main className="container mx-auto px-4">
+      <main className="mx-auto px-2">
   
         
      

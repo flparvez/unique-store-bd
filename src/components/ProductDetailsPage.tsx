@@ -67,7 +67,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
   }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className=" mx-auto p-2">
       {/* Breadcrumb Navigation */}
      
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
