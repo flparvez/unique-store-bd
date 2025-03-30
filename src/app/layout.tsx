@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://uniquestorebd.shop'),
   title: {
     template: "%s | Unique Store BD",
-    default: "Unique Store BD - Authentic Gadgets & Electronics Online Shop",
+    default: "Unique Store BD - Best Online Shopping in Bangladesh",
   },
-  description: "Buy authentic TWS earbuds, smart watches, home appliances & tech gadgets in Bangladesh. Best prices with warranty, fast delivery & easy returns.",
+  description: "Buy authentic Products - Table Lamps, TWS earbuds, smart watches, home appliances & tech gadgets in Bangladesh. Best prices with warranty, fast delivery & easy returns.",
   keywords: [
     "Unique Store BD",
     "Online Shopping Bangladesh",
@@ -38,10 +38,10 @@ export const metadata: Metadata = {
     "Smart Watches BD",
     "Home Appliances",
     "Tech Gadgets Bangladesh",
-    "Best Price Electronics",
+    "Table Lamp Price Bd",
     "Authentic Products BD",
     "Online Store Bangladesh",
-    "Earphones Price in BD"
+    "Rechargeable Fan"
   ],
   robots: {
     index: true,
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     }
   },
   openGraph: {
-    title: "Unique Store BD - Authentic Gadgets & Electronics",
+    title: "Unique Store BD - Best Online Shopping in Bangladesh",
     description: "Shop original TWS earbuds, smart watches, home appliances & tech gadgets at best prices in Bangladesh with warranty & fast delivery.",
     url: "https://uniquestorebd.shop",
     siteName: "Unique Store BD",
