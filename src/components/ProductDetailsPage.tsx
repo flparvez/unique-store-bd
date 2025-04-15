@@ -85,7 +85,7 @@ const ProductPage = ({ slug }: { slug: string }) => {
         {/* Product Details Section */}
         <div className="flex flex-col justify-between">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
+            <h1 className="text-xl md:text-xl font-bold mb-2 text-gray-900">
               {product.name}
            
             </h1>
@@ -151,8 +151,15 @@ const ProductPage = ({ slug }: { slug: string }) => {
             )}
 
             {/* Product Description */}
-            <div className="mb-6">
-              <h2 className="text-xl font-semibold mb-3">Product Details</h2>
+            <div className="mb-4">
+              <h2 className="text-xl font-semibold mb-2">Product Description</h2>
+
+            {/* product name */}
+          
+                <h1 className="font-bold sm:text-xl  border-b text-black my-2 "> {product.sname} in Bangladesh
+                </h1> 
+             
+
               <div
                 className="prose max-w-none"
                 dangerouslySetInnerHTML={{ __html: product.description }}

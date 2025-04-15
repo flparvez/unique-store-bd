@@ -210,9 +210,9 @@ const ProductDetails = async ({
           <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
           <div className="space-y-4">
             <div>
-              <h3 className="font-semibold"> What is the price of {product?.sname} in Bangladesh?</h3>
+              <h3 className="font-semibold"> What is the price of {product?.name} in Bangladesh?</h3>
               <p>
-              The latest price of <b>{product?.sname}</b> is{' '}
+              The latest price of <b>{product?.name}</b> is{' '}
                 <b>৳{product?.price}</b> in Bangladesh. You can purchase the{' '}
                 {product?.sname} in Bangladesh at the best price from our website or any
                 of our stores.
