@@ -26,10 +26,7 @@ const geistMono = localFont({
 // Enhanced SEO Metadata
 export const metadata: Metadata = {
   metadataBase: new URL('https://uniquestorebd.shop'),
-  title: {
-    template: "%s | Unique Store BD",
-    default: "Unique Store BD - Best Online Shopping in Bangladesh",
-  },
+title: "Unique Store BD - Best Online Shopping in Bangladesh",
   description: "Buy authentic Products - Table Lamps, TWS earbuds, smart watches, home appliances & tech gadgets in Bangladesh. Best prices with warranty, fast delivery & easy returns.",
   keywords: [
     "Unique Store BD",

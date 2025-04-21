@@ -196,21 +196,21 @@ const ProductPage = ({ slug }: { slug: string }) => {
                   <p className="text-gray-700">
                   The latest price of <b>{product?.sname}</b> is{' '}
                 <strong>৳{product?.price}</strong> in Bangladesh. You can purchase the{' '}
-                {product?.sname} in Bangladesh at the best price from our website or any
+                <b>{product?.sname}</b> in Bangladesh at the best price from our website or any
                 of our stores.
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold">Where can I buy {product.name} in Bangladesh?</h3>
+                  <h3 className="font-semibold">Where can I buy <b>{product?.sname}</b> in Bangladesh?</h3>
                   <p className="text-gray-700">
-                    You can purchase {product.name} from our store with nationwide delivery across Bangladesh. 
+                    You can purchase <b>{product?.sname}</b> from our store with nationwide delivery across Bangladesh. 
                     We offer secure online payment options including cash on delivery.
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold">What is the warranty for {product.name}?</h3>
+                  <h3 className="font-semibold">What is the warranty for <b>{product?.sname}</b>?</h3>
                   <p className="text-gray-700">
                     {product.warranty || "This product comes with a standard manufacturer's warranty."}
                   </p>

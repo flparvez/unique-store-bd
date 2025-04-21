@@ -69,15 +69,15 @@ export async function generateMetadata({ params }: Props,
   ].filter(Boolean).join(', ');
 
   return {
-    title: product?.sname,
+    title: `${product?.sname}  Price In Bangladesh`,
     description: `Buy ${product?.sname}${priceText}. ${shortDescription} Free delivery available.`,
     keywords,
     alternates: {
       canonical: `https://uniquestorebd.shop/product/${slug}`,
     },
     openGraph: {
-      title: `${product?.sname} Price in Bangladesh ${priceText} `,
-      description: `Get ${product?.sname}${priceText} in Bangladesh. ${shortDescription}`,
+      title: `${product?.sname}  Price In Bangladesh`,
+      description: `Buy ${product?.sname}${priceText}. ${shortDescription} Free delivery available.`,
       url: `https://uniquestorebd.shop/product/${slug}`,
       type: 'website',
       images: product.images?.map(img => ({
