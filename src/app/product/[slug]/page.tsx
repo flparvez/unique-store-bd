@@ -70,14 +70,14 @@ export async function generateMetadata({ params }: Props,
 
   return {
     title: product?.sname,
-    description: `Buy ${product.name}${priceText}. ${shortDescription} Free delivery available.`,
+    description: `Buy ${product?.sname}${priceText}. ${shortDescription} Free delivery available.`,
     keywords,
     alternates: {
       canonical: `https://uniquestorebd.shop/product/${slug}`,
     },
     openGraph: {
-      title: `${product.name} Price in Bangladesh ${priceText} `,
-      description: `Get ${product?.name}${priceText} in Bangladesh. ${shortDescription}`,
+      title: `${product?.sname} Price in Bangladesh ${priceText} `,
+      description: `Get ${product?.sname}${priceText} in Bangladesh. ${shortDescription}`,
       url: `https://uniquestorebd.shop/product/${slug}`,
       type: 'website',
       images: product.images?.map(img => ({
