@@ -2,14 +2,12 @@ import ProductDetailsPage from "@/components/ProductDetailsPage";
 import type { Metadata, ResolvingMetadata } from "next";
 import { htmlToText } from "html-to-text";
 import { IProduct } from "@/models/product.models";
-// ✅ Define route type properly
-type PageProps = {
-  params: { slug: string }; // 🎯 Make sure params is a plain object
-};
+
 // Simplified props type
 
 type Props = {
   params: Promise<{ slug: string }>;
+  
 };
 // Enhanced fetch with error handling
 async function getProduct(slug: string): Promise<IProduct | null>  {
@@ -71,14 +69,14 @@ export async function generateMetadata({ params }: Props,
   ].filter(Boolean).join(', ');
 
   return {
-    title: `${product.name} Price in Bangladesh ${priceText} | Unique Store BD`,
+    title: product?.sname,
     description: `Buy ${product.name}${priceText}. ${shortDescription} Free delivery available.`,
     keywords,
     alternates: {
       canonical: `https://uniquestorebd.shop/product/${slug}`,
     },
     openGraph: {
-      title: `${product?.name} | Unique Store BD`,
+      title: `${product.name} Price in Bangladesh ${priceText} `,
       description: `Get ${product?.name}${priceText} in Bangladesh. ${shortDescription}`,
       url: `https://uniquestorebd.shop/product/${slug}`,
       type: 'website',
@@ -210,9 +208,9 @@ const ProductDetails = async ({
           <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
           <div className="space-y-4">
             <div>
-              <h3 className="font-semibold"> What is the price of {product?.name} in Bangladesh?</h3>
+              <h3 className="font-semibold"> What is the price of <b>{product?.sname}</b> in Bangladesh?</h3>
               <p>
-              The latest price of <b>{product?.name}</b> is{' '}
+              The latest price of <b>{product?.sname}</b> is{' '}
                 <b>৳{product?.price}</b> in Bangladesh. You can purchase the{' '}
                 {product?.sname} in Bangladesh at the best price from our website or any
                 of our stores.
