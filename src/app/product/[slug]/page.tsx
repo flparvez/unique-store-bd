@@ -9,6 +9,11 @@ type Props = {
   params: Promise<{ slug: string }>;
   
 };
+
+
+
+
+
 // Enhanced fetch with error handling
 async function getProduct(slug: string): Promise<IProduct | null>  {
   try {
@@ -16,8 +21,8 @@ async function getProduct(slug: string): Promise<IProduct | null>  {
       `https://uniquestorebd-api.vercel.app/api/products/slug/${slug}`,
       { 
         next: { 
-          revalidate: 3600,
-          tags: [`product-${slug}`] 
+          revalidate: 60*60*12,
+          tags: [`product_${slug}`]
         } 
       }
     );
@@ -59,8 +64,6 @@ export async function generateMetadata({ params }: Props,
   
   // Generate keywords from existing data
   const keywords = [
-    product.name,
-    product.sname,
     ...(product.seo?.split(',') || []),
     'buy online',
     'price in Bangladesh',
@@ -71,7 +74,8 @@ export async function generateMetadata({ params }: Props,
   return {
     title: `${product?.sname}  Price In Bangladesh`,
     description: `Buy ${product?.sname}${priceText}. ${shortDescription} Free delivery available.`,
-    keywords,
+    keywords: keywords,
+    
     alternates: {
       canonical: `https://uniquestorebd.shop/product/${slug}`,
     },
