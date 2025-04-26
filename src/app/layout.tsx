@@ -8,7 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { GoogleTagManager } from "@next/third-parties/google";
 
-// Font optimization with font-display swap
+// Font optimization with font-display swa
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
