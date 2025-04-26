@@ -10,7 +10,7 @@ import { useUpdateProductMutation, useGetProductByIdQuery } from "@/store/servic
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
-import RichTextEditor from "@/components/Richtext";
+import RichTextEditor from "@/components/Richtext/RichTextEditor";
 
 type Img = {
   public_id: string;

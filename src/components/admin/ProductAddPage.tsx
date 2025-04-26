@@ -11,7 +11,7 @@ import { useAddProductMutation } from "@/store/services/prodcutApi";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
-import RichTextEditor from "@/components/Richtext"; // Import your custom RichTextEditor
+import RichTextEditor from "@/components/Richtext/RichTextEditor"; // Import your custom RichTextEditor
 
 type Category = {
   _id: string;
@@ -105,10 +105,14 @@ export default function AddProductForm() {
         </LabelInputContainer>
          <LabelInputContainer className="mb-4">
                 <Label htmlFor="description">Product Description</Label>
+
                 <RichTextEditor
-                  content={watch("description")}
-                  onChange={handleDescriptionChange}
-                />
+                         content={watch("description")}
+                      onChange={handleDescriptionChange}
+                      placeholder="Detailed product description..."
+     
+                    />
+           
               </LabelInputContainer>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="category">Category</Label>
